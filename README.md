@@ -2,7 +2,7 @@
 
 >原之质，物之渊
 
-![](https://img.cdn.lim-light.com/images/2017/06/24/Material-Phone-Render.png)
+![](https://ooo.0o0.ooo/2017/06/29/5954eabb468a2.png)
 
 
 ## Contents 目录
@@ -20,7 +20,7 @@
 
 - Author 作者：Viosey
 - Maintainer 维护者：黎明余光
-- Version 版本：Alpha 1.5.1
+- Version 版本：Beta 2.0
 - Compatibility 兼容：PHP 5.4+, MySQL, Typecho 1.0
 
 ## Feature 特性
@@ -54,11 +54,11 @@ Experience the Material theme in live: [typecho-theme-material Demo](https://blo
 ## Preview 预览
 
 
-![](https://img.cdn.lim-light.com/images/2017/06/24/typecho-theme-material-screenshot.jpg)
+![](https://ooo.0o0.ooo/2017/06/29/5954eaba9a914.jpg)
 
-![](https://img.cdn.lim-light.com/images/2017/06/24/typecho-theme-material-vertical.jpg)
+![](https://ooo.0o0.ooo/2017/06/29/5954eabb081bd.jpg)
 
-![](https://img.cdn.lim-light.com/images/2017/06/24/TM-2.0-Rem-1.png)
+![](https://ooo.0o0.ooo/2017/06/29/5954eabbdf395.png)
 
 
 ## Contributing 贡献

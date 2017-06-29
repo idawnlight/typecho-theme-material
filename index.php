@@ -4,7 +4,7 @@
  *
  * @package Theme.Material
  * @author viosey
- * @version Alpha 1.5.1
+ * @version Beta 2.0
  * @link https://viosey.com
  */
 
