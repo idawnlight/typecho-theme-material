@@ -164,7 +164,10 @@
        <?php if ($this->options->RobotoSource == '0'): ?>
             <link href='https://fonts.lug.ustc.edu.cn/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
             <link href="https://fonts.proxy.ustclug.org/icon?family=Material+Icons" rel="stylesheet">
-       <?php elseif ($this->options->RobotoSource == '1'): ?>
+        <?php elseif ($this->options->RobotoSource == '1'): ?>
+            <link href='https://fonts.css.network/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+            <link href="https://fonts.css.networkk/icon?family=Material+Icons" rel="stylesheet">
+        <?php elseif ($this->options->RobotoSource == '2'): ?>
            <style>
                <?php if (!empty($this->options->CDNURL)): ?>
                    @font-face {
@@ -188,7 +191,7 @@
                    }
                <?php endif; ?>
            </style>
-       <?php elseif ($this->options->RobotoSource == '2'): ?>
+       <?php elseif ($this->options->RobotoSource == '3'): ?>
        <?php endif; ?>
 
         <!-- Config CSS -->
