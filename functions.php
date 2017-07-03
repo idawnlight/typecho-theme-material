@@ -16,7 +16,7 @@ function themeConfig($form)
 
     $switch = new Typecho_Widget_Helper_Form_Element_Checkbox('switch',
         array(
-            'ShowUpyun' => _t('侧边栏显示 upyun 联盟 logo'),
+            'ShowPixiv' => _t('侧边栏显示 mokeyjay 的 pixiv 挂件'),
             'SmoothScroll' => _t('平滑滚动效果'),
             'ShowLoadingLine' => _t('顶部 loading 加载进度条效果'),
             'atargetblank' => _t('链接以新标签页形式打开'),

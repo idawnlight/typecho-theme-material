@@ -198,11 +198,9 @@
 
     </div>
 
-    <?php if (!empty($this->options->switch) && in_array('ShowUpyun', $this->options->switch)) : ?>
+    <?php if (!empty($this->options->switch) && in_array('ShowPixiv', $this->options->switch)) : ?>
     <span id="footer-image">
-        <a href="https://www.upyun.com/" target="_blank">
-            <img src="https://www.upyun.com/static/90X45.png" />
-        </a>
+        <iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0"  style="width:240px; height:380px;"></iframe>
     </span>
     <?php endif; ?>
 
