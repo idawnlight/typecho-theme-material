@@ -250,7 +250,7 @@ $this->need('header.php');?>
                                     <span class="post_entry-category">
                                         <?php $this->category(', '); ?> |
                                     </span>
-                                        <a href="<?php $this->permalink() ?>"
+                                        <a href="<?php $this->permalink() ?>">
                                             <!-- 使用原生评论 -->
                                             <?php $this->commentsNum('%d 评论'); ?>
                                         </a>
