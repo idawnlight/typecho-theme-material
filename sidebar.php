@@ -131,7 +131,7 @@
                 '); ?>
                 </ul>
             </li>
-            
+
             <!-- categories -->
             <li class="dropdown">
                 <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
@@ -152,7 +152,7 @@
                     <?php endwhile; ?>
                 </ul>
             </li>
-            
+
             <!-- divider -->
             <li class="divider"></li>
             <!-- Pages  -->
@@ -196,12 +196,12 @@
             </div>
         </a>
 
-    </div>
+        <?php if (!empty($this->options->switch) && in_array('ShowPixiv', $this->options->switch)) : ?>
+        <center>
+            <iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0"  style="width:240px; height:380px;"></iframe>
+        </center>
+        <?php endif; ?>
 
-    <?php if (!empty($this->options->switch) && in_array('ShowPixiv', $this->options->switch)) : ?>
-    <span id="footer-image">
-        <iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0"  style="width:240px; height:380px;"></iframe>
-    </span>
-    <?php endif; ?>
+    </div>
 
 </aside>
