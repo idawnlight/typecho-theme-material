@@ -14,6 +14,8 @@ function themeConfig($form)
     <a href="https://github.com/LiMingYuGuang/typecho-theme-material/issues" target="_blank">建议&反馈</a>
     </p>';
 
+    echo '<br /><span id="update">正在检查主题更新</span><script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><script>$(document).ready(function(){$(".loading").hide();getupdate()});function getupdate(){$.ajax({url:"https://api.lim-light.com/update/material.php",dataType:"jsonp",async:true,jsonp:"callback",jsonpCallback:"checkupdate",success:function(result){$("#update").html(result.msg)},error:function(){$("#update").html("获取更新失败，API服务器可能挂了...")}})};</script>';
+
     $switch = new Typecho_Widget_Helper_Form_Element_Checkbox('switch',
         array(
             'ShowPixiv' => _t('侧边栏显示 mokeyjay 的 pixiv 挂件'),
