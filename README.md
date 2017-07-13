@@ -54,11 +54,9 @@ Experience the Material theme in live: [typecho-theme-material Demo](https://blo
 ## Preview 预览
 
 
-![](https://ooo.0o0.ooo/2017/06/29/5954eaba9a914.jpg)
+![](https://i.loli.net/2017/07/13/596784aa3a0aa.png)
 
-![](https://ooo.0o0.ooo/2017/06/29/5954eabb081bd.jpg)
-
-![](https://ooo.0o0.ooo/2017/06/29/5954eabbdf395.png)
+![](https://i.loli.net/2017/07/13/5967853869727.png)
 
 
 ## Contributing 贡献
