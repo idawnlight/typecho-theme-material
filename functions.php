@@ -8,7 +8,7 @@ function themeConfig($form)
     margin-bottom: 10px;
     margin-top: 10px;
     font-size: 16px;">感谢您使用 Material 主题</span>
-    <span style="margin-bottom:10px;display:block">由于原作者 viosey 放弃了 Typecho 版，目前这个版本由 黎明余光 维护<br>这是一个早期的测试版本，可能存在诸多 Bug ，还请谅解</span>
+    <span style="margin-bottom:10px;display:block">由于原作者 viosey 放弃了 Typecho 版，目前这个版本由 黎明余光 维护</span>
     <span style="margin-bottom:10px;display:block">请关注 <a href="https://github.com/LiMingYuGuang/typecho-theme-material" target="_blank" style="color:#3384da;font-weight:bold;text-decoration:underline">Github-Material</a> 以获得<span style="color:#df3827;font-weight:bold;">最新版本支持</span></span>
     <a href="mailto:i@lim-light.com" >帮助&支持</a> &nbsp;
     <a href="https://github.com/LiMingYuGuang/typecho-theme-material/issues" target="_blank">建议&反馈</a>
@@ -101,7 +101,7 @@ function themeConfig($form)
 
     $CDNURL = new Typecho_Widget_Helper_Form_Element_Text('CDNURL', null, null, _t('CDN 地址'), _t("
     新建一个'MaterialCDN' 文件夹, 把'css, fonts, img, js' 文件夹放进去, 然后把'MaterialCDN' 上传到到你的 CDN 储存空间根目录下<br />
-    填入你的 CDN 地址, 如 <b>http://bucket.b0.upaiyun.com</b>"));
+    填入你的 CDN 地址, 如 <b>https://material.lim-light.com</b><br />PS : 这个 CDN 其实是可用的"));
     $form->addInput($CDNURL);
 
     $langis = new Typecho_Widget_Helper_Form_Element_Radio('langis',

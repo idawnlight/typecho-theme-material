@@ -150,7 +150,7 @@ $this->need('header.php');?>
                                     <a class="index_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=<?php $this->options->title(); ?>&url=<?php $this->options->siteUrl(); ?>&pic=&searchPic=false&style=simple ">
                                         <li class="mdl-menu__item">
                                             <?php if ($this->options->langis == '0'): ?> Share to Weibo
-                                            <?php else: ?> 分享到新浪微博
+                                            <?php else: ?> 分享到 新浪微博
                                             <?php endif; ?>
                                         </li>
                                     </a>
