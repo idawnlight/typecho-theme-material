@@ -419,9 +419,9 @@
                         background-image: url(<?php $this->options->bgcolor() ?>);
                     <?php else: ?>
                         <?php if (!empty($this->options->CDNURL)): ?>
-                            background-image: url(<?php $this->options->CDNURL() ?>/MaterialCDN/img/bg.jpg);
+                            background-image: url(<?php $this->options->CDNURL() ?>/MaterialCDN/img/bg.png);
                         <?php else: ?>
-                            background-image: url(<?php $this->options->themeUrl('img/bg.jpg'); ?>);
+                            background-image: url(<?php $this->options->themeUrl('img/bg.png'); ?>);
                         <?php endif; ?>
                     <?php endif; ?>
                 }

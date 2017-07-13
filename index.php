@@ -4,7 +4,7 @@
  *
  * @package Theme.Material
  * @author viosey
- * @version Beta 2.0.1
+ * @version 3.0
  * @link https://viosey.com
  */
 
@@ -30,9 +30,9 @@ $this->need('header.php');?>
                     <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(<?php $this->options->dailypic() ?>)">
                         <?php else: ?>
                         <?php if (!empty($this->options->CDNURL)): ?>
-                        <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(<?php $this->options->CDNURL() ?>/MaterialCDN/img/hiyou.jpg)">
+                        <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(<?php $this->options->CDNURL() ?>/MaterialCDN/img/daily_pic.png)">
                             <?php else: ?>
-                            <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(<?php $this->options->themeUrl('img/hiyou.jpg') ?>)">
+                            <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(<?php $this->options->themeUrl('img/daily_pic.png') ?>)">
                                 <?php endif; ?>
                                 <?php endif; ?>
                                 <p class="index-top-block-slogan"><a href="<?php $this->options->dailypicLink() ?>"><?php $this->options->slogan() ?></a></p>

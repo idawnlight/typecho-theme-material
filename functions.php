@@ -32,7 +32,7 @@ function themeConfig($form)
     $analysis = new Typecho_Widget_Helper_Form_Element_Textarea('analysis', null, null, _t('网站统计代码 + 自定义字体源'), _t('填入如 Google Analysis 的第三方统计代码或字体源'));
     $form->addInput($analysis);
 
-    $loadingcolor = new Typecho_Widget_Helper_Form_Element_Text('loadingcolor', null, null, _t('loading 加载进度条颜色'), _t('打开 "功能开关" 中的 loading 加载进度条后, 在这里设置进度条的颜色, 默认为蓝色'));
+    $loadingcolor = new Typecho_Widget_Helper_Form_Element_Text('loadingcolor', null, _t('#29d'), _t('loading 加载进度条颜色'), _t('打开 "功能开关" 中的 loading 加载进度条后, 在这里设置进度条的颜色, 默认为蓝色'));
     $form->addInput($loadingcolor);
 
     $loadingbuffer = new Typecho_Widget_Helper_Form_Element_Text('loadingbuffer', null, _t('800'), _t('loading 加载缓冲时间'), _t('loading 加载进度条的缓冲时间, 单位为毫秒 ms, 默认为 800ms'));
@@ -121,16 +121,16 @@ function themeConfig($form)
     $sticky_2 = new Typecho_Widget_Helper_Form_Element_Text('sticky_2', null, null, '置顶文章 2 ID', '填写对应主题的 id 即可使文章标题在首页置顶显示');
     $form->addInput($sticky_2->addRule('isInteger', '请填入数字'));
 
-    $ThemeColor = new Typecho_Widget_Helper_Form_Element_Text('ThemeColor', null, _t('#039BE5'), _t('主题颜色'), null);
+    $ThemeColor = new Typecho_Widget_Helper_Form_Element_Text('ThemeColor', null, _t('#0097A7'), _t('主题颜色'), null);
     $form->addInput($ThemeColor);
 
-    $alinkcolor = new Typecho_Widget_Helper_Form_Element_Text('alinkcolor', null, _t('#039BE5'), _t('超链接颜色'), null);
+    $alinkcolor = new Typecho_Widget_Helper_Form_Element_Text('alinkcolor', null, _t('#00838F'), _t('超链接颜色'), null);
     $form->addInput($alinkcolor);
 
-    $ChromeThemeColor = new Typecho_Widget_Helper_Form_Element_Text('ChromeThemeColor', null, _t('#039BE5'), _t('Android Chrome 地址栏颜色'), null);
+    $ChromeThemeColor = new Typecho_Widget_Helper_Form_Element_Text('ChromeThemeColor', null, _t('#0097A7'), _t('Android Chrome 地址栏颜色'), null);
     $form->addInput($ChromeThemeColor);
 
-    $ButtonThemeColor = new Typecho_Widget_Helper_Form_Element_Text('ButtonThemeColor', null, _t('#607d8b'), _t('按钮颜色'), null);
+    $ButtonThemeColor = new Typecho_Widget_Helper_Form_Element_Text('ButtonThemeColor', null, _t('#00838F'), _t('按钮颜色'), null);
     $form->addInput($ButtonThemeColor);
 
     $avatarURL = new Typecho_Widget_Helper_Form_Element_Text('avatarURL', null, null, '个人头像地址', '填入头像的地址, 如不填写则使用默认头像');
@@ -138,6 +138,9 @@ function themeConfig($form)
 
     $favicon = new Typecho_Widget_Helper_Form_Element_Text('favicon', null, null, _t('favicon 地址'), _t('填入博客 favicon 的地址, 默认则不显示'));
     $form->addInput($favicon);
+
+    $sidebarheader = new Typecho_Widget_Helper_Form_Element_Text('sidebarheader', null, null, _t('侧边栏顶部图片'), _t('填入图片地址, 如不填写则使用默认图片'));
+    $form->addInput($sidebarheader);
 
     $dailypic = new Typecho_Widget_Helper_Form_Element_Text('dailypic', null, null, _t('首页顶部左边的图片地址'), _t('填入图片地址, 图片显示在首页顶部左边位置'));
     $form->addInput($dailypic);
@@ -151,7 +154,7 @@ function themeConfig($form)
     $logoLink = new Typecho_Widget_Helper_Form_Element_Text('logoLink', null, null, _t('首页顶部右边 LOGO 的点击跳转地址'), _t('点击 LOGO 后, 想要跳转网页的地址'));
     $form->addInput($logoLink);
 
-    $slogan = new Typecho_Widget_Helper_Form_Element_Text('slogan', null, _t('Nice to meet you'), _t('首页顶部左边的标语'), _t('填入自定义文字, 显示于首页顶部左边的图片上'));
+    $slogan = new Typecho_Widget_Helper_Form_Element_Text('slogan', null, _t('Hi, nice to meet you'), _t('首页顶部左边的标语'), _t('填入自定义文字, 显示于首页顶部左边的图片上'));
     $form->addInput($slogan);
 
     $footersns = new Typecho_Widget_Helper_Form_Element_Checkbox('footersns',
