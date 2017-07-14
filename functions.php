@@ -1,6 +1,6 @@
 <?php
 
-define(MATERIAL_VERSION,"3.0.0");
+define(MATERIAL_VERSION,"3.0.1");
 
 //Appearance setup
 function themeConfig($form)
@@ -16,7 +16,7 @@ function themeConfig($form)
     <a href="https://github.com/LiMingYuGuang/typecho-theme-material/issues" target="_blank">建议&反馈</a>
     </p>';
 
-    echo '<span id="update">正在检查主题更新</span><script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><script>$(document).ready(function(){$(".loading").hide();getupdate()});function getupdate(){$.ajax({url:"https://api.lim-light.com/update/material.php?version='.MATERIAL_VERSION.'",dataType:"jsonp",async:true,jsonp:"callback",jsonpCallback:"checkupdate",success:function(result){$("#update").html(result.msg)},error:function(){$("#update").html("获取更新失败，API服务器可能挂了...")}})};</script>';
+    echo '当前版本' . MATERIAL_VERSION . '，<span id="update">正在检查主题更新</span><script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><script>$(document).ready(function(){$(".loading").hide();getupdate()});function getupdate(){$.ajax({url:"https://api.lim-light.com/update/material.php?version='.MATERIAL_VERSION.'",dataType:"jsonp",async:true,jsonp:"callback",jsonpCallback:"checkupdate",success:function(result){$("#update").html(result.msg)},error:function(){$("#update").html("获取更新失败，API服务器可能挂了...")}})};</script>';
 
     $switch = new Typecho_Widget_Helper_Form_Element_Checkbox('switch',
         array(
@@ -274,4 +274,9 @@ function randomThumbnail($widget)
 //Pjax support
 function is_pjax(){   
     return array_key_exists('HTTP_X_PJAX', $_SERVER) && $_SERVER['HTTP_X_PJAX'];   
+}
+
+//Copyright
+function copyright() {
+    echo '<script>console.log("\n %c © Material ' . MATERIAL_VERSION . ' | https://github.com/LiMingYuGuang/typecho-theme-material %c \n","color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;","color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;")</script>';
 }

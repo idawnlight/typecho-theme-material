@@ -104,6 +104,7 @@
                 <?php echo date("Y"); ?>
                 <?php $this->options->title(); ?>
             </div>
+            <?php copyright() ?>
             
 
             <!--mdl-mini-footer-right-section-->

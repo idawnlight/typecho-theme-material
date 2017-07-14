@@ -20,7 +20,7 @@
 
 - Author 作者：Viosey
 - Maintainer 维护者：黎明余光
-- Version 版本：3.0
+- Version 版本：3.0.1
 - Compatibility 兼容：PHP 5.4+, MySQL, Typecho 1.0
 
 ## Feature 特性
@@ -30,6 +30,7 @@
 - 自带中英文界面语言
 - 自带多种功能与特效
 - PanGu.js 中英文之间自动添加空格（可选）
+- 更新检测
 
 ## Demo 演示
 
