@@ -134,7 +134,7 @@ function themeConfig($form)
     $ChromeThemeColor = new Typecho_Widget_Helper_Form_Element_Text('ChromeThemeColor', null, _t('#0097A7'), _t('Android Chrome 地址栏颜色'), null);
     $form->addInput($ChromeThemeColor);
 
-    $ButtonThemeColor = new Typecho_Widget_Helper_Form_Element_Text('ButtonThemeColor', null, _t('#00838F'), _t('按钮颜色'), null);
+    $ButtonThemeColor = new Typecho_Widget_Helper_Form_Element_Text('ButtonThemeColor', null, _t('#757575'), _t('按钮颜色'), null);
     $form->addInput($ButtonThemeColor);
 
     $avatarURL = new Typecho_Widget_Helper_Form_Element_Text('avatarURL', null, null, '个人头像地址', '填入头像的地址, 如不填写则使用默认头像');
