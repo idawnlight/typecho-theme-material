@@ -137,6 +137,9 @@ function themeConfig($form)
     $ButtonThemeColor = new Typecho_Widget_Helper_Form_Element_Text('ButtonThemeColor', null, _t('#757575'), _t('按钮颜色'), null);
     $form->addInput($ButtonThemeColor);
 
+    $CardElevation = new Typecho_Widget_Helper_Form_Element_Text('CardElevation', null, _t('2'), _t('卡片阴影'), _t('默认为 2'));
+    $form->addInput($CardElevation);
+
     $avatarURL = new Typecho_Widget_Helper_Form_Element_Text('avatarURL', null, null, '个人头像地址', '填入头像的地址, 如不填写则使用默认头像');
     $form->addInput($avatarURL);
 
