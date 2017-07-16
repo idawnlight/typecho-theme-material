@@ -118,6 +118,20 @@
     <div class="mdl-layout__obfuscator"></div>
 </div>
 
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+        <?php if (!empty($this->options->CDNURL)): ?>
+		document.write('<link rel="stylesheet" href="<link rel="stylesheet" href="<?php $this->options->CDNURL() ?>/MaterialCDN/css/uc.css">">');
+        <?php else: ?>
+		document.write('<link rel="stylesheet" href="<link rel="stylesheet" href="<?php $this->options->themeUrl('css/uc.css'); ?>');
+        <?php endif; ?>
+	    alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
 <!--Analysis code-->
 <?php $this->options->analysis(); ?>
 </body>
