@@ -21,11 +21,6 @@
         <meta name="description" itemprop="description" content="<?php $this->options->description() ?>">
         <meta name="keywords" content="<?php $this->options->keywords() ?>">
 
-        <!-- Site Verification -->
-            <!--<% if(theme.head.site_verification.google) { %><meta name="google-site-verification" content="<%= theme.head.site_verification.google %>" /><% } %>
-            <% if(theme.head.site_verification.baidu) { %><meta name="baidu-site-verification" content="<%= theme.head.site_verification.baidu %>" /><% } %>
-            -->
-
         <!-- Favicons -->
         <link rel="icon shortcut" type="image/ico" href="<?php $this->options->favicon() ?>">
         <link rel="icon" sizes="192x192" href="<?php $this->options->favicon() ?>">
