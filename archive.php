@@ -16,7 +16,7 @@
             <?php while ($this->next()): ?>
 
             <!-- Article fragment -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col <?php if (!empty($this->options->switch) && in_array('ShowLoadingLine', $this->options->switch)): ?>fade out<?php endif; ?>">
+            <div class="post_entry-module mdl-card mdl-shadow--<?php $this->options->CardElevation() ?>dp mdl-cell mdl-cell--12-col <?php if (!empty($this->options->switch) && in_array('ShowLoadingLine', $this->options->switch)): ?>fade out<?php endif; ?>">
 
                     <!-- Article link & title -->
                     <?php if ($this->options->ThumbnailOption == '1'): ?>
