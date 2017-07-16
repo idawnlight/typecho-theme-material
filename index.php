@@ -1,11 +1,11 @@
 <?php
 /**
- * 这是 Viosey 基于 Google Material Design 开发的 Typecho 主题，目前 Typecho 版由 <a herf="https://blog.lim-light.com/" target="_blank">黎明余光</a> 维护
+ * 这是 <a herf="https://viosey.com/" target="_blank">Viosey</a> 基于 Google Material Design 开发的 Typecho 主题，目前 Typecho 版由 <a herf="https://blog.lim-light.com/" target="_blank">黎明余光</a> 维护
  *
  * @package Theme.Material
- * @author viosey
- * @version 3.0.1
- * @link https://viosey.com
+ * @author 黎明余光
+ * @version 3.0.2
+ * @link https://blog.lim-light.com
  */
 
 $this->need('header.php');?>
@@ -25,7 +25,7 @@ $this->need('header.php');?>
             <div class="material-index mdl-grid">
 
                 <!-- Daily Pic -->
-                <div class="mdl-card mdl-shadow--2dp daily-pic mdl-cell mdl-cell--8-col index-top-block">
+                <div class="mdl-card mdl-shadow--<?php $this->options->CardElevation() ?>dp daily-pic mdl-cell mdl-cell--8-col index-top-block">
                     <?php if (!empty($this->options->dailypic)): ?>
                     <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(<?php $this->options->dailypic() ?>)">
                         <?php else: ?>
@@ -54,7 +54,7 @@ $this->need('header.php');?>
                         </div>
 
                         <!-- Blog info -->
-                        <div class="mdl-card mdl-shadow--2dp something-else mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop index-top-block">
+                        <div class="mdl-card mdl-shadow--<?php $this->options->CardElevation() ?>dp something-else mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop index-top-block">
                             <!-- Search -->
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" method="post" action="">
                                 <label id="search-label" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent mdl-shadow--4dp" for="search">
@@ -187,7 +187,7 @@ $this->need('header.php');?>
                             <?php while ($this->next()): ?>
 
                             <!-- Article module -->
-                            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col <?php if (!empty($this->options->switch) && in_array('ShowLoadingLine', $this->options->switch)): ?>fade out<?php endif; ?>">
+                            <div class="post_entry-module mdl-card mdl-shadow--<?php $this->options->CardElevation() ?>dp mdl-cell mdl-cell--12-col <?php if (!empty($this->options->switch) && in_array('ShowLoadingLine', $this->options->switch)): ?>fade out<?php endif; ?>">
 
                                 <!-- Article link & title -->
                                 <?php if ($this->options->ThumbnailOption == '1'): ?>
