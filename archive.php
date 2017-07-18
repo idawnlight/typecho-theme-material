@@ -76,7 +76,7 @@
                                     </span>
                                         </div>
                                     </div>
-                    
+
                     <div id="post_entry-right-info" style="color:<?php $this->options->alinkcolor(); ?>">
                         <span class="post_entry-category">
                             <?php $this->category(', '); ?> |
@@ -96,11 +96,11 @@
                 <?php $this->pageLink(
                     '<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button>'); ?>
                 <span class="page-number current"><?php if ($this->_currentPage>1) {
-                    echo $this->_currentPage;
-                } else {
-                    echo 1;
-                }?> of <?php echo   ceil($this->getTotal() / $this->parameter->pageSize); ?></span>
-                                
+                        echo $this->_currentPage;
+                    } else {
+                        echo 1;
+                    }?> of <?php echo   ceil($this->getTotal() / $this->parameter->pageSize); ?></span>
+
                 <?php $this->pageLink(
                     '<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_forward</i></button>', 'next'); ?>
             </nav>

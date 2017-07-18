@@ -120,14 +120,14 @@ $this->need('header.php'); ?>
 </button>
 
 <ul class="md-timeline">
-   <?php $this->widget('Widget_Contents_Post_Recent','pageSize=10000')->to($archive); ?>
-   <?php while($archive->next()):?>
+   <?php $this->widget('Widget_Contents_Post_Recent', 'pageSize=10000')->to($archive); ?>
+   <?php while ($archive->next()):?>
       <li class="md-timeline-event">
         <label class="md-timeline-event-icon"></label>
         <div class="md-timeline-event-copy">
           <p class="md-timeline-event-thumbnail"><?php $archive->date('M j Y'); ?> - <?php $archive->author() ?></p>
           <h3><a href="<?php $archive->permalink() ?>"><?php $archive->title() ?></a></h3>
-          <h4><strong>Categorias:</strong> <?php $archive->category(' '); ?> <br /><strong>Tags:</strong> <?php $archive->tags(' ', true, NULL); ?></h4>
+          <h4><strong>Categorias:</strong> <?php $archive->category(' '); ?> <br /><strong>Tags:</strong> <?php $archive->tags(' ', true, null); ?></h4>
           <p><?php $archive->excerpt(100, '...'); ?></p>
         </div>
       </li>

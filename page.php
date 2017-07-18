@@ -73,7 +73,7 @@
                                 <li class="mdl-menu__item">编辑</li>
                         </a>
                         <?php endif;?>
-                        <a class="md-menu-list-a" href="https://www.facebook.com/sharer/sharer.php?u=<?php $this->options->permalink(); ?>">                                        
+                        <a class="md-menu-list-a" href="https://www.facebook.com/sharer/sharer.php?u=<?php $this->options->permalink(); ?>">
                             <li class="mdl-menu__item">
                                 <?php if ($this->options->langis == '0'): ?> Share to Facebook
                                 <?php else: ?> 分享到 Facebook

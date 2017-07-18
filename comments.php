@@ -70,14 +70,14 @@
             <?php $comments->threadedComments($options); ?>
             <!--嵌套评论所有内容-->
         </div>
-        <?php 
+        <?php
     } ?>
         <!--是否嵌套评论判断结束-->
     </div>
 
 </div>
 
-<?php 
+<?php
 } ?>
 
 <!-- 使用原生评论 -->
