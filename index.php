@@ -4,7 +4,7 @@
  *
  * @package Theme.Material
  * @author 黎明余光
- * @version 3.0.2
+ * @version 3.0.3
  * @link https://blog.lim-light.com
  */
 
@@ -103,7 +103,7 @@ $this->need('header.php');?>
                                     </a>
                                     <?php endwhile; ?>
                                 </ul>
-                                                                
+
                                 <!--  Menu button-->
                                 <button id="menubtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                                     <i class="material-icons" role="presentation">more_vert</i>
@@ -119,7 +119,7 @@ $this->need('header.php');?>
                                         </li>
                                     </a>
                                     <!-- 文章的RSS地址连接 -->
-                                    <a class="index_share-link" href="https://www.facebook.com/sharer/sharer.php?u=<?php $this->options->siteUrl(); ?>">                                        
+                                    <a class="index_share-link" href="https://www.facebook.com/sharer/sharer.php?u=<?php $this->options->siteUrl(); ?>">
                                         <li class="mdl-menu__item">
                                             <?php if ($this->options->langis == '0'): ?> Share to Facebook
                                             <?php else: ?> 分享到 Facebook
@@ -213,13 +213,7 @@ $this->need('header.php');?>
                                     <?php $this->excerpt(80, '...'); ?> &nbsp;&nbsp;&nbsp;
                                     <span>
                                 <a href="<?php $this->permalink(); ?>" target="_self">
-                                    <?php if ($this->options->langis == '0'): ?>
-                                        Continue Reading
-                                    <?php elseif ($this->options->langis == '1'): ?>
-                                        继续阅读
-                                    <?php elseif ($this->options->langis == '2'): ?>
-                                        繼續閱讀
-                                    <?php endif; ?>
+                                    <?php echo tranMsg("Continue Reading", "继续阅读", $this->options->langis) ?>
                                 </a>
                             </span>
                                 </div>
@@ -254,7 +248,7 @@ $this->need('header.php');?>
                                             <!-- 使用原生评论 -->
                                             <?php $this->commentsNum('%d 评论'); ?>
                                         </a>
-                                        
+
                                     </div>
 
                                 </div>
@@ -267,11 +261,11 @@ $this->need('header.php');?>
                                 <?php $this->pageLink(
                         '<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button>'); ?>
                                 <span class="page-number current"><?php if ($this->_currentPage>1) {
-                                    echo $this->_currentPage;
-                                } else {
-                                    echo 1;
-                                }?> of <?php echo   ceil($this->getTotal() / $this->parameter->pageSize); ?></span>
-                                
+                            echo $this->_currentPage;
+                        } else {
+                            echo 1;
+                        }?> of <?php echo   ceil($this->getTotal() / $this->parameter->pageSize); ?></span>
+
                                 <?php $this->pageLink(
                         '<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_forward</i></button>', 'next'); ?>
                             </nav>

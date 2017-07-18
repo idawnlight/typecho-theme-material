@@ -5,7 +5,7 @@
             </a>
         </div>
 
-        
+
         <!--Footer-->
         <footer class="mdl-mini-footer" id="bottom">
             <!--mdl-mini-footer-left-section-->
@@ -48,7 +48,7 @@
                     </button>
                 </a>
                 <?php endif;?>
-                
+
                 <?php if (!empty($this->options->footersns) && in_array('ShowGithub', $this->options->footersns)) : ?>
                 <a href="<?php $this->options->GithubURL() ?>" target="_blank">
                     <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
@@ -56,7 +56,7 @@
                     </button>
                 </a>
                 <?php endif;?>
-                
+
                 <?php if (!empty($this->options->footersns) && in_array('ShowTumblr', $this->options->footersns)) : ?>
                 <a href="<?php $this->options->TumblrURL() ?>" target="_blank">
                     <button class="mdl-mini-footer--social-btn social-btn footer-sns-tumblr">
@@ -64,7 +64,7 @@
                     </button>
                 </a>
                 <?php endif;?>
-                
+
                 <?php if (!empty($this->options->footersns) && in_array('ShowBilibili', $this->options->footersns)) : ?>
                     <a href="<?php $this->options->BilibiliURL() ?>" target="_blank">
                         <button class="mdl-mini-footer--social-btn social-btn footer-sns-bilibili">
@@ -72,7 +72,7 @@
                         </button>
                     </a>
                 <?php endif;?>
-                
+
                 <?php if (!empty($this->options->footersns) && in_array('ShowTelegram', $this->options->footersns)) : ?>
                     <a href="<?php $this->options->TelegramURL() ?>" target="_blank">
                         <button class="mdl-mini-footer--social-btn social-btn footer-sns-telegram">
@@ -80,7 +80,7 @@
                         </button>
                     </a>
                 <?php endif;?>
-                
+
                 <?php if (!empty($this->options->footersns) && in_array('ShowZhihu', $this->options->footersns)) : ?>
                     <a href="<?php $this->options->ZhihuURL() ?>" target="_blank">
                         <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
@@ -88,7 +88,7 @@
                         </button>
                     </a>
                 <?php endif;?>
-                
+
                 <?php if (!empty($this->options->footersns) && in_array('ShowLinkedin', $this->options->footersns)) : ?>
                     <a href="<?php $this->options->LinkedinURL() ?>" target="_blank">
                         <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
@@ -96,16 +96,16 @@
                         </button>
                     </a>
                 <?php endif;?>
-                
+
             </div>
-            
+
             <!--copyright-->
             <div id="copyright">Copyright &copy;
                 <?php echo date("Y"); ?>
                 <?php $this->options->title(); ?>
             </div>
             <?php copyright() ?>
-            
+
 
             <!--mdl-mini-footer-right-section-->
             <div class="mdl-mini-footer--right-section">

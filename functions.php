@@ -1,6 +1,6 @@
 <?php
 
-define(MATERIAL_VERSION,"3.0.2");
+define(MATERIAL_VERSION, "3.0.3");
 
 //Appearance setup
 function themeConfig($form)
@@ -112,7 +112,6 @@ function themeConfig($form)
         array(
             '0' => _t('English <br />'),
             '1' => _t('简体中文 <br />'),
-            '2' => _t('繁体中文 <br />')
         ),
 
         '1', _t('界面语言设置'), _t("默认使用简体中文")
@@ -139,6 +138,9 @@ function themeConfig($form)
 
     $CardElevation = new Typecho_Widget_Helper_Form_Element_Text('CardElevation', null, _t('2'), _t('卡片阴影'), _t('默认为 2'));
     $form->addInput($CardElevation);
+
+    $CommentRows = new Typecho_Widget_Helper_Form_Element_Text('CommentRows', null, _t('1'), _t('评论框行数'), _t('默认为 1'));
+    $form->addInput($CommentRows);
 
     $avatarURL = new Typecho_Widget_Helper_Form_Element_Text('avatarURL', null, null, '个人头像地址', '填入头像的地址, 如不填写则使用默认头像');
     $form->addInput($avatarURL);
@@ -194,25 +196,25 @@ function themeConfig($form)
 
     $WeiboURL = new Typecho_Widget_Helper_Form_Element_Text('WeiboURL', null, null, _t('新浪微博地址'), null);
     $form->addInput($WeiboURL);
-    
+
     $InstagramURL = new Typecho_Widget_Helper_Form_Element_Text('InstagramURL', null, null, _t('Instagram 地址'), null);
     $form->addInput($InstagramURL);
-    
+
     $GithubURL = new Typecho_Widget_Helper_Form_Element_Text('GithubURL', null, null, _t('Github 地址'), null);
     $form->addInput($GithubURL);
-    
+
     $TumblrURL = new Typecho_Widget_Helper_Form_Element_Text('TumblrURL', null, null, _t('Tumblr 地址'), null);
     $form->addInput($TumblrURL);
-    
+
     $BilibiliURL = new Typecho_Widget_Helper_Form_Element_Text('BilibiliURL', null, null, _t('Bilibili 地址'), null);
     $form->addInput($BilibiliURL);
-    
+
     $TelegramURL = new Typecho_Widget_Helper_Form_Element_Text('TelegramURL', null, null, _t('Telegram 地址'), null);
     $form->addInput($TelegramURL);
-    
+
     $ZhihuURL = new Typecho_Widget_Helper_Form_Element_Text('ZhihuURL', null, null, _t('Zhihu 地址'), null);
     $form->addInput($ZhihuURL);
-    
+
     $LinkedinURL = new Typecho_Widget_Helper_Form_Element_Text('LinkedinURL', null, null, _t('Linkedin 地址'), null);
     $form->addInput($LinkedinURL);
 
@@ -275,11 +277,20 @@ function randomThumbnail($widget)
 }
 
 //Pjax support
-function is_pjax(){   
-    return array_key_exists('HTTP_X_PJAX', $_SERVER) && $_SERVER['HTTP_X_PJAX'];   
+function is_pjax()
+{
+    return array_key_exists('HTTP_X_PJAX', $_SERVER) && $_SERVER['HTTP_X_PJAX'];
 }
 
 //Copyright
-function copyright() {
+function copyright()
+{
     echo '<script>console.log("\n %c © Material ' . MATERIAL_VERSION . ' | https://github.com/LiMingYuGuang/typecho-theme-material %c \n","color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;","color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;")</script>';
+}
+
+//Language
+//Usage tranMsg("Newer", "新篇", $this->options->langis)
+function tranMsg($eng, $chs, $l)
+{
+  return ($l == "0") ? $eng : $chs ;
 }

@@ -70,14 +70,14 @@
             <?php $comments->threadedComments($options); ?>
             <!--嵌套评论所有内容-->
         </div>
-        <?php 
+        <?php
     } ?>
         <!--是否嵌套评论判断结束-->
     </div>
 
 </div>
 
-<?php 
+<?php
 } ?>
 
 <!-- 使用原生评论 -->
@@ -150,7 +150,7 @@
 
             <!-- Input comment content -->
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="comment-input-div">
-                <textarea name="text" rows="1" id="comment" class="mdl-textfield__input"></textarea>
+                <textarea name="text" rows="<?php $this->options->CommentRows() ?>" id="comment" class="mdl-textfield__input"></textarea>
                 <label for="comment" class="mdl-textfield__label">
                             <?php if ($this->options->langis == '0'): ?>
                                 Join the discussion
@@ -165,7 +165,6 @@
                     <button id="comment-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                         <i class="material-icons" role="presentation">check</i><span class="visuallyhidden">add comment</span>
                     </button>'); ?>
-            <div class="mdl-tooltip" for="comment-button">Submit</div>
 
         </form>
     </div>
@@ -176,7 +175,7 @@
     <?php else: ?>
 
     <div class="comments__closed">
-        <span id="commentCount">评论已关闭</span>
+        <span id="commentCount"><?php echo tranMsg("Comment has been closed", "评论已关闭", $this->options->langis) ?></span>
     </div>
 
     <?php endif; ?>
