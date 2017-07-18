@@ -287,3 +287,10 @@ function copyright()
 {
     echo '<script>console.log("\n %c © Material ' . MATERIAL_VERSION . ' | https://github.com/LiMingYuGuang/typecho-theme-material %c \n","color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;","color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;")</script>';
 }
+
+//Language
+//Usage tranMsg("Newer", "新篇", $this->options->langis)
+function tranMsg($eng, $chs, $l)
+{
+  return ($l == "0") ? $eng : $chs ;
+}

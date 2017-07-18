@@ -175,7 +175,7 @@
     <?php else: ?>
 
     <div class="comments__closed">
-        <span id="commentCount">评论已关闭</span>
+        <span id="commentCount"><?php echo tranMsg("Comment has been closed", "评论已关闭", $this->options->langis) ?></span>
     </div>
 
     <?php endif; ?>

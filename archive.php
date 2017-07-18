@@ -43,11 +43,7 @@
                     <?php $this->excerpt(80, '...'); ?> &nbsp;&nbsp;&nbsp;
                     <span>
                         <a href="<?php $this->permalink(); ?>" target="_self">
-                            <?php if ($this->options->langis == '0'): ?>
-                                Continue Reading
-                            <?php elseif ($this->options->langis == '1'): ?>
-                                继续阅读
-                            <?php endif; ?>
+                            <?php echo tranMsg("Continue Reading", "继续阅读", $this->options->langis) ?>
                         </a>
                     </span>
                 </div>
