@@ -112,7 +112,6 @@ function themeConfig($form)
         array(
             '0' => _t('English <br />'),
             '1' => _t('简体中文 <br />'),
-            '2' => _t('繁体中文 <br />')
         ),
 
         '1', _t('界面语言设置'), _t("默认使用简体中文")

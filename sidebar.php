@@ -58,7 +58,6 @@
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">account_circle</i>
                             <?php if ($this->options->langis == '0'): ?> Profile
                             <?php elseif ($this->options->langis == '1'): ?> 用户概要
-                            <?php elseif ($this->options->langis == '2'): ?> 使用者概要
                             <?php endif; ?>
                         </a>
                     </li>
@@ -67,7 +66,6 @@
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">settings</i>
                             <?php if ($this->options->langis == '0'): ?> Settings
                             <?php elseif ($this->options->langis == '1'): ?> 设置外观
-                            <?php elseif ($this->options->langis == '2'): ?> 設置外觀
                             <?php endif; ?>
                         </a>
                     </li>
@@ -76,7 +74,6 @@
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">exit_to_app</i>
                             <?php if ($this->options->langis == '0'): ?> Exit
                             <?php elseif ($this->options->langis == '1'): ?> 退出登录
-                            <?php elseif ($this->options->langis == '2'): ?> 退出登錄
                             <?php endif; ?>
                         </a>
                     </li>
@@ -86,16 +83,6 @@
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">fingerprint</i>
                             <?php if ($this->options->langis == '0'): ?> Login
                             <?php elseif ($this->options->langis == '1'): ?> 用户登录
-                            <?php elseif ($this->options->langis == '2'): ?> 使用者登錄
-                            <?php endif; ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php $this->options->adminUrl('register.php'); ?>" class="md-menu-list-a" tabindex="-1">
-                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">person_add</i>
-                            <?php if ($this->options->langis == '0'): ?> Register
-                            <?php elseif ($this->options->langis == '1'): ?> 用户注册
-                            <?php elseif ($this->options->langis == '2'): ?> 使用者註冊
                             <?php endif; ?>
                         </a>
                     </li>
@@ -109,7 +96,6 @@
                     <i class="material-icons sidebar-material-icons">home</i>
                     <?php if ($this->options->langis == '0'): ?> Homepage
                     <?php elseif ($this->options->langis == '1'): ?> 主页
-                    <?php elseif ($this->options->langis == '2'): ?> 首頁
                     <?php endif; ?>
                 </a>
             </li>
@@ -120,7 +106,6 @@
                     <i class="material-icons sidebar-material-icons">inbox</i>
                     <?php if ($this->options->langis == '0'): ?> Archives
                     <?php elseif ($this->options->langis == '1'): ?> 归档
-                    <?php elseif ($this->options->langis == '2'): ?> 過往
                     <?php endif; ?>
                     <b class="caret"></b>
                 </a>
@@ -180,7 +165,6 @@
                 <a href="#">
                     <?php if ($this->options->langis == '0'): ?> Article Number
                     <?php elseif ($this->options->langis == '1'): ?> 文章总数
-                    <?php elseif ($this->options->langis == '2'): ?> 文章總數
                     <?php endif; ?>
                     <span class="sidebar-badge"><?php echo $stat->publishedPostsNum;?></span>
                 </a>

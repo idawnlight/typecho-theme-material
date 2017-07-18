@@ -47,8 +47,6 @@
                                 Continue Reading
                             <?php elseif ($this->options->langis == '1'): ?>
                                 继续阅读
-                            <?php elseif ($this->options->langis == '2'): ?>
-                                繼續閱讀
                             <?php endif; ?>
                         </a>
                     </span>
