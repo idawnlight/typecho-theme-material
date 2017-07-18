@@ -1,6 +1,6 @@
 <?php
 
-define(MATERIAL_VERSION, "3.0.2");
+define(MATERIAL_VERSION, "3.0.3");
 
 //Appearance setup
 function themeConfig($form)
