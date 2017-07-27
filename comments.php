@@ -152,8 +152,12 @@
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="comment-input-div">
                 <textarea name="text" rows="<?php $this->options->CommentRows() ?>" id="comment" class="mdl-textfield__input"></textarea>
                 <label for="comment" class="mdl-textfield__label">
-                    <?php echo tranMsg("Join the discussion", "加入讨论吧...", $this->options->langis) ?>
-                </label>
+                            <?php if ($this->options->langis == '0'): ?>
+                                Join the discussion
+                            <?php elseif ($this->options->langis == '1'): ?>
+                                加入讨论吧...
+                            <?php endif; ?>
+                        </label>
             </div>
 
             <!-- Submit comment content button -->

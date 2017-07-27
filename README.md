@@ -20,7 +20,7 @@
 
 - Author 作者：Viosey
 - Maintainer 维护者：黎明余光
-- Version 版本：3.0.4
+- Version 版本：3.0.3
 - Compatibility 兼容：PHP 5.4+, MySQL, Typecho 1.0
 
 ## Feature 特性

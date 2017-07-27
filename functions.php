@@ -118,6 +118,12 @@ function themeConfig($form)
     );
     $form->addInput($langis);
 
+    $sticky_1 = new Typecho_Widget_Helper_Form_Element_Text('sticky_1', null, null, '置顶文章 1 ID', null);
+    $form->addInput($sticky_1->addRule('isInteger', '请填入数字'));
+
+    $sticky_2 = new Typecho_Widget_Helper_Form_Element_Text('sticky_2', null, null, '置顶文章 2 ID', '暂时不可用，以后会修复<br /><del>填写对应主题的 id 即可使文章标题在首页置顶显示</del>');
+    $form->addInput($sticky_2->addRule('isInteger', '请填入数字'));
+
     $ThemeColor = new Typecho_Widget_Helper_Form_Element_Text('ThemeColor', null, _t('#0097A7'), _t('主题颜色'), null);
     $form->addInput($ThemeColor);
 
