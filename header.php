@@ -37,16 +37,20 @@
         <meta name="mobile-web-app-capable" content="yes">
 
         <!-- Tile icon for Win8 (144x144 + tile color) -->
-        <!-- <meta name="msapplication-TileImage" content="img/touch/ms-touch-icon-144x144-precomposed.png" /> -->
+        <meta name="msapplication-TileImage" content="<?php $this->options->favicon() ?>" />
         <meta name="msapplication-TileColor" content="#FFFFFF" />
 
         <!-- The Open Graph protocol -->
+        <?php if($this->is('post')||$this->is('page')): ?>
         <meta property="og:url" content="<?php $this->permalink(); ?>">
         <meta property="og:type" content="blog">
-        <meta property="og:title" content="<?php $this->archiveTitle(); ?>">
-        <meta property="og:image" content="<?php $this->options->favicon() ?>" />
-        <meta property="og:description" content="<?php $this->options->description() ?>">
-        <!--<meta property="og:article:tag" content="<%= tag.name %>">-->
+        <meta property="og:release_date" content="<?php $this->date('Y-m-j'); ?>"/>
+        <meta property="og:title" content="<?php $this->options->title(); ?>">
+        <meta property="og:image" content="<?php showThumbnail($this); ?>" />
+        <meta property="og:description" content="<?php $this->description() ?>">
+        <meta property="og:article:tag" content="<?php $this->tags(',', true, ''); ?>">
+        <meta property="og:author" content="<?php $this->author(); ?>"/>
+        <?php endif; ?>
 
         <!-- Block IE -->
         <!--[if lte IE 9]>
