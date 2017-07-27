@@ -4,7 +4,7 @@
  *
  * @package Theme.Material
  * @author 黎明余光
- * @version 3.0.3
+ * @version 3.0.4
  * @link https://blog.lim-light.com
  */
 
@@ -157,32 +157,6 @@ $this->need('header.php');?>
                                 </ul>
                             </div>
                         </div>
-                        <?php if ($this->is('index')): ?>
-                        <?php
-                    $db = Typecho_Db::get();
-                    $prefix = $db->getPrefix();
-                    $sticky_posts = $db->fetchAll($this->db
-                        ->select()->from($prefix.'contents')
-                        ->orWhere('cid = ?', $this->options->sticky_1)
-                        ->orWhere('cid = ?', $this->options->sticky_2)
-                        ->where('type = ? AND status = ? AND password IS NULL', 'post', 'publish'));
-                        rsort($sticky_posts);//对数组逆向排序，即大ID在前
-                        foreach ($sticky_posts as $sticky_posts) {
-                            $result = Typecho_Widget::widget('Widget_Abstract_Contents')->push($sticky_posts);
-                            $post_views = number_format($result['views']);
-                            $post_title = htmlspecialchars($result['title']);
-                            $post_date = date('M d,Y', $result['created']);
-                            $permalink = $result['permalink'];
-                            /*if($post_views > $this->options->view_num){echo 'HOT';} else {echo ''.$post_views.''' VIEW';};*/
-                            echo '
-                            <!-- Article module -->
-                            <div class="mdl-article-top mdl-cell mdl-cell--12-col '.((!empty($this->options->switch) && in_array('ShowLoadingLine', $this->options->switch))?"fade out":"").' ">
-                                <p class="article-headline-p-top"><a href="'.$permalink.'" target="_self"><span style="color:">[置顶]&nbsp;</span><span style="color:#757575">'.$post_title .'</span></a></p>
-                            </div>
-                            '."\n\r";
-                        }
-                    ?>
-                            <?php endif; ?>
 
                             <?php while ($this->next()): ?>
 
