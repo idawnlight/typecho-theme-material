@@ -11,7 +11,6 @@
 
         <!-- dns prefetch -->
         <meta http-equiv="x-dns-prefetch-control" content="on">
-            <!-- balabalabala -->
 
         <!-- Meta & Info -->
         <meta http-equiv="X-UA-Compatible">
@@ -48,7 +47,6 @@
         <meta property="og:title" content="<?php $this->options->title(); ?>">
         <meta property="og:image" content="<?php showThumbnail($this); ?>" />
         <meta property="og:description" content="<?php $this->description() ?>">
-        <meta property="og:article:tag" content="<?php $this->tags(',', true, ''); ?>">
         <meta property="og:author" content="<?php $this->author(); ?>"/>
         <?php endif; ?>
 
