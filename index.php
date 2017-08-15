@@ -1,6 +1,6 @@
 <?php
 /**
- * 这是 <a herf="https://viosey.com/" target="_blank">Viosey</a> 基于 Google Material Design 开发的 Typecho 主题，目前 Typecho 版由 <a herf="https://blog.lim-light.com/" target="_blank">黎明余光</a> 维护
+ * 这是 <a href="https://viosey.com/" target="_blank">Viosey</a> 基于 Google Material Design 开发的 Typecho 主题，目前 Typecho 版由 <a href="https://blog.lim-light.com/" target="_blank">黎明余光</a> 维护
  *
  * @package Theme.Material
  * @author 黎明余光
