@@ -164,8 +164,8 @@
             <link href='https://fonts.lug.ustc.edu.cn/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
             <link href="https://fonts.proxy.ustclug.org/icon?family=Material+Icons" rel="stylesheet">
         <?php elseif ($this->options->RobotoSource == '1'): ?>
-            <link href='https://fonts.css.network/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
-            <link href="https://fonts.css.network/icon?family=Material+Icons" rel="stylesheet">
+            <link href='https://fonts.cat.net/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+            <link href="https://fonts.cat.net/icon?family=Material+Icons" rel="stylesheet">
         <?php elseif ($this->options->RobotoSource == '2'): ?>
            <style>
                <?php if (!empty($this->options->CDNURL)): ?>
