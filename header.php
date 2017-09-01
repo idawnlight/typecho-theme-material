@@ -199,6 +199,7 @@
         <style>
         body, html {
             font-family: <?php $this->options->CustomFonts() ?>;
+            overflow-x: hidden;
         }
 
         a {
