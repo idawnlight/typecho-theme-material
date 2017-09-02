@@ -134,7 +134,6 @@
 
 <!--Analysis code-->
 <?php $this->options->analysis(); ?>
-</body>
 
 <!-- Material js -->
 <?php if (!empty($this->options->CDNURL)): ?>
@@ -230,4 +229,5 @@
 
 <?php $this->footer(); ?>
 
+</body>
 </html>
