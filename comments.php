@@ -107,43 +107,31 @@
             <!-- Input name -->
             <div class="login-form-group">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input type="text" name="author" class="mdl-textfield__input login-input-info" />
+                    <input type="text" name="author" class="mdl-textfield__input login-input-info" value="<?php $this->remember('author'); ?>" />
                     <label for="author" class="mdl-textfield__label">
-                                    <?php if ($this->options->langis == '0'): ?>
-                                        Name*
-                                    <?php elseif ($this->options->langis == '1'): ?>
-                                        昵称*
-                                    <?php endif; ?>
-                                </label>
+                        <?php echo tranMsg("Name*", "昵称*", $this->options->langis) ?>
+                    </label>
                 </div>
             </div>
 
             <!-- Input email -->
             <div class="login-form-group">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input type="email" name="mail" class="mdl-textfield__input login-input-info" />
+                    <input type="email" name="mail" class="mdl-textfield__input login-input-info" value="<?php $this->remember('mail'); ?>" />
                     <label for="mail" class="mdl-textfield__label">
-                                    <?php if ($this->options->langis == '0'): ?>
-                                        Email*
-                                    <?php elseif ($this->options->langis == '1'): ?>
-                                        邮箱*
-                                    <?php endif; ?>
-                                </label>
+                        <?php echo tranMsg("Email*", "邮箱*", $this->options->langis) ?>
+                    </label>
                 </div>
             </div>
 
             <!-- Input website -->
             <div class="login-form-group">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input type="url" name="url" id="visitor-url" class="mdl-textfield__input login-input-info" />
+                    <input type="url" name="url" id="visitor-url" class="mdl-textfield__input login-input-info" value="<?php $this->remember('url'); ?>" />
                     <!--  placeholder="http://"-->
                     <label for="url" class="mdl-textfield__label">
-                                    <?php if ($this->options->langis == '0'): ?>
-                                        Website
-                                    <?php elseif ($this->options->langis == '1'): ?>
-                                        网站
-                                    <?php endif; ?>
-                                </label>
+                        <?php echo tranMsg("Website", "网站", $this->options->langis) ?>
+                    </label>
                 </div>
             </div>
             <?php endif; ?>
