@@ -262,7 +262,6 @@ var componentHandler = function() {
     }
 
     function n(i, n) {
-        if (!("object" == typeof i && i instanceof Element)) throw new Error("Invalid argument provided to upgrade MDL element.");
         var a = t(i),
             l = [];
         if (n) s(i, n) || l.push(e(n));
