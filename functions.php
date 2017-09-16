@@ -16,8 +16,8 @@ function themeConfig($form)
     <a href="https://github.com/LiMingYuGuang/typecho-theme-material/issues" target="_blank">建议&反馈</a>
     </p>';
 
-    echo '当前版本 ' . MATERIAL_VERSION . '，<span id="update">正在检查主题更新</span><script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><script>$(document).ready(function(){$(".loading").hide();getupdate()});function getupdate(){$.ajax({url:"https://api.lim-light.com/update/material.php?version='.MATERIAL_VERSION.'",dataType:"jsonp",async:true,jsonp:"callback",jsonpCallback:"checkupdate",success:function(result){$("#update").html(result.msg)},error:function(){$("#update").html("获取更新失败，API服务器可能挂了...")}})};</script>';
-
+    echo '当前版本 ' . MATERIAL_VERSION . '<span id="update"></span><script type="text/javascript" src="https://api.lim-light.com/update/material.php?version=' . MATERIAL_VERSION . '&encode=js-html&front=，" async defer></script>';
+    
     $switch = new Typecho_Widget_Helper_Form_Element_Checkbox('switch',
         array(
             'ShowPixiv' => _t('侧边栏显示 mokeyjay 的 pixiv 挂件'),
@@ -118,7 +118,7 @@ function themeConfig($form)
 
     $CDNURL = new Typecho_Widget_Helper_Form_Element_Text('CDNURL', null, null, _t('CDN 地址'), _t("
     新建一个'MaterialCDN' 文件夹, 把'css, fonts, img, js' 文件夹放进去, 然后把'MaterialCDN' 上传到到你的 CDN 储存空间根目录下<br />
-    填入你的 CDN 地址, 如 <b>https://material.lim-light.com</b><br />PS : 这个 CDN 其实是可用的"));
+    填入你的 CDN 地址, 如 <b>https://material.lim-light.com</b>"));
     $form->addInput($CDNURL);
 
     $langis = new Typecho_Widget_Helper_Form_Element_Radio('langis',
