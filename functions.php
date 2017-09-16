@@ -103,6 +103,19 @@ function themeConfig($form)
     );
     $form->addInput($commentis);
 
+    $searchis = new Typecho_Widget_Helper_Form_Element_Radio('searchis',
+        array(
+            '0' => _t('使用 Typecho 原生搜索 &emsp;'),
+            '1' => _t('使用本地搜索（即时搜索）（Beta）'),
+        ),
+
+        '0', _t('搜索设置'), _t("默认使用原生搜索<br />本地搜索移植自 hexo 版，需要手动创建索引页，已知缺陷：<br />1. 当文章中包含 XML 代码时会解析错误<br />2. 无法获取文章 tags")
+    );
+    $form->addInput($searchis);
+
+    $LocalsearchURL = new Typecho_Widget_Helper_Form_Element_Text('LocalsearchURL', null, null, _t('本地搜索索引页链接'), _t('仅在启用即时搜索时需要填写'));
+    $form->addInput($LocalsearchURL);
+
     $CDNURL = new Typecho_Widget_Helper_Form_Element_Text('CDNURL', null, null, _t('CDN 地址'), _t("
     新建一个'MaterialCDN' 文件夹, 把'css, fonts, img, js' 文件夹放进去, 然后把'MaterialCDN' 上传到到你的 CDN 储存空间根目录下<br />
     填入你的 CDN 地址, 如 <b>https://material.lim-light.com</b><br />PS : 这个 CDN 其实是可用的"));

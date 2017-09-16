@@ -56,16 +56,28 @@ $this->need('header.php');?>
                         <!-- Blog info -->
                         <div class="mdl-card mdl-shadow--<?php $this->options->CardElevation() ?>dp something-else mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop index-top-block">
                             <!-- Search -->
+                            <?php if((!empty($this->options->searchis) && $this->options->searchis == '1')): ?>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" method="post" action="">
                                 <label id="search-label" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent mdl-shadow--4dp" for="search">
-                                    <!-- For modern browsers. -->
+                                    <i class="material-icons mdl-color-text--white" role="presentation">search</i>
+                                </label>
+                                <form autocomplete="off" id="search-form" class="mdl-textfield__expandable-holder">
+                                    <input type="text" id="search" class="form-control mdl-textfield__input search-input" name="q" results="0" placeholder=""/>
+                                    <label id="search-form-label" class="mdl-textfield__label" for="search"></label>
+                                </form>
+                            </div>
+                            <div id="local-search-result"></div>
+                            <?php else: ?>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" method="post" action="">
+                                <label id="search-label" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent mdl-shadow--4dp" for="search">
                                     <i class="material-icons mdl-color-text--white" role="presentation">search</i>
                                 </label>
                                 <form autocomplete="off" id="search-form" method="post" action="" class="mdl-textfield__expandable-holder">
                                     <input class="mdl-textfield__input search-input" type="text" name="s" id="search">
-                                    <label id="search-form-label" class="mdl-textfield__label" for="search">Enter your query...</label>
+                                    <label id="search-form-label" class="mdl-textfield__label" for="search"></label>
                                 </form>
                             </div>
+                            <?php endif; ?>
                             <!-- LOGO -->
                             <div class="something-else-logo mdl-color--white mdl-color-text--grey-600">
                                 <?php if (!empty($this->options->logoLink)): ?>
