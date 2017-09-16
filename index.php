@@ -61,7 +61,7 @@ $this->need('header.php');?>
                                     <!-- For modern browsers. -->
                                     <i class="material-icons mdl-color-text--white" role="presentation">search</i>
                                 </label>
-                                <form id="search-form" method="post" action="" class="mdl-textfield__expandable-holder">
+                                <form autocomplete="off" id="search-form" method="post" action="" class="mdl-textfield__expandable-holder">
                                     <input class="mdl-textfield__input search-input" type="text" name="s" id="search">
                                     <label id="search-form-label" class="mdl-textfield__label" for="search">Enter your query...</label>
                                 </form>
