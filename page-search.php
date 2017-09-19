@@ -4,7 +4,7 @@
  *
  * @package custom
  */
- 
+
 header("content-type:text/xml");
 $this->widget('Widget_Contents_Post_Recent', 'pageSize=10000')->to($archive);
 echo "<search>\n";
