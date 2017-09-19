@@ -1,6 +1,6 @@
 <?php
 /**
- * 评论索引
+ * 文章索引
  *
  * @package custom
  */
