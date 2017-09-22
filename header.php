@@ -13,7 +13,7 @@
         <meta http-equiv="x-dns-prefetch-control" content="on">
 
         <!-- Meta & Info -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <meta name="theme-color" content="<?php $this->options->ChromeThemeColor() ?>">
         <meta name="author" content="<?php $this->options->title() ?>">
