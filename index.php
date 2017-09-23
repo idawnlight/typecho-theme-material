@@ -4,7 +4,7 @@
  *
  * @package Theme.Material
  * @author 黎明余光
- * @version 3.0.4
+ * @version 3.1.0
  * @link https://blog.lim-light.com
  */
 
