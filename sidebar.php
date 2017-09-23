@@ -168,7 +168,7 @@
 
         <?php if (!empty($this->options->switch) && in_array('ShowPixiv', $this->options->switch)) : ?>
         <center>
-            <iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0"  style="width:240px; height:380px;"></iframe>
+            <iframe src="https://cloud.mokeyjay.com/pixiv/" frameborder="0"  style="width:240px; height:380px;"></iframe>
         </center>
         <?php endif; ?>
 
