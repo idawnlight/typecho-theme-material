@@ -261,7 +261,7 @@ function showThumbnail($widget)
 
     if (preg_match_all($pattern, $widget->content, $thumbUrl)) {
         echo $thumbUrl[1][0];
-    } elseif ($attach->isImage) {
+    } elseif (isset($attach) && $attach->isImage) {
         echo $attach->url;
     } else {
         echo $random;
