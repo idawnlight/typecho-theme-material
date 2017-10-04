@@ -2,6 +2,8 @@
 
 define("MATERIAL_VERSION", "3.1.0");
 
+require_once("lib/UACheck.php");
+
 //Appearance setup
 function themeConfig($form)
 {
