@@ -180,11 +180,11 @@ a {
     font-size: inherit;
 }
 #post-content h1 {
-    font-size: 2.5em;
+    font-size: 2em;
     border-bottom: 1px solid #ddd;
 }
 #post-content h2 {
-    font-size: 2em;
+    font-size: 1.75em;
     border-bottom: 1px solid #eee;
 }
 #post-content h3 {
