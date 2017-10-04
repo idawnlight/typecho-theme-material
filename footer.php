@@ -182,7 +182,7 @@
 </script>
 <?php endif; ?>
 
-<?php if (!empty($this->options->switch) && in_array('SmoothScroll', $this->options->switch) && UACheck::is !== "Safari"): ?>
+<?php if (!empty($this->options->switch) && in_array('SmoothScroll', $this->options->switch) && UACheck::is() !== "Safari"): ?>
 <?php if (!empty($this->options->CDNURL)): ?>
 <script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/smoothscroll.js" async></script>
 <?php else: ?>
