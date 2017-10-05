@@ -25,18 +25,6 @@
                         <br><br>
                     </div>
 
-                    <!-- Search -->
-                    <div class="mdl-color-text--primary-contrast mdl-card__supporting-text comments">
-                        <form method="post" action="">
-                            <!-- Input search content -->
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="comment-input-div">
-                                    <input class="mdl-textfield__input" type="text" name="s">
-                                    <label class="mdl-textfield__label" for="sample3">Search Engine may help you find out new pages</label>
-
-                            </div>
-                        </form>
-                    </div>
-
                 </div>
 
         </div>
