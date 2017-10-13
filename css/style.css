@@ -1017,6 +1017,9 @@ a {
 #scheme-Paradox .comment__text p {
     margin-bottom: 6px
 }
+#scheme-Paradox .comment__text img {
+    max-width: 100%
+}
 #scheme-Paradox .comments__closed {
     color: #8A8A8A!important
 }
