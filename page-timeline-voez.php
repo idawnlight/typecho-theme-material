@@ -112,6 +112,17 @@ $this->need('header.php'); ?>
         padding: 0.25em 1em 0.2em 1em;
     }
 
+    @media screen and (max-width: 840px) {
+        .mdl-mini-footer {
+            height: 200px!important;
+            padding: 30px 0 20px!important;
+        }
+    }
+
+    #back-to-top.btt-docked {
+        bottom: auto!important;
+    }
+
 </style>
 
 <!-- Sidebar hamburger button -->
