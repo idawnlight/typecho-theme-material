@@ -209,7 +209,7 @@
 </script>
 <?php endif; ?>
 
-<?php if (!empty($this->options->switch) && in_array('Pangu', $this->options->switch)): ?>
+<?php if (!empty($this->options->switch) && in_array('Pangu', $this->options->switch) && !in_array('PanguPHP', $this->options->switch)): ?>
 <!-- Pangu -->
   <?php if (!empty($this->options->CDNURL)): ?>
       <script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/pangu.min.js"></script>
@@ -331,6 +331,14 @@
     }
 </script>
 <?php endif; ?>
+
+<?php
+    if($this->is('post')||$this->is('page')){
+        if (!empty($this->options->switch) && in_array('PanguPHP', $this->options->switch)) {
+            $html_source = ob_get_contents(); ob_clean(); print pangu::do($html_source); ob_end_flush();
+        }
+    }
+?>
 
 <?php $this->footer(); ?>
 

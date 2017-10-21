@@ -3,6 +3,7 @@
 define("MATERIAL_VERSION", "3.1.0");
 
 require_once("lib/UACheck.php");
+require_once("lib/pangu.php");
 
 /**
  * JavaScript 载入
@@ -74,11 +75,12 @@ function themeConfig($form)
         'ShowLoadingLine' => _t('顶部 loading 加载进度条效果'),
         'atargetblank' => _t('链接以新标签页形式打开'),
         'Pangu' => _t('引用 Pangu.js 实现中英文间自动添加空格'),
+        'PanguPHP' => _t('引用 Pangu.PHP 后端实现中英文间自动添加空格'),
         'HighLight' => _t('引用 highlight.js 实现代码高亮')
     ),
 
     //Default choose
-    array('SmoothScroll','ShowLoadingLine','Pangu','HighLight'), _t('<span style="font-size: large" id="function"><strong>功能设定</strong></span><br /><br />功能开关')
+    array('SmoothScroll','ShowLoadingLine','PanguPHP','HighLight'), _t('<span style="font-size: large" id="function"><strong>功能设定</strong></span><br /><br />功能开关')
     );
     $form->addInput($switch->multiMode());
 
