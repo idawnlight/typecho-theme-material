@@ -5,7 +5,7 @@ define("MATERIAL_VERSION", "3.1.1");
 require_once("lib/UACheck.php");
 require_once("lib/pangu.php");
 
-if (function_exists(error_reporting)) error_reporting(0);
+if (function_exists(error_reporting())) error_reporting(0);
 
 /**
  * JavaScript 载入
