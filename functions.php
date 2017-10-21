@@ -1,9 +1,11 @@
 <?php
 
-define("MATERIAL_VERSION", "3.1.0");
+define("MATERIAL_VERSION", "3.1.1");
 
 require_once("lib/UACheck.php");
 require_once("lib/pangu.php");
+
+if (function_exists(error_reporting)) error_reporting(0);
 
 /**
  * JavaScript 载入
@@ -324,7 +326,7 @@ function showThumbnail($widget)
 
     if (preg_match_all($pattern, $widget->content, $thumbUrl)) {
         echo $thumbUrl[1][0];
-    } elseif (isset($attach) && $attach->isImage) {
+    } elseif ($attach->isImage) {
         echo $attach->url;
     } else {
         echo $random;
