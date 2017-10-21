@@ -4,7 +4,9 @@ define("MATERIAL_VERSION", "3.1.0");
 
 require_once("lib/UACheck.php");
 
-//Appearance setup
+/**
+ * 主题设置
+ */
 function themeConfig($form)
 {
     echo '<p style="font-size:14px;" id="use-intro">
@@ -12,7 +14,6 @@ function themeConfig($form)
     margin-bottom: 10px;
     margin-top: 10px;
     font-size: 16px;">感谢您使用 Material 主题</span>
-    <span style="margin-bottom:10px;display:block">由于原作者 viosey 放弃了 Typecho 版，目前这个版本由 黎明余光 维护</span>
     <span style="margin-bottom:10px;display:block">请关注 <a href="https://github.com/LiMingYuGuang/typecho-theme-material" target="_blank" style="color:#3384da;font-weight:bold;text-decoration:underline">Github-Material</a> 以获得<span style="color:#df3827;font-weight:bold;">最新版本支持</span></span>
     <a href="mailto:i@lim-light.com" >帮助&支持</a> &nbsp;
     <a href="https://github.com/LiMingYuGuang/typecho-theme-material/issues" target="_blank">建议&反馈</a>
@@ -20,25 +21,148 @@ function themeConfig($form)
 
     echo '当前版本 ' . MATERIAL_VERSION . '<span id="update"></span><script type="text/javascript" src="https://api.lim-light.com/update/material.php?version=' . MATERIAL_VERSION . '&encode=js-html&front=，" async defer></script>';
     
-    $switch = new Typecho_Widget_Helper_Form_Element_Checkbox('switch',
-        array(
-            'ShowPixiv' => _t('侧边栏显示 mokeyjay 的 pixiv 挂件'),
-            'SmoothScroll' => _t('平滑滚动效果'),
-            'ShowLoadingLine' => _t('顶部 loading 加载进度条效果'),
-            'atargetblank' => _t('链接以新标签页形式打开'),
-            'Pangu' => _t('引用 Pangu.js 实现中英文间自动添加空格'),
-            'HighLight' => _t('引用 highlight.js 实现代码高亮')
-        ),
+    $munu = '
+    <ul class="typecho-option" id="typecho-option-item-switch-0">
+    <li>
+        <label class="typecho-label" style="font-size: large">快速跳转</label>
+    </li>
+    <li>
+        <span class="multiline">
+        - <a href="#function">功能设定</a>
+    </span>
+    </li>
+    <li>
+        <span class="multiline">
+        - <a href="#style">样式设定</a>
+        </span>
+    </li>
+    </ul>
+    ';
 
-        //Default choose
-        array('SmoothScroll','ShowLoadingLine','Pangu','HighLight'), _t('功能开关')
+    echo "<br>" . $munu;
+
+    $switch = new Typecho_Widget_Helper_Form_Element_Checkbox('switch',
+    array(
+        'ShowPixiv' => _t('侧边栏显示 mokeyjay 的 pixiv 挂件'),
+        'SmoothScroll' => _t('平滑滚动效果'),
+        'ShowLoadingLine' => _t('顶部 loading 加载进度条效果'),
+        'atargetblank' => _t('链接以新标签页形式打开'),
+        'Pangu' => _t('引用 Pangu.js 实现中英文间自动添加空格'),
+        'HighLight' => _t('引用 highlight.js 实现代码高亮')
+    ),
+
+    //Default choose
+    array('SmoothScroll','ShowLoadingLine','Pangu','HighLight'), _t('<span style="font-size: large" id="function"><strong>功能设定</strong></span><br /><br />功能开关')
     );
     $form->addInput($switch->multiMode());
+
+    $commentis = new Typecho_Widget_Helper_Form_Element_Radio('commentis',
+        array(
+            '0' => _t('使用原生评论 &emsp;'),
+        ),
+
+        '0', _t('文章评论'), _t("默认使用原生评论")
+    );
+    $form->addInput($commentis);
+
+    $searchis = new Typecho_Widget_Helper_Form_Element_Radio('searchis',
+        array(
+            '0' => _t('使用 Typecho 原生搜索 &emsp;'),
+            '1' => _t('使用本地搜索（即时搜索）（Beta）'),
+        ),
+
+        '0', _t('搜索设置'), _t("默认使用原生搜索<br />本地搜索移植自 hexo 版，需要手动创建索引页，已知缺陷：<br />1. 当文章中包含 XML 代码时会解析错误<br />2. 无法获取文章 tags")
+    );
+    $form->addInput($searchis);
+
+    $LocalsearchURL = new Typecho_Widget_Helper_Form_Element_Text('LocalsearchURL', null, null, _t('本地搜索索引页链接'), _t('仅在启用即时搜索时需要填写'));
+    $form->addInput($LocalsearchURL);
+
+    $CDNURL = new Typecho_Widget_Helper_Form_Element_Text('CDNURL', null, null, _t('CDN 地址'), _t("
+    新建一个'MaterialCDN' 文件夹, 把'css, fonts, img, js' 文件夹放进去, 然后把'MaterialCDN' 上传到到你的 CDN 储存空间根目录下<br />
+    填入你的 CDN 地址, 如 <b>https://material.lim-light.com</b>"));
+    $form->addInput($CDNURL);
+
+    $langis = new Typecho_Widget_Helper_Form_Element_Radio('langis',
+        array(
+            '0' => _t('English <br />'),
+            '1' => _t('简体中文 <br />'),
+        ),
+
+        '1', _t('界面语言设置'), _t("默认使用简体中文")
+    );
+    $form->addInput($langis);
+
+    $footersns = new Typecho_Widget_Helper_Form_Element_Checkbox('footersns',
+        array(
+            'ShowBilibili' => _t('哔哩哔哩 &emsp;'),
+            'ShowWeibo' => _t('新浪微博 &emsp;'),
+            'ShowZhihu' => _t('知乎 &emsp;<br />'),            
+            'ShowTwitter' => _t('Twitter &emsp;'),
+            'ShowFacebook' => _t('Facebook &emsp;'),
+            'ShowGooglePlus' => _t('Google+ &emsp;<br />'),
+            'ShowInstagram' => _t('Instagram&emsp;'),
+            'ShowGithub' => _t('Github &emsp;'),
+            'ShowTumblr' => _t('Tumblr &emsp;<br />'),
+            'ShowTelegram' => _t('Telegram &emsp;'),
+            'ShowLinkedin' => _t('Linkedin &emsp;'),
+        ),
+
+        array('ShowTwitter','ShowFacebook','ShowGooglePlus'), _t('页脚 SNS 图标按钮显示设置'), _t('开启后, 按钮显示于博客页脚位置')
+    );
+    $form->addInput($footersns);
+
+    $BilibiliURL = new Typecho_Widget_Helper_Form_Element_Text('BilibiliURL', null, null, _t('哔哩哔哩 地址'), null);
+    $form->addInput($BilibiliURL);
+
+    $WeiboURL = new Typecho_Widget_Helper_Form_Element_Text('WeiboURL', null, null, _t('新浪微博 地址'), null);
+    $form->addInput($WeiboURL);
+
+    $ZhihuURL = new Typecho_Widget_Helper_Form_Element_Text('ZhihuURL', null, null, _t('知乎 地址'), null);
+    $form->addInput($ZhihuURL);
+    
+    $TwitterURL = new Typecho_Widget_Helper_Form_Element_Text('TwitterURL', null, null, _t('Twitter 地址'), null);
+    $form->addInput($TwitterURL);
+
+    $FacebookURL = new Typecho_Widget_Helper_Form_Element_Text('FacebookURL', null, null, _t('Facebook 地址'), null);
+    $form->addInput($FacebookURL);
+
+    $GooglePlusURL = new Typecho_Widget_Helper_Form_Element_Text('GooglePlusURL', null, null, _t('Google+ 地址'), null);
+    $form->addInput($GooglePlusURL);
+
+    $InstagramURL = new Typecho_Widget_Helper_Form_Element_Text('InstagramURL', null, null, _t('Instagram 地址'), null);
+    $form->addInput($InstagramURL);
+
+    $GithubURL = new Typecho_Widget_Helper_Form_Element_Text('GithubURL', null, null, _t('Github 地址'), null);
+    $form->addInput($GithubURL);
+
+    $TumblrURL = new Typecho_Widget_Helper_Form_Element_Text('TumblrURL', null, null, _t('Tumblr 地址'), null);
+    $form->addInput($TumblrURL);
+
+    $TelegramURL = new Typecho_Widget_Helper_Form_Element_Text('TelegramURL', null, null, _t('Telegram 地址'), null);
+    $form->addInput($TelegramURL);
+
+    $LinkedinURL = new Typecho_Widget_Helper_Form_Element_Text('LinkedinURL', null, null, _t('Linkedin 地址'), null);
+    $form->addInput($LinkedinURL);
+
+    $CustomFonts = new Typecho_Widget_Helper_Form_Element_Text('CustomFonts', null, _t("Roboto, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif"), _t('自定义字体'), null);
+    $form->addInput($CustomFonts);
+
+    $RobotoSource = new Typecho_Widget_Helper_Form_Element_Radio('RobotoSource',
+    array(
+        '0' => _t('调用 Google fonts (使用 https://lug.ustc.edu.cn 中科大 https 镜像加速)<br />'),
+        '1' => _t('调用 Google fonts (使用 https://fonts.cat.net 镜像加速)<br />'),
+        '2' => _t('调用主题文件夹自带的 Roboto &emsp;<br />'),
+        '3' => _t('使用自定义字体源 (在"网站统计代码 + 自定义字体源"填入)')
+    ),
+
+    '1', _t('Roboto 字体使用来源'), null);
+    $form->addInput($RobotoSource);
 
     $analysis = new Typecho_Widget_Helper_Form_Element_Textarea('analysis', null, null, _t('网站统计代码 + 自定义字体源'), _t('填入如 Google Analysis 的第三方统计代码或字体源'));
     $form->addInput($analysis);
 
-    $loadingcolor = new Typecho_Widget_Helper_Form_Element_Text('loadingcolor', null, _t('#29d'), _t('loading 加载进度条颜色'), _t('打开 "功能开关" 中的 loading 加载进度条后, 在这里设置进度条的颜色, 默认为蓝色'));
+    $loadingcolor = new Typecho_Widget_Helper_Form_Element_Text('loadingcolor', null, _t('#29d'), _t('<br><span style="font-size: large" id="style"><strong>样式设定</strong></span><br><br>loading 加载进度条颜色'), _t('打开 "功能开关" 中的 loading 加载进度条后, 在这里设置进度条的颜色'));
     $form->addInput($loadingcolor);
 
     $loadingbuffer = new Typecho_Widget_Helper_Form_Element_Text('loadingbuffer', null, _t('800'), _t('loading 加载缓冲时间'), _t('loading 加载进度条的缓冲时间, 单位为毫秒 ms, 默认为 800ms'));
@@ -96,43 +220,6 @@ function themeConfig($form)
     $RandomPicAmnt = new Typecho_Widget_Helper_Form_Element_Text('RandomPicAmnt', null, _t('19'), _t('随机缩略图数量'), _t('img/random 图片的数量'));
     $form->addInput($RandomPicAmnt);
 
-    $commentis = new Typecho_Widget_Helper_Form_Element_Radio('commentis',
-        array(
-            '0' => _t('使用原生评论 &emsp;'),
-        ),
-
-        '0', _t('文章评论'), _t("默认使用原生评论")
-    );
-    $form->addInput($commentis);
-
-    $searchis = new Typecho_Widget_Helper_Form_Element_Radio('searchis',
-        array(
-            '0' => _t('使用 Typecho 原生搜索 &emsp;'),
-            '1' => _t('使用本地搜索（即时搜索）（Beta）'),
-        ),
-
-        '0', _t('搜索设置'), _t("默认使用原生搜索<br />本地搜索移植自 hexo 版，需要手动创建索引页，已知缺陷：<br />1. 当文章中包含 XML 代码时会解析错误<br />2. 无法获取文章 tags")
-    );
-    $form->addInput($searchis);
-
-    $LocalsearchURL = new Typecho_Widget_Helper_Form_Element_Text('LocalsearchURL', null, null, _t('本地搜索索引页链接'), _t('仅在启用即时搜索时需要填写'));
-    $form->addInput($LocalsearchURL);
-
-    $CDNURL = new Typecho_Widget_Helper_Form_Element_Text('CDNURL', null, null, _t('CDN 地址'), _t("
-    新建一个'MaterialCDN' 文件夹, 把'css, fonts, img, js' 文件夹放进去, 然后把'MaterialCDN' 上传到到你的 CDN 储存空间根目录下<br />
-    填入你的 CDN 地址, 如 <b>https://material.lim-light.com</b>"));
-    $form->addInput($CDNURL);
-
-    $langis = new Typecho_Widget_Helper_Form_Element_Radio('langis',
-        array(
-            '0' => _t('English <br />'),
-            '1' => _t('简体中文 <br />'),
-        ),
-
-        '1', _t('界面语言设置'), _t("默认使用简体中文")
-    );
-    $form->addInput($langis);
-
     $ThemeColor = new Typecho_Widget_Helper_Form_Element_Text('ThemeColor', null, _t('#0097A7'), _t('主题颜色'), null);
     $form->addInput($ThemeColor);
 
@@ -175,74 +262,12 @@ function themeConfig($form)
     $slogan = new Typecho_Widget_Helper_Form_Element_Text('slogan', null, _t('Hi, nice to meet you'), _t('首页顶部左边的标语'), _t('填入自定义文字, 显示于首页顶部左边的图片上'));
     $form->addInput($slogan);
 
-    $footersns = new Typecho_Widget_Helper_Form_Element_Checkbox('footersns',
-        array(
-            'ShowTwitter' => _t('显示 Twitter 图标 &emsp;'),
-            'ShowFacebook' => _t('显示 Facebook 图标 &emsp;'),
-            'ShowGooglePlus' => _t('显示 Google+ 图标 &emsp;'),
-            'ShowWeibo' => _t('显示新浪微博图标 &emsp;'),
-            'ShowInstagram' => _t('显示 Instagram 图标 &emsp;'),
-            'ShowGithub' => _t('显示 Github 图标 &emsp;'),
-            'ShowTumblr' => _t('显示 Tumblr 图标 &emsp;'),
-            'ShowBilibili' => _t('显示 Bilibili 图标 &emsp;'),
-            'ShowTelegram' => _t('显示 Telegram 图标 &emsp;'),
-            'ShowZhihu' => _t('显示 Zhihu 图标 &emsp;'),
-            'ShowLinkedin' => _t('显示 Linkedin 图标 &emsp;'),
-        ),
-
-        array('ShowTwitter','ShowFacebook','ShowGooglePlus'), _t('页脚 SNS 图标按钮显示设置'), _t('开启后, 按钮显示于博客页脚位置')
-    );
-    $form->addInput($footersns);
-
-    $TwitterURL = new Typecho_Widget_Helper_Form_Element_Text('TwitterURL', null, null, _t('Twitter 地址'), null);
-    $form->addInput($TwitterURL);
-
-    $FacebookURL = new Typecho_Widget_Helper_Form_Element_Text('FacebookURL', null, null, _t('Facebook 地址'), null);
-    $form->addInput($FacebookURL);
-
-    $GooglePlusURL = new Typecho_Widget_Helper_Form_Element_Text('GooglePlusURL', null, null, _t('Google+ 地址'), null);
-    $form->addInput($GooglePlusURL);
-
-    $WeiboURL = new Typecho_Widget_Helper_Form_Element_Text('WeiboURL', null, null, _t('新浪微博地址'), null);
-    $form->addInput($WeiboURL);
-
-    $InstagramURL = new Typecho_Widget_Helper_Form_Element_Text('InstagramURL', null, null, _t('Instagram 地址'), null);
-    $form->addInput($InstagramURL);
-
-    $GithubURL = new Typecho_Widget_Helper_Form_Element_Text('GithubURL', null, null, _t('Github 地址'), null);
-    $form->addInput($GithubURL);
-
-    $TumblrURL = new Typecho_Widget_Helper_Form_Element_Text('TumblrURL', null, null, _t('Tumblr 地址'), null);
-    $form->addInput($TumblrURL);
-
-    $BilibiliURL = new Typecho_Widget_Helper_Form_Element_Text('BilibiliURL', null, null, _t('Bilibili 地址'), null);
-    $form->addInput($BilibiliURL);
-
-    $TelegramURL = new Typecho_Widget_Helper_Form_Element_Text('TelegramURL', null, null, _t('Telegram 地址'), null);
-    $form->addInput($TelegramURL);
-
-    $ZhihuURL = new Typecho_Widget_Helper_Form_Element_Text('ZhihuURL', null, null, _t('Zhihu 地址'), null);
-    $form->addInput($ZhihuURL);
-
-    $LinkedinURL = new Typecho_Widget_Helper_Form_Element_Text('LinkedinURL', null, null, _t('Linkedin 地址'), null);
-    $form->addInput($LinkedinURL);
-
-    $CustomFonts = new Typecho_Widget_Helper_Form_Element_Text('CustomFonts', null, _t("Roboto, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif"), _t('自定义字体'), null);
-    $form->addInput($CustomFonts);
-
-    $RobotoSource = new Typecho_Widget_Helper_Form_Element_Radio('RobotoSource',
-    array(
-        '0' => _t('调用 Google fonts (使用 https://lug.ustc.edu.cn 中科大 https 镜像加速)<br />'),
-        '1' => _t('调用 Google fonts (使用 https://fonts.cat.net 镜像加速)<br />'),
-        '2' => _t('调用主题文件夹自带的 Roboto &emsp;'),
-        '3' => _t('使用自定义字体源 (在上方"网站统计代码 + 自定义字体源"填入)')
-    ),
-
-    '1', _t('Roboto 字体使用来源'), null);
-    $form->addInput($RobotoSource);
 }
 
-//Homepage thumbnail
+/**
+ * 文章缩略图
+ * @param $widget $widget
+ */
 function showThumbnail($widget)
 {
     //If article no include picture, display random default picture
@@ -270,7 +295,10 @@ function showThumbnail($widget)
     }
 }
 
-//Random thumbnail
+/**
+ * 随机缩略图
+ * @param $widget $widget
+ */
 function randomThumbnail($widget)
 {
     //If article no include picture, display random default picture
@@ -285,20 +313,31 @@ function randomThumbnail($widget)
     echo $random;
 }
 
-//Pjax support
-function is_pjax()
+/**
+ * Pjax 检测
+ * @return bool 是否为 pjax 请求
+ * @deprecated 在未来将可能被删除
+ */
+function isPjax()
 {
     return array_key_exists('HTTP_X_PJAX', $_SERVER) && $_SERVER['HTTP_X_PJAX'];
 }
 
-//Copyright
+/**
+ * Console Copyrigtht
+ */
 function copyright()
 {
     echo '<script>console.log("\n %c © Material ' . MATERIAL_VERSION . ' | https://github.com/LiMingYuGuang/typecho-theme-material %c \n","color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;","color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;")</script>';
 }
 
-//Language
-//Usage: tranMsg("Newer", "新篇", $this->options->langis)
+/**
+ * Multi-language support
+ * @param string English 英文翻译
+ * @param string Chinese 中文翻译
+ * @param int languageIs 语言设置
+ * @return string 对应翻译
+ */
 function tranMsg($eng, $chs, $l)
 {
   return ($l == "0") ? $eng : $chs ;
