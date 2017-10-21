@@ -125,45 +125,33 @@ $this->need('header.php');?>
 
                                     <a href="<?php $this->options->feedUrl(); ?>" class="index_share-link">
                                         <li class="mdl-menu__item mdl-js-ripple-effect">
-                                            <?php if ($this->options->langis == '0'): ?> Article RSS
-                                            <?php else: ?> 文章 RSS
-                                            <?php endif; ?>
+                                            <?php echo tranMsg("Article RSS", "文章 RSS", $this->options->langis) ?>
                                         </li>
                                     </a>
                                     <!-- 文章的RSS地址连接 -->
                                     <a class="index_share-link" href="https://www.facebook.com/sharer/sharer.php?u=<?php $this->options->siteUrl(); ?>">
                                         <li class="mdl-menu__item">
-                                            <?php if ($this->options->langis == '0'): ?> Share to Facebook
-                                            <?php else: ?> 分享到 Facebook
-                                            <?php endif; ?>
+                                            <?php echo tranMsg("Share to Facebook", "分享到 Facebook", $this->options->langis) ?>
                                         </li>
                                     </a>
                                     <a class="index_share-link" href="https://telegram.me/share/url?url=<?php $this->options->siteUrl(); ?>&text=<?php $this->options->title(); ?>" >
                                         <li class="mdl-menu__item">
-                                            <?php if ($this->options->langis == '0'): ?> Share to Telegram
-                                            <?php else: ?> 分享到 Telegram
-                                            <?php endif; ?>
+                                            <?php echo tranMsg("Share to Telegram", "分享到 Telegram", $this->options->langis) ?>
                                         </li>
                                     </a>
                                     <a class="index_share-link" href="https://twitter.com/intent/tweet?text=<?php $this->options->title(); ?>&url=<?php $this->options->siteUrl(); ?>&via=<?php $this->author->screenName(); ?>">
                                         <li class="mdl-menu__item">
-                                            <?php if ($this->options->langis == '0'): ?> Share to Twitter
-                                            <?php else: ?> 分享到 Twitter
-                                            <?php endif; ?>
+                                            <?php echo tranMsg("Share to Twitter", "分享到 Twitter", $this->options->langis) ?>
                                         </li>
                                     </a>
                                     <a class="index_share-link" href="https://plus.google.com/share?url=<?php $this->options->siteUrl(); ?>" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
                                         <li class="mdl-menu__item">
-                                            <?php if ($this->options->langis == '0'): ?> Share to Google+
-                                            <?php else: ?> 分享到 Google+
-                                            <?php endif; ?>
+                                            <?php echo tranMsg("Share to Google+", "分享到 Google+", $this->options->langis) ?>
                                         </li>
                                     </a>
                                     <a class="index_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=<?php $this->options->title(); ?>&url=<?php $this->options->siteUrl(); ?>&pic=&searchPic=false&style=simple ">
                                         <li class="mdl-menu__item">
-                                            <?php if ($this->options->langis == '0'): ?> Share to Weibo
-                                            <?php else: ?> 分享到 新浪微博
-                                            <?php endif; ?>
+                                            <?php echo tranMsg("Share to 新浪微博", "分享到 新浪微博", $this->options->langis) ?>
                                         </li>
                                     </a>
                                 </ul>
@@ -250,7 +238,7 @@ $this->need('header.php');?>
                             echo $this->_currentPage;
                         } else {
                             echo 1;
-                        }?> of <?php echo   ceil($this->getTotal() / $this->parameter->pageSize); ?></span>
+                        }?> of <?php echo ceil($this->getTotal() / $this->parameter->pageSize); ?></span>
 
                                 <?php $this->pageLink(
                         '<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_forward</i></button>', 'next'); ?>
