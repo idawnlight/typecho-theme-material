@@ -335,7 +335,7 @@
 <?php
     if($this->is('post')||$this->is('page')){
         if (!empty($this->options->switch) && in_array('PanguPHP', $this->options->switch)) {
-            $html_source = ob_get_contents(); ob_clean(); print pangu::do($html_source); ob_end_flush();
+            $html_source = ob_get_contents(); ob_clean(); print pangu($html_source); ob_end_flush();
         }
     }
 ?>

@@ -378,3 +378,29 @@ function tranMsg($eng, $chs, $l)
 {
   return ($l == "0") ? $eng : $chs ;
 }
+
+/**
+ * Pangu.PHP
+ * @param string html_source
+ * @return string 处理完的 html_source
+ */
+function pangu($html_source) {
+    $chunks = preg_split('/(<!--<nopangu>-->.*?<!--<\/nopangu>-->|<nopangu>.*?<\/nopangu>|<pre.*?\/pre>|<textarea.*?\/textarea>)/msi', $html_source, -1, PREG_SPLIT_DELIM_CAPTURE);
+    $result = '';
+    foreach ($chunks as $c) {
+        if (strtolower(substr($c, 0, 19)) == '<!--<nopangu>-->') {
+            $c = substr($c, 19, strlen($c) - 19 - 20);
+            $result .= $c;
+            continue;
+        } else if (strtolower(substr($c, 0, 12)) == '<nopangu>') {
+            $c = substr($c, 12, strlen($c) - 12 - 13);
+            $result .= $c;
+            continue;
+        } else if (strtolower(substr($c, 0, 4)) == '<pre' || strtolower(substr($c, 0, 9)) == '<textarea') {
+            $result .= $c;
+            continue;
+        }
+        $result .= pangu::do($c);
+    }
+    return $result;
+}
