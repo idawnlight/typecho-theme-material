@@ -36,6 +36,10 @@ function themeInit($archive)
 /**
  * 主题设置
  */
+function themeFields($layout) {
+    $picUrl = new Typecho_Widget_Helper_Form_Element_Text('picUrl', NULL, NULL, _t('图片地址'), _t('在这里填入一个图片 URL 地址, 作为文章的头图'));
+    $layout->addItem($picUrl);
+}
 function themeConfig($form)
 {
     echo '<p style="font-size:14px;" id="use-intro">
@@ -308,6 +312,11 @@ function themeConfig($form)
  */
 function showThumbnail($widget)
 {
+    if($widget->fields->picUrl){
+        echo $widget->fields->picUrl;
+        return;
+    }
+
     //If article no include picture, display random default picture
     $rand = rand(1, $widget->widget('Widget_Options')->RandomPicAmnt); //Random number
 
