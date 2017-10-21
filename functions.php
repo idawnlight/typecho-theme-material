@@ -5,6 +5,32 @@ define("MATERIAL_VERSION", "3.1.0");
 require_once("lib/UACheck.php");
 
 /**
+ * JavaScript 载入
+ * @param string url
+ */
+function jsLoad($url) 
+{
+    echo '<script src="'  . $url . '"></script>';
+}
+
+/**
+ * CSS 载入
+ * @param string url
+ */
+function cssLoad($url) 
+{
+    echo '<script src="'  . $url . '"></script>';
+}
+
+function themeInit($archive)
+{
+    if ($archive->is('post') || $archive->is('page')) {
+        $archive->content = preg_replace('#<img(.*?) src="(.*?)" (.*?)>#',
+        '<img$1 data-original="$2" class="lazy" $3>', $archive->content);
+    }
+}
+
+/**
  * 主题设置
  */
 function themeConfig($form)
