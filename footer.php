@@ -148,12 +148,14 @@
 <script src="<?php $this->options->themeUrl('js/lazyload.min.js'); ?>"></script>
 <?php endif; ?>
 
+<!-- LazyLoad -->
 <script>
-    $("div.lazy").lazyload();
+    $(".lazy").lazyload();
 </script>
 
 
 <?php if (!empty($this->options->switch) && in_array('ShowLoadingLine', $this->options->switch)): ?>
+<!-- Nprogress -->
 <?php if (!empty($this->options->CDNURL)): ?>
 <script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/nprogress.js"></script>
 <?php else: ?>
@@ -183,6 +185,7 @@
 <?php endif; ?>
 
 <?php if (!empty($this->options->switch) && in_array('SmoothScroll', $this->options->switch) && UACheck::is() !== "Safari"): ?>
+<!-- SmoothScroll -->
 <?php if (!empty($this->options->CDNURL)): ?>
 <script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/smoothscroll.js" async></script>
 <?php else: ?>
@@ -191,6 +194,7 @@
 <?php endif; ?>
 
 <?php if (!empty($this->options->switch) && in_array('atargetblank', $this->options->switch)): ?>
+<!-- _blank -->
 <script>
     //Add target="_blank" to a tags
     $(document).bind('DOMNodeInserted', function(event) {
@@ -205,8 +209,8 @@
 </script>
 <?php endif; ?>
 
-<!-- Pangu js -->
 <?php if (!empty($this->options->switch) && in_array('Pangu', $this->options->switch)): ?>
+<!-- Pangu -->
   <?php if (!empty($this->options->CDNURL)): ?>
       <script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/pangu.min.js"></script>
   <?php else: ?>
@@ -215,8 +219,8 @@
   <script> pangu.spacingPage(); </script>
 <?php endif; ?>
 
-<!-- highlight js -->
 <?php if (!empty($this->options->switch) && in_array('HighLight', $this->options->switch)): ?>
+<!-- highlight js -->
   <?php if (!empty($this->options->CDNURL)): ?>
       <script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/highlight.min.js"></script>
       <link href="<?php $this->options->CDNURL() ?>/MaterialCDN/css/highlight.min.css" rel="stylesheet">
@@ -227,8 +231,8 @@
   <script> hljs.initHighlightingOnLoad(); </script>
 <?php endif; ?>
 
-<!-- localsearch (beta) -->
 <?php if (!empty($this->options->searchis) && $this->options->searchis == '1'): ?>
+<!-- Local Search (beta) -->
 <script>
     var inputArea = document.querySelector('#search');
             var getSearchFile = function() {

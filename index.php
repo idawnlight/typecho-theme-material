@@ -57,18 +57,18 @@ $this->need('header.php');?>
                         <div class="mdl-card mdl-shadow--<?php $this->options->CardElevation() ?>dp something-else mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop index-top-block">
                             <!-- Search -->
                             <?php if((!empty($this->options->searchis) && $this->options->searchis == '1')): ?>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" method="post" action="">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
                                 <label id="search-label" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent mdl-shadow--4dp" for="search">
                                     <i class="material-icons mdl-color-text--white" role="presentation">search</i>
                                 </label>
-                                <form autocomplete="off" id="search-form" class="mdl-textfield__expandable-holder">
-                                    <input type="text" id="search" class="form-control mdl-textfield__input search-input" name="q" results="0" placeholder=""/>
+                                <form autocomplete="off" id="search-form" method="post" action="" class="mdl-textfield__expandable-holder">
+                                    <input type="text" id="search" class="form-control mdl-textfield__input search-input" name="s" results="0" placeholder=""/>
                                     <label id="search-form-label" class="mdl-textfield__label" for="search"></label>
                                 </form>
                             </div>
                             <div id="local-search-result"></div>
                             <?php else: ?>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" method="post" action="">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
                                 <label id="search-label" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent mdl-shadow--4dp" for="search">
                                     <i class="material-icons mdl-color-text--white" role="presentation">search</i>
                                 </label>
