@@ -175,7 +175,6 @@ function themeConfig($form)
             '2' => _t('渐变背景 &emsp;')
         ),
 
-        //Default choose
         '0', _t('背景设置'), _t("选择背景方案, 对应填写下方的 '<b>背景颜色 / 图片</b>' 或选择 '<b>渐变样式</b>', 这里默认使用图片背景.")
     );
     $form->addInput($BGtype);
@@ -209,7 +208,6 @@ function themeConfig($form)
             '3' => _t('只显示随机图片'),
         ),
 
-        //Default choose
         '1', _t('缩略图显示效果')
     );
     $form->addInput($ThumbnailOption);
@@ -252,6 +250,16 @@ function themeConfig($form)
 
     $logo = new Typecho_Widget_Helper_Form_Element_Text('logo', null, null, _t('首页顶部右边 LOGO 图片地址'), _t('填入 LOGO 地址, 图片将显示于首页右上角板块'));
     $form->addInput($logo);
+
+    $logosize = new Typecho_Widget_Helper_Form_Element_Radio('logosize',
+    array(
+        '1' => _t('标准 &emsp;'),
+        '2' => _t('更大 &emsp;'),
+    ),
+
+        '1', _t('首页顶部右边 LOGO 图片地址大小'), _t('仅在使用自定义图片时有效')
+    );
+    $form->addInput($logosize);
 
     $dailypicLink = new Typecho_Widget_Helper_Form_Element_Text('dailypicLink', null, _t('#'), _t('首页顶部左边图片的点击跳转地址'), _t('点击图片后, 想要跳转网页的地址'));
     $form->addInput($dailypicLink);

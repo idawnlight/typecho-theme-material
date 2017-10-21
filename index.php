@@ -82,15 +82,21 @@ $this->need('header.php');?>
                             <div class="something-else-logo mdl-color--white mdl-color-text--grey-600">
                                 <?php if (!empty($this->options->logoLink)): ?>
                                 <a href="<?php $this->options->logoLink() ?>">
-                                    <?php endif; ?>
+                                <?php else: ?>
+                                <a href="#">
+                                <?php endif; ?>
                                     <?php if (!empty($this->options->logo)): ?>
-                                    <img src="<?php $this->options->logo() ?>">
+                                        <?php if (!empty($this->options->logosize) && $this->options->logosize == "2"): ?>
+                                        <img style="width: 12pc; height: 12pc; margin-top: -2pc" src="<?php $this->options->logo() ?>">
+                                        <?php else: ?>
+                                        <img src="<?php $this->options->logo() ?>">
+                                        <?php endif; ?>
                                     <?php else: ?>
-                                    <?php if (!empty($this->options->CDNURL)): ?>
-                                    <img src="<?php $this->options->CDNURL() ?>/MaterialCDN/img/MaterialLOGO.png">
-                                    <?php else: ?>
-                                    <img src="<?php $this->options->themeUrl('img/MaterialLOGO.png') ?>">
-                                    <?php endif; ?>
+                                        <?php if (!empty($this->options->CDNURL)): ?>
+                                            <img src="<?php $this->options->CDNURL() ?>/MaterialCDN/img/MaterialLOGO.png">
+                                            <?php else: ?>
+                                            <img src="<?php $this->options->themeUrl('img/MaterialLOGO.png') ?>">
+                                        <?php endif; ?>
                                     <?php endif; ?>
                                 </a>
                             </div>
@@ -128,7 +134,7 @@ $this->need('header.php');?>
                                             <?php echo tranMsg("Article RSS", "文章 RSS", $this->options->langis) ?>
                                         </li>
                                     </a>
-                                    <!-- 文章的RSS地址连接 -->
+                                    <!-- Share Menu -->
                                     <a class="index_share-link" href="https://www.facebook.com/sharer/sharer.php?u=<?php $this->options->siteUrl(); ?>">
                                         <li class="mdl-menu__item">
                                             <?php echo tranMsg("Share to Facebook", "分享到 Facebook", $this->options->langis) ?>
@@ -219,7 +225,7 @@ $this->need('header.php');?>
                                         <?php $this->category(', '); ?> |
                                     </span>
                                         <a href="<?php $this->permalink() ?>">
-                                            <!-- 使用原生评论 -->
+                                            <!-- Comment Count -->
                                             <?php $this->commentsNum('%d 评论'); ?>
                                         </a>
 
