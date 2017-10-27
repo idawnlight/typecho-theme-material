@@ -167,29 +167,41 @@
             <link href='https://fonts.cat.net/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
             <link href="https://fonts.cat.net/icon?family=Material+Icons" rel="stylesheet">
         <?php elseif ($this->options->RobotoSource == '2'): ?>
-           <style>
-               <?php if (!empty($this->options->CDNURL)): ?>
-                   @font-face {
-                       font-family: Roboto;
-                       src: url('<?php $this->options->CDNURL()?>/MaterialCDN/fonts/Roboto.ttf');
-                   }
-                   @font-face {
-                       font-family: Roboto;
-                       font-weight: 700;
-                       src: url('<?php $this->options->CDNURL()?>/MaterialCDN/fonts/Roboto-700.ttf');
-                   }
-               <?php else: ?>
-                   @font-face {
-                       font-family: Roboto;
-                       src: url('<?php $this->options->themeUrl('fonts/Roboto.ttf'); ?>');
-                   }
-                   @font-face {
-                       font-family: Roboto;
-                       font-weight: 700;
-                       src: url('<?php $this->options->themeUrl('fonts/Roboto-700.ttf'); ?>');
-                   }
-               <?php endif; ?>
-           </style>
+        <style>
+            <?php if (!empty($this->options->CDNURL)): ?>
+                @font-face {
+                    font-family: Roboto;
+                    src: url('<?php $this->options->CDNURL()?>/MaterialCDN/fonts/Roboto.ttf');
+                }
+                @font-face {
+                    font-family: Roboto;
+                    font-weight: 700;
+                    src: url('<?php $this->options->CDNURL()?>/MaterialCDN/fonts/Roboto-700.ttf');
+                }
+                @font-face {
+                     font-family: 'Material Icons';
+                     font-style: normal;
+                     font-weight: 400;
+                     src: url('<?php $this->options->CDNURL()?>/MaterialCDN/fonts/MaterialIcons-Regular.ttf');
+                }
+            <?php else: ?>
+                @font-face {
+                    font-family: Roboto;
+                    src: url('<?php $this->options->themeUrl('fonts/Roboto.ttf'); ?>');
+                }
+                @font-face {
+                    font-family: Roboto;
+                    font-weight: 700;
+                    src: url('<?php $this->options->themeUrl('fonts/Roboto-700.ttf'); ?>');
+                }
+                @font-face {
+                     font-family: 'Material Icons';
+                     font-style: normal;
+                     font-weight: 400;
+                     src: url('<?php $this->options->themeUrl('fonts/MaterialIcons-Regular.ttf'); ?>');
+                }
+            <?php endif; ?>
+        </style>
        <?php elseif ($this->options->RobotoSource == '3'): ?>
        <?php endif; ?>
 
