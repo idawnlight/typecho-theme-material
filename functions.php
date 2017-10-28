@@ -332,8 +332,11 @@ function showThumbnail($widget)
 
     $attach = $widget->attachments(1)->attachment;
     $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i';
+    $patternlazy = '/\<img.*?data-original\=\"(.*?)\"[^>]*>/i';
 
     if (preg_match_all($pattern, $widget->content, $thumbUrl)) {
+        echo $thumbUrl[1][0];
+    } elseif (preg_match_all($patternlazy, $widget->content, $thumbUrl)) {
         echo $thumbUrl[1][0];
     } elseif ($attach->isImage) {
         echo $attach->url;
