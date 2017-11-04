@@ -414,7 +414,7 @@ function pangu($html_source) {
             $result .= $c;
             continue;
         }
-        $result .= pangu::do($c);
+        $result .= doPangu($c);
     }
     return $result;
 }
