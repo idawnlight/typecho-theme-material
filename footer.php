@@ -10,6 +10,30 @@
         <footer class="mdl-mini-footer" id="bottom">
             <!--mdl-mini-footer-left-section-->
             <div class="mdl-mini-footer--left-section">
+                <?php if (!empty($this->options->footersns) && in_array('ShowBilibili', $this->options->footersns)) : ?>
+                    <a href="<?php $this->options->BilibiliURL() ?>" target="_blank">
+                        <button class="mdl-mini-footer--social-btn social-btn footer-sns-bilibili">
+                            <span class="visuallyhidden">Bilibili</span>
+                        </button>
+                    </a>
+                <?php endif;?>
+
+                <?php if (!empty($this->options->footersns) && in_array('ShowWeibo', $this->options->footersns)) : ?>
+                <a href="<?php $this->options->WeiboURL() ?>" target="_blank">
+                    <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                        <span class="visuallyhidden">Weibo</span>
+                    </button>
+                </a>
+                <?php endif;?>
+
+                <?php if (!empty($this->options->footersns) && in_array('ShowZhihu', $this->options->footersns)) : ?>
+                    <a href="<?php $this->options->ZhihuURL() ?>" target="_blank">
+                        <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                            <span class="visuallyhidden">Zhihu</span>
+                        </button>
+                    </a>
+                <?php endif;?>
+
                 <?php if (!empty($this->options->footersns) && in_array('ShowTwitter', $this->options->footersns)) : ?>
                 <a href="<?php $this->options->TwitterURL() ?>" target="_blank">
                     <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
@@ -17,6 +41,15 @@
                     </button>
                 </a>
                 <?php endif;?>
+
+                <?php if (!empty($this->options->footersns) && in_array('ShowV2EX', $this->options->footersns)) : ?>
+                    <a href="<?php $this->options->V2EXURL() ?>" target="_blank">
+                        <button class="mdl-mini-footer--social-btn social-btn footer-sns-v2ex">
+                            <span class="visuallyhidden">V2EX</span>
+                        </button>
+                    </a>
+                <?php endif;?>
+
                 <?php if (!empty($this->options->footersns) && in_array('ShowFacebook', $this->options->footersns)) : ?>
                 <a href="<?php $this->options->FacebookURL() ?>" target="_blank">
                     <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
@@ -29,14 +62,6 @@
                 <a href="<?php $this->options->GooglePlusURL() ?>" target="_blank">
                     <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
                         <span class="visuallyhidden">Google Plus</span>
-                    </button>
-                </a>
-                <?php endif;?>
-
-                <?php if (!empty($this->options->footersns) && in_array('ShowWeibo', $this->options->footersns)) : ?>
-                <a href="<?php $this->options->WeiboURL() ?>" target="_blank">
-                    <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
-                        <span class="visuallyhidden">Weibo</span>
                     </button>
                 </a>
                 <?php endif;?>
@@ -65,26 +90,10 @@
                 </a>
                 <?php endif;?>
 
-                <?php if (!empty($this->options->footersns) && in_array('ShowBilibili', $this->options->footersns)) : ?>
-                    <a href="<?php $this->options->BilibiliURL() ?>" target="_blank">
-                        <button class="mdl-mini-footer--social-btn social-btn footer-sns-bilibili">
-                            <span class="visuallyhidden">Bilibili</span>
-                        </button>
-                    </a>
-                <?php endif;?>
-
                 <?php if (!empty($this->options->footersns) && in_array('ShowTelegram', $this->options->footersns)) : ?>
                     <a href="<?php $this->options->TelegramURL() ?>" target="_blank">
                         <button class="mdl-mini-footer--social-btn social-btn footer-sns-telegram">
                             <span class="visuallyhidden">Telegram</span>
-                        </button>
-                    </a>
-                <?php endif;?>
-
-                <?php if (!empty($this->options->footersns) && in_array('ShowZhihu', $this->options->footersns)) : ?>
-                    <a href="<?php $this->options->ZhihuURL() ?>" target="_blank">
-                        <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
-                            <span class="visuallyhidden">Zhihu</span>
                         </button>
                     </a>
                 <?php endif;?>

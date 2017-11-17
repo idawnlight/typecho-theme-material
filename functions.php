@@ -133,6 +133,7 @@ function themeConfig($form)
             'ShowWeibo' => _t('新浪微博 &emsp;'),
             'ShowZhihu' => _t('知乎 &emsp;<br />'),            
             'ShowTwitter' => _t('Twitter &emsp;'),
+            'ShowV2EX' => _t('V2EX &emsp;'),
             'ShowFacebook' => _t('Facebook &emsp;'),
             'ShowGooglePlus' => _t('Google+ &emsp;<br />'),
             'ShowInstagram' => _t('Instagram&emsp;'),
@@ -157,6 +158,9 @@ function themeConfig($form)
     
     $TwitterURL = new Typecho_Widget_Helper_Form_Element_Text('TwitterURL', null, null, _t('Twitter 地址'), null);
     $form->addInput($TwitterURL);
+
+    $V2EXURL = new Typecho_Widget_Helper_Form_Element_Text('V2EXURL', null, null, _t('V2EX 地址'), null);
+    $form->addInput($V2EXURL);
 
     $FacebookURL = new Typecho_Widget_Helper_Form_Element_Text('FacebookURL', null, null, _t('Facebook 地址'), null);
     $form->addInput($FacebookURL);
