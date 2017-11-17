@@ -69,7 +69,7 @@
                             </button>
                     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
                         <?php if ($this->user->hasLogin()):?>
-                        <a class="md-menu-list-a" target="_blank" href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?php echo $this->cid;?>" target="_blank">
+                        <a class="md-menu-list-a" target="_blank" href="<?php $this->options->adminUrl(); ?>write-page.php?cid=<?php echo $this->cid;?>" target="_blank">
                                 <li class="mdl-menu__item">编辑</li>
                         </a>
                         <?php endif;?>
