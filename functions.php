@@ -399,18 +399,18 @@ function tranMsg($eng, $chs, $l)
  * @return string 处理完的 html_source
  */
 function pangu($html_source) {
-    $chunks = preg_split('/(<!--<nopangu>-->.*?<!--<\/nopangu>-->|<nopangu>.*?<\/nopangu>|<pre.*?\/pre>|<textarea.*?\/textarea>)/msi', $html_source, -1, PREG_SPLIT_DELIM_CAPTURE);
+    $chunks = preg_split('/(<!--<nopangu>-->.*?<!--<\/nopangu>-->|<nopangu>.*?<\/nopangu>|<pre.*?\/pre>|<textarea.*?\/textarea>|<code.*?\/code>)/msi', $html_source, -1, PREG_SPLIT_DELIM_CAPTURE);
     $result = '';
     foreach ($chunks as $c) {
-        if (strtolower(substr($c, 0, 19)) == '<!--<nopangu>-->') {
-            $c = substr($c, 19, strlen($c) - 19 - 20);
+        if (strtolower(substr($c, 0, 16)) == '<!--<nopangu>-->') {
+            $c = substr($c, 16, strlen($c) - 16 - 17);
             $result .= $c;
             continue;
-        } else if (strtolower(substr($c, 0, 12)) == '<nopangu>') {
-            $c = substr($c, 12, strlen($c) - 12 - 13);
+        } else if (strtolower(substr($c, 0, 9)) == '<nopangu>') {
+            $c = substr($c, 9, strlen($c) - 9 -10);
             $result .= $c;
             continue;
-        } else if (strtolower(substr($c, 0, 4)) == '<pre' || strtolower(substr($c, 0, 9)) == '<textarea') {
+        } else if (strtolower(substr($c, 0, 4)) == '<pre' || strtolower(substr($c, 0, 9)) == '<textarea' || strtolower(substr($c, 0, 5)) == '<code') {
             $result .= $c;
             continue;
         }
