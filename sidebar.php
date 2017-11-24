@@ -103,6 +103,7 @@
                 <li>
                     <a href="{permalink}" tabindex="-1">
                         {date}
+                        <span class="sidebar_archives-count">{count}</span>
                     </a>
                 </li>
                 '); ?>
