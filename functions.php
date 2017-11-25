@@ -9,20 +9,29 @@ error_reporting(0);
 
 /**
  * JavaScript LS 载入
- * @param string url
+ * @param string name
+ * @param string uri
  */
-function jsLsload($url)
+function jsLsload($name, $uri)
 {
-    echo '<script src="'  . $url . '"></script>';
+    $options = Helper::options();
+    $md5 = md5(file_get_contents($options->themeFile(getTheme(), $uri)));
+    $base64 = base64_encode($md5);
+    echo '<script>lsloader.load("' . $name . '","' . getThemeFile($uri) . '?' . $base64 . '", true)</script>';
 }
 
 /**
- * CSS 载入
- * @param string url
+ * CSS LS 载入
+ * @param string name
+ * @param string uri
  */
-function cssLoad($url) 
+function cssLsload($name, $uri) 
 {
-    echo '<script src="'  . $url . '"></script>';
+    $options = Helper::options();
+    $md5 = md5(file_get_contents($options->themeFile(getTheme(), $uri)));
+    $base64 = base64_encode($md5);
+    echo '<style id="' . $name . '"></style>';
+    echo '<script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("' . $name . '","' . getThemeFile($uri) . '?' . $base64 . '",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>';
 }
 
 function getThemeFile($uri)
@@ -149,7 +158,7 @@ function themeConfig($form)
             '1' => _t('使用本地搜索（即时搜索）（Beta）'),
         ),
 
-        '0', _t('搜索设置'), _t("默认使用原生搜索<br />本地搜索移植自 hexo 版，需要手动创建索引页，已知缺陷：<br />1. 当文章中包含 XML 代码时会解析错误<br />2. 无法获取文章 tags")
+        '0', _t('搜索设置'), _t("默认使用原生搜索；本地搜索移植自 hexo 版，需要手动创建索引页")
     );
     $form->addInput($searchis);
 
@@ -163,7 +172,7 @@ function themeConfig($form)
             '2' => _t('自定义'),
         ),
 
-        '0', _t('MaterialCDN 类型'), _t("推荐使用 jsDelivr")
+        '0', _t('MaterialCDN 类型'), _t("推荐使用 jsDelivr（注意，当你使用激进的开发版时，部分资源可能加载失败）")
     );
     $form->addInput($CDNType);
 
@@ -249,7 +258,7 @@ function themeConfig($form)
         '3' => _t('使用自定义字体源 (在"网站统计代码 + 自定义字体源"填入)')
     ),
 
-    '1', _t('Roboto 字体使用来源'), null);
+    '2', _t('Roboto 字体使用来源'), null);
     $form->addInput($RobotoSource);
 
     $analysis = new Typecho_Widget_Helper_Form_Element_Textarea('analysis', null, null, _t('网站统计代码 + 自定义字体源'), _t('填入如 Google Analysis 的第三方统计代码或字体源'));
@@ -379,11 +388,8 @@ function showThumbnail($widget)
     //If article no include picture, display random default picture
     $rand = rand(1, $widget->widget('Widget_Options')->RandomPicAmnt); //Random number
 
-    if (!empty($widget->widget('Widget_Options')->CDNURL)) {
-        $random = $widget->widget('Widget_Options')->CDNURL. '/MaterialCDN/img/random/material-' . $rand . '.png';
-    } else {
-        $random = $widget->widget('Widget_Options')->themeUrl . '/img/random/material-' . $rand . '.png';
-    }//Random picture path
+    $random = getThemeFile('/img/random/material-' . $rand . '.png');
+    
 
 
     // If only one random default picture, delete the following "//"
@@ -413,11 +419,7 @@ function randomThumbnail($widget)
     //If article no include picture, display random default picture
     $rand = rand(1, $widget->widget('Widget_Options')->RandomPicAmnt); //Random number
 
-    if (!empty($widget->widget('Widget_Options')->CDNURL)) {
-        $random = $widget->widget('Widget_Options')->CDNURL. '/MaterialCDN/img/random/material-' . $rand . '.png';
-    } else {
-        $random = $widget->widget('Widget_Options')->themeUrl . '/img/random/material-' . $rand . '.png';
-    }//Random picture path
+    $random = getThemeFile('/img/random/material-' . $rand . '.png');
 
     echo $random;
 }

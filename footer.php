@@ -141,22 +141,38 @@
 <?php $this->options->analysis(); ?>
 
 <!-- Material js -->
+<?php jsLsload("jq_js", "js/jquery.min.js") ?>
+<?php jsLsload("js_js", "js/js.min.js") ?>
+<?php jsLsload("lazyload_js", "js/lazyload.min.js") ?>
+<!--
 <script src="<?php thisThemeFile('js/jquery.min.js'); ?>"></script>
 <script src="<?php thisThemeFile('js/js.min.js'); ?>"></script>
 <script src="<?php thisThemeFile('js/jquery.pjax.min.js'); ?>"></script>
 <script src="<?php thisThemeFile('js/lazyload.min.js'); ?>"></script>
+-->
 
-<!-- LazyLoad -->
-<script>
-    $(".lazy").lazyload();
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            threshold :200,
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
 </script>
-
 
 <?php if (!empty($this->options->switch) && in_array('ShowLoadingLine', $this->options->switch)): ?>
 <!-- Nprogress -->
-<script src="<?php thisThemeFile('js/nprogress.js'); ?>"></script>
+<?php jsLsload('np_js', 'js/nprogress.js'); ?>
 
-<script type="text/javascript">
+<script type="text/ls-javascript" id="NProgress-script">
     NProgress.configure({
         showSpinner: true
     });
@@ -180,7 +196,7 @@
 
 <?php if (!empty($this->options->switch) && in_array('SmoothScroll', $this->options->switch) && UACheck::is() !== "Safari"): ?>
 <!-- SmoothScroll -->
-<script src="<?php thisThemeFile('js/smoothscroll.js'); ?>" async></script>
+<?php jsLsload("smooth_js", 'js/smoothscroll.js'); ?>
 <?php endif; ?>
 
 <?php if (!empty($this->options->switch) && in_array('atargetblank', $this->options->switch)): ?>
@@ -201,15 +217,15 @@
 
 <?php if (!empty($this->options->switch) && in_array('Pangu', $this->options->switch) && !in_array('PanguPHP', $this->options->switch)): ?>
 <!-- Pangu -->
-    <script src="<?php thisThemeFile('js/pangu.min.js'); ?>"></script>
-    <script> pangu.spacingPage(); </script>
+    <?php jsLsload('pangu_js', 'js/pangu.min.js'); ?>
+    <script type="text/ls-javascript" id="pangu-script"> pangu.spacingPage(); </script>
 <?php endif; ?>
 
 <?php if (!empty($this->options->switch) && in_array('HighLight', $this->options->switch)): ?>
 <!-- highlight js -->
-    <script src="<?php thisThemeFile('js/highlight.min.js'); ?>"></script>
-    <link href="<?php thisThemeFile('css/highlight.min.css'); ?>" rel="stylesheet">
-    <script> hljs.initHighlightingOnLoad(); </script>
+    <?php jsLsload('highlight_js', 'js/highlight.min.js'); ?>
+    <?php cssLsload('highlight_css', 'css/highlight.min.css') ?>
+    <script type="text/ls-javascript" id="highlight-script"> hljs.initHighlightingOnLoad(); </script>
 <?php endif; ?>
 
 <?php if (!empty($this->options->searchis) && $this->options->searchis == '1'): ?>
@@ -231,6 +247,17 @@
     var searchFunc=function(c,a,b){$.ajax({url:c,dataType:"xml",success:function(e){var d=$("entry",e).map(function(){return{title:$("title",this).text(),content:$("content",this).text(),url:$("url",this).text()}}).get();var g=document.getElementById(a);var f=document.getElementById(b);g.addEventListener("input",function(){var i='<ul class="search-result-list">';var h=this.value.trim().toLowerCase().split(/[\s\-]+/);f.innerHTML="";if(this.value.trim().length<=0){return}d.forEach(function(o){var n=true;var s=[];var t=o.title.trim().toLowerCase();var m=o.content.trim().replace(/<[^>]+>/g,"").toLowerCase();var j=o.url;var u=-1;var q=-1;var p=-1;if(t!==""&&m!==""){h.forEach(function(w,x){u=t.indexOf(w);q=m.indexOf(w);if(u<0&&q<0){n=false}else{if(q<0){q=0}if(x===0){p=q}}})}if(n){i+='<li><a href="'+j+'" class="search-result-title" target="_blank">'+t;var r=o.content.trim().replace(/<[^>]+>/g,"");if(p>=0){var k=p-6;var l=p+6;if(k<0){k=0}if(k===0){l=10}if(l>r.length){l=r.length}var v=r.substr(k,l);h.forEach(function(w){var x=new RegExp(w,"gi");v=v.replace(x,'<em class="search-keyword">'+w+"</em>")});i+='<p class="search-result">'+v+"...</p></a>"}}});f.innerHTML=i})}})};
 </script>
 <?php endif; ?>
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+</script>
 
 <?php
     if($this->is('post')||$this->is('page')){
