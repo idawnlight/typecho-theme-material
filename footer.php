@@ -132,11 +132,7 @@
 <script>
 	var agent = navigator.userAgent.toLowerCase();
 	if(agent.indexOf('ucbrowser')>0) {
-        <?php if (!empty($this->options->CDNURL)): ?>
-		document.write('<link rel="stylesheet" href="<?php $this->options->CDNURL() ?>/MaterialCDN/css/uc.css">');
-        <?php else: ?>
-		document.write('<link rel="stylesheet" href="<?php $this->options->themeUrl('css/uc.css'); ?>">');
-        <?php endif; ?>
+		document.write('<link rel="stylesheet" href="<?php thisThemeFile('css/uc.css'); ?>">');
 	    alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
 	}
 </script>
@@ -145,17 +141,10 @@
 <?php $this->options->analysis(); ?>
 
 <!-- Material js -->
-<?php if (!empty($this->options->CDNURL)): ?>
-<script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/jquery.min.js"></script>
-<script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/js.min.js"></script>
-<script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/jquery.pjax.min.js"></script>
-<script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/lazyload.min.js"></script>
-<?php else: ?>
-<script src="<?php $this->options->themeUrl('js/jquery.min.js'); ?>"></script>
-<script src="<?php $this->options->themeUrl('js/js.min.js'); ?>"></script>
-<script src="<?php $this->options->themeUrl('js/jquery.pjax.min.js'); ?>"></script>
-<script src="<?php $this->options->themeUrl('js/lazyload.min.js'); ?>"></script>
-<?php endif; ?>
+<script src="<?php thisThemeFile('js/jquery.min.js'); ?>"></script>
+<script src="<?php thisThemeFile('js/js.min.js'); ?>"></script>
+<script src="<?php thisThemeFile('js/jquery.pjax.min.js'); ?>"></script>
+<script src="<?php thisThemeFile('js/lazyload.min.js'); ?>"></script>
 
 <!-- LazyLoad -->
 <script>
@@ -165,11 +154,7 @@
 
 <?php if (!empty($this->options->switch) && in_array('ShowLoadingLine', $this->options->switch)): ?>
 <!-- Nprogress -->
-<?php if (!empty($this->options->CDNURL)): ?>
-<script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/nprogress.js"></script>
-<?php else: ?>
-<script src="<?php $this->options->themeUrl('js/nprogress.js'); ?>"></script>
-<?php endif; ?>
+<script src="<?php thisThemeFile('js/nprogress.js'); ?>"></script>
 
 <script type="text/javascript">
     NProgress.configure({
@@ -195,11 +180,7 @@
 
 <?php if (!empty($this->options->switch) && in_array('SmoothScroll', $this->options->switch) && UACheck::is() !== "Safari"): ?>
 <!-- SmoothScroll -->
-<?php if (!empty($this->options->CDNURL)): ?>
-<script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/smoothscroll.js" async></script>
-<?php else: ?>
-<script src="<?php $this->options->themeUrl('js/smoothscroll.js'); ?>" async></script>
-<?php endif; ?>
+<script src="<?php thisThemeFile('js/smoothscroll.js'); ?>" async></script>
 <?php endif; ?>
 
 <?php if (!empty($this->options->switch) && in_array('atargetblank', $this->options->switch)): ?>
@@ -220,24 +201,15 @@
 
 <?php if (!empty($this->options->switch) && in_array('Pangu', $this->options->switch) && !in_array('PanguPHP', $this->options->switch)): ?>
 <!-- Pangu -->
-  <?php if (!empty($this->options->CDNURL)): ?>
-      <script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/pangu.min.js"></script>
-  <?php else: ?>
-      <script src="<?php $this->options->themeUrl('js/pangu.min.js'); ?>"></script>
-  <?php endif; ?>
-  <script> pangu.spacingPage(); </script>
+    <script src="<?php thisThemeFile('js/pangu.min.js'); ?>"></script>
+    <script> pangu.spacingPage(); </script>
 <?php endif; ?>
 
 <?php if (!empty($this->options->switch) && in_array('HighLight', $this->options->switch)): ?>
 <!-- highlight js -->
-  <?php if (!empty($this->options->CDNURL)): ?>
-      <script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/highlight.min.js"></script>
-      <link href="<?php $this->options->CDNURL() ?>/MaterialCDN/css/highlight.min.css" rel="stylesheet">
-  <?php else: ?>
-      <script src="<?php $this->options->themeUrl('js/highlight.min.js'); ?>"></script>
-      <link href="<?php $this->options->themeUrl('css/highlight.min.css'); ?>" rel="stylesheet">
-  <?php endif; ?>
-  <script> hljs.initHighlightingOnLoad(); </script>
+    <script src="<?php thisThemeFile('js/highlight.min.js'); ?>"></script>
+    <link href="<?php thisThemeFile('css/highlight.min.css'); ?>" rel="stylesheet">
+    <script> hljs.initHighlightingOnLoad(); </script>
 <?php endif; ?>
 
 <?php if (!empty($this->options->searchis) && $this->options->searchis == '1'): ?>
@@ -245,7 +217,7 @@
 <script>
     var inputArea = document.querySelector('#search');
             var getSearchFile = function() {
-                var path = '<?php echo $this->options->LocalsearchURL ?>';
+                var path = '<?php $this->options->LocalsearchURL() ?>';
                 searchFunc(path, 'search', 'local-search-result');
             }
 

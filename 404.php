@@ -11,7 +11,7 @@
 
                 <!-- Article title -->
                 <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
-                    <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image: url(<?php $this->options->themeUrl('img/daily_pic.png'); ?>);">
+                    <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image: url(<?php thisThemeFile('img/daily_pic.png'); ?>);">
                         <p class="article-headline-p">
                             <?php $this->options->title(); ?>
                         </p>
@@ -39,23 +39,11 @@
 </body>
 
 <!-- Material js -->
-<?php if (!empty($this->options->CDNURL)): ?>
-<script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/jquery.min.js"></script>
-<script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/js.min.js"></script>
-<script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/jquery.pjax.min.js"></script>
-<?php else: ?>
-<script src="<?php $this->options->themeUrl('js/jquery.min.js'); ?>"></script>
-<script src="<?php $this->options->themeUrl('js/js.min.js'); ?>"></script>
-<script src="<?php $this->options->themeUrl('js/jquery.pjax.min.js'); ?>"></script>
-<?php endif; ?>
-
+<script src="<?php thisThemeFile('js/jquery.min.js'); ?>"></script>
+<script src="<?php thisThemeFile('js/js.min.js'); ?>"></script>
 
 <?php if (!empty($this->options->switch) && in_array('ShowLoadingLine', $this->options->switch)): ?>
-<?php if (!empty($this->options->CDNURL)): ?>
-<script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/nprogress.js"></script>
-<?php else: ?>
-<script src="<?php $this->options->themeUrl('js/nprogress.js'); ?>"></script>
-<?php endif; ?>
+<script src="<?php thisThemeFile('js/nprogress.js'); ?>"></script>
 
 <script type="text/javascript">
     NProgress.configure({
@@ -77,25 +65,6 @@
         $('.fade').removeClass('out');
     }, <?php $this->options->loadingbuffer(); ?>);
 </script>
-<?php endif; ?>
-
-<?php if (!empty($this->options->switch) && in_array('SmoothScroll', $this->options->switch)): ?>
-<?php if (!empty($this->options->CDNURL)): ?>
-<script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/smoothscroll.js" async></script>
-<?php else: ?>
-<script src="<?php $this->options->themeUrl('js/smoothscroll.js'); ?>" async></script>
-<?php endif; ?>
-<?php endif; ?>
-
-
-<!-- Pangu js -->
-<?php if (!empty($this->options->switch) && in_array('Pangu', $this->options->switch)): ?>
-  <?php if (!empty($this->options->CDNURL)): ?>
-      <script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/pangu.min.js"></script>
-  <?php else: ?>
-      <script src="<?php $this->options->themeUrl('js/pangu.min.js'); ?>"></script>
-  <?php endif; ?>
-  <script> pangu.spacingPage(); </script>
 <?php endif; ?>
 
 

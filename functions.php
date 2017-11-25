@@ -8,10 +8,10 @@ require_once("lib/pangu.php");
 error_reporting(0);
 
 /**
- * JavaScript 载入
+ * JavaScript LS 载入
  * @param string url
  */
-function jsLoad($url) 
+function jsLsload($url)
 {
     echo '<script src="'  . $url . '"></script>';
 }
@@ -23,6 +23,50 @@ function jsLoad($url)
 function cssLoad($url) 
 {
     echo '<script src="'  . $url . '"></script>';
+}
+
+function getThemeFile($uri)
+{
+    $options = Helper::options();
+    $themeOptions = getThemeOptions();
+    if ($themeOptions["CDNType"] == 0)
+        return $options->index . __TYPECHO_THEME_DIR__ . "/" . getTheme() . "/" . $uri;
+    elseif ($themeOptions["CDNType"] == 1)
+        return "https://cdn.jsdelivr.net/gh/LiMingYuGuang/typecho-theme-material@" . MATERIAL_VERSION . "/" . $uri;
+    else
+        return $themeOptions["CDNURL"] . "/" . $uri;
+}
+
+function thisThemeFile($uri)
+{
+    echo getThemeFile($uri);
+    return;
+}
+
+function getTheme()
+{
+    if (!isset($themeIs)) {
+        $db = Typecho_Db::get();
+        $query = $db->select('value')->from('table.options')->where('name = ?', 'theme'); 
+        $result = $db->fetchAll($query);
+        static $themeIs;
+        $themeIs = $result[0]["value"];
+        unset($db); unset($result);
+    }
+    return $themeIs;
+}
+
+function getThemeOptions()
+{
+    if (!isset($themeOptions)) {
+        $db = Typecho_Db::get();
+        $query = $db->select('value')->from('table.options')->where('name = ?', 'theme:' . getTheme()); 
+        $result = $db->fetchAll($query);
+        static $themeOptions;
+        $themeOptions = unserialize($result[0]["value"]);
+        unset($db);
+    }
+    return $themeOptions;
 }
 
 function themeInit($archive)
@@ -112,9 +156,20 @@ function themeConfig($form)
     $LocalsearchURL = new Typecho_Widget_Helper_Form_Element_Text('LocalsearchURL', null, null, _t('本地搜索索引页链接'), _t('仅在启用即时搜索时需要填写'));
     $form->addInput($LocalsearchURL);
 
+    $CDNType = new Typecho_Widget_Helper_Form_Element_Radio('CDNType',
+        array(
+            '0' => _t('不启用 CDN'),
+            '1' => _t('jsDelivr'),
+            '2' => _t('自定义'),
+        ),
+
+        '0', _t('MaterialCDN 类型'), _t("推荐使用 jsDelivr")
+    );
+    $form->addInput($CDNType);
+
     $CDNURL = new Typecho_Widget_Helper_Form_Element_Text('CDNURL', null, null, _t('CDN 地址'), _t("
-    新建一个'MaterialCDN' 文件夹, 把'css, fonts, img, js' 文件夹放进去, 然后把'MaterialCDN' 上传到到你的 CDN 储存空间根目录下<br />
-    填入你的 CDN 地址, 如 <b>https://material.lim-light.com</b>"));
+    创建一个文件夹，把 <b>css, fonts, img, js</b> 文件夹放进去，上传到到你的 CDN 储存空间根目录下<br />
+    填入你的 CDN 地址, 如 <b>https://material.lim-light.com/MaterialCDN</b>"));
     $form->addInput($CDNURL);
 
     $langis = new Typecho_Widget_Helper_Form_Element_Radio('langis',

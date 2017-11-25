@@ -2,6 +2,9 @@
 <html >
     <head>
         <meta charset="utf-8" />
+        <script>
+            window.materialVersion = "<?php echo MATERIAL_VERSION; ?>"
+        </script>
 
         <!-- Title -->
         <title>
@@ -54,23 +57,11 @@
 
         <!-- Block IE -->
         <!--[if lte IE 9]>
-            <?php if (!empty($this->options->CDNURL)): ?>
-                <link rel="stylesheet" href="<?php $this->options->CDNURL() ?>/MaterialCDN/css/ie-blocker.css">
-            <?php else: ?>
-                <link rel="stylesheet" href="<?php $this->options->themeUrl('css/ie-blocker.css'); ?>">
-            <?php endif; ?>
+            <link rel="stylesheet" href="<?php thisThemeFile("css/ie-blocker.css") ?>">
             <?php if ($this->options->langis == '0'): ?>
-                <?php if (!empty($this->options->CDNURL)): ?>
-                   <script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/ie-blocker.en.js" img-path="../img/ie-blocker/"></script>
-                <?php else: ?>
-                   <script src="<?php $this->options->themeUrl('js/ie-blocker.en.js'); ?>" img-path="../img/ie-blocker/"></script>
-                <?php endif; ?>
+                <script src="<?php thisThemeFile("js/ie-blocker.en.js") ?>" img-path="../img/ie-blocker/"></script>
             <?php elseif ($this->options->langis == '1'): ?>
-                <?php if (!empty($this->options->CDNURL)): ?>
-                    <script src="<?php $this->options->CDNURL() ?>/MaterialCDN/js/ie-blocker.zhCN.js" img-path="../img/ie-blocker/"></script>
-                <?php else: ?>
-                    <script src="<?php $this->options->themeUrl('js/ie-blocker.zhCN.js'); ?>" img-path="../img/ie-blocker/"></script>
-                <?php endif; ?>
+                    <script src="<?php thisThemeFile("js/ie-blocker.zhCN.js") ?>" img-path="../img/ie-blocker/"></script>
             <?php endif; ?>
        <![endif]-->
 
@@ -83,14 +74,12 @@
 
         <?php $this->header(); ?>
 
+        <!-- Import lsloader -->
+        <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
         <!-- Material style -->
-        <?php if (!empty($this->options->CDNURL)): ?>
-            <link rel="stylesheet" type="text/css" media="all" href="<?php $this->options->CDNURL() ?>/MaterialCDN/css/material.min.css" />
-            <link rel="stylesheet" type="text/css" media="all" href="<?php $this->options->CDNURL() ?>/MaterialCDN/css/style.min.css" />
-        <?php else: ?>
-            <link rel="stylesheet" type="text/css" media="all" href="<?php $this->options->themeUrl('css/material.min.css'); ?>" />
-            <link rel="stylesheet" type="text/css" media="all" href="<?php $this->options->themeUrl('css/style.min.css'); ?>" />
-        <?php endif; ?>
+        <link rel="stylesheet" type="text/css" media="all" href="<?php thisThemeFile("css/material.min.css") ?>" />
+        <link rel="stylesheet" type="text/css" media="all" href="<?php thisThemeFile("css/style.min.css") ?>" />
 
        <?php if ($this->options->RobotoSource == '0'): ?>
             <link href='https://fonts.proxy.ustclug.org/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
@@ -100,39 +89,21 @@
             <link href="https://fonts.cat.net/icon?family=Material+Icons" rel="stylesheet">
         <?php elseif ($this->options->RobotoSource == '2'): ?>
         <style>
-            <?php if (!empty($this->options->CDNURL)): ?>
-                @font-face {
-                    font-family: Roboto;
-                    src: url('<?php $this->options->CDNURL()?>/MaterialCDN/fonts/Roboto.ttf');
-                }
-                @font-face {
-                    font-family: Roboto;
-                    font-weight: 700;
-                    src: url('<?php $this->options->CDNURL()?>/MaterialCDN/fonts/Roboto-700.ttf');
-                }
-                @font-face {
-                     font-family: 'Material Icons';
-                     font-style: normal;
-                     font-weight: 400;
-                     src: url('<?php $this->options->CDNURL()?>/MaterialCDN/fonts/MaterialIcons-Regular.ttf');
-                }
-            <?php else: ?>
-                @font-face {
-                    font-family: Roboto;
-                    src: url('<?php $this->options->themeUrl('fonts/Roboto.ttf'); ?>');
-                }
-                @font-face {
-                    font-family: Roboto;
-                    font-weight: 700;
-                    src: url('<?php $this->options->themeUrl('fonts/Roboto-700.ttf'); ?>');
-                }
-                @font-face {
-                     font-family: 'Material Icons';
-                     font-style: normal;
-                     font-weight: 400;
-                     src: url('<?php $this->options->themeUrl('fonts/MaterialIcons-Regular.ttf'); ?>');
-                }
-            <?php endif; ?>
+            @font-face {
+                font-family: Roboto;
+                src: url('<?php thisThemeFile('fonts/Roboto.ttf'); ?>');
+            }
+            @font-face {
+                font-family: Roboto;
+                font-weight: 700;
+                src: url('<?php thisThemeFile('fonts/Roboto-700.ttf'); ?>');
+            }
+            @font-face {
+                font-family: 'Material Icons';
+                font-style: normal;
+                font-weight: 400;
+                src: url('<?php thisThemeFile('fonts/MaterialIcons-Regular.ttf'); ?>');
+            }
         </style>
        <?php elseif ($this->options->RobotoSource == '3'): ?>
        <?php endif; ?>
@@ -362,17 +333,11 @@
                     <?php if (!empty($this->options->bgcolor)): ?>
                         background-image: url(<?php $this->options->bgcolor() ?>);
                     <?php else: ?>
-                        <?php if (!empty($this->options->CDNURL)): ?>
-                            background-image: url(<?php $this->options->CDNURL() ?>/MaterialCDN/img/bg.png);
-                        <?php else: ?>
-                            background-image: url(<?php $this->options->themeUrl('img/bg.png'); ?>);
-                        <?php endif; ?>
+                        background-image: url(<?php thisThemeFile('img/bg.png'); ?>);
                     <?php endif; ?>
                 }
             </style>
         <?php endif; ?>
-
-
 
         <!-- Fade Effect -->
         <?php if (!empty($this->options->switch) && in_array('ShowLoadingLine', $this->options->switch)): ?>

@@ -9,11 +9,7 @@
     <?php if (!empty($this->options->sidebarheader)): ?>
     <div class="sidebar-header header-cover" style="background-image: url(<?php $this->options->sidebarheader() ?>);">
     <?php else: ?>
-    <?php if (!empty($this->options->CDNURL)): ?>
-    <div class="sidebar-header header-cover" style="background-image: url(<?php $this->options->CDNURL() ?>/MaterialCDN/img/sidebarheader.jpg); ?>);">
-        <?php else: ?>
-        <div class="sidebar-header header-cover" style="background-image: url(<?php $this->options->themeUrl('img/sidebarheader.jpg'); ?>);">
-            <?php endif; ?>
+        <div class="sidebar-header header-cover" style="background-image: url(<?php thisThemeFile('img/sidebarheader.jpg'); ?>);">
     <?php endif; ?>
             <!-- Top bar -->
             <!--<div class="top-bar"></div>-->
@@ -29,11 +25,7 @@
                 <?php if (!empty($this->options->logo)): ?>
                 <img src="<?php $this->options->logo() ?>">
                 <?php else: ?>
-                <?php if (!empty($this->options->CDNURL)): ?>
-                <img src="<?php $this->options->CDNURL() ?>/MaterialCDN/img/avatar.png">
-                <?php else: ?>
-                <img src="<?php $this->options->themeUrl('img/avatar.png') ?>">
-                <?php endif; ?>
+                <img src="<?php thisThemeFile('img/avatar.png') ?>">
                 <?php endif; ?>
                 <?php endif; ?>
             </div>
