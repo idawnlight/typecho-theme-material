@@ -1,6 +1,6 @@
 <?php
 
-define("MATERIAL_VERSION", "3.1.2");
+define("MATERIAL_VERSION", "3.2.0-preview-1");
 
 require_once("lib/UACheck.php");
 require_once("lib/pangu.php");
