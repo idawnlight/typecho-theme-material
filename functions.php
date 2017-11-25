@@ -388,7 +388,7 @@ function showThumbnail($widget)
     //If article no include picture, display random default picture
     $rand = rand(1, $widget->widget('Widget_Options')->RandomPicAmnt); //Random number
 
-    $random = getThemeFile('/img/random/material-' . $rand . '.png');
+    $random = getThemeFile('img/random/material-' . $rand . '.png');
     
 
 
@@ -419,7 +419,7 @@ function randomThumbnail($widget)
     //If article no include picture, display random default picture
     $rand = rand(1, $widget->widget('Widget_Options')->RandomPicAmnt); //Random number
 
-    $random = getThemeFile('/img/random/material-' . $rand . '.png');
+    $random = getThemeFile('img/random/material-' . $rand . '.png');
 
     echo $random;
 }
