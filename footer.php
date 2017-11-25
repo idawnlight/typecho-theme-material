@@ -144,18 +144,11 @@
 <?php jsLsload("jq_js", "js/jquery.min.js") ?>
 <?php jsLsload("js_js", "js/js.min.js") ?>
 <?php jsLsload("lazyload_js", "js/lazyload.min.js") ?>
-<!--
-<script src="<?php thisThemeFile('js/jquery.min.js'); ?>"></script>
-<script src="<?php thisThemeFile('js/js.min.js'); ?>"></script>
-<script src="<?php thisThemeFile('js/jquery.pjax.min.js'); ?>"></script>
-<script src="<?php thisThemeFile('js/lazyload.min.js'); ?>"></script>
--->
 
 <script type="text/ls-javascript" id="lazy-load">
     // Offer LazyLoad
     queue.offer(function(){
         $('.lazy').lazyload({
-            threshold :200,
             effect : 'show'
         });
     });
