@@ -167,7 +167,7 @@ $this->need('header.php');?>
 
                                 <!-- Article link & title -->
                                 <?php if ($this->options->ThumbnailOption == '1'): ?>
-                                <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50 lazy " data-original="<?php showThumbnail($this); ?>")">
+                                <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50 lazy " data-original="<?php showThumbnail($this); ?>">
                                     <p class="article-headline-p"><a href="<?php $this->permalink() ?>" target="_self"><?php $this->title() ?></a></p>
                                 </div>
                                 <?php elseif ($this->options->ThumbnailOption == '2'): ?>
@@ -179,7 +179,7 @@ $this->need('header.php');?>
                                     </p>
                                 </div>
                                 <?php elseif ($this->options->ThumbnailOption == '3'): ?>
-                                <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50 lazy " data-original="<?php randomThumbnail($this); ?>")">
+                                <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50 lazy " data-original="<?php randomThumbnail($this); ?>">
                                     <p class="article-headline-p"><a href="<?php $this->permalink() ?>" target="_self"><?php $this->title() ?></a></p>
                                 </div>
                                 <?php endif; ?>
