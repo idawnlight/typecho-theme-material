@@ -4,6 +4,7 @@ define("MATERIAL_VERSION", "3.2.0-preview-1");
 
 require_once("lib/UACheck.php");
 require_once("lib/pangu.php");
+require_once("lib/themeoptions.php");
 
 error_reporting(0);
 
@@ -106,38 +107,356 @@ function themeFields($layout) {
 }
 function themeConfig($form)
 {
-    echo '<p style="font-size:14px;" id="use-intro">
-    <span style="display: block;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    font-size: 16px;">感谢您使用 Material 主题</span>
-    <span style="margin-bottom:10px;display:block">请关注 <a href="https://github.com/LiMingYuGuang/typecho-theme-material" target="_blank" style="color:#3384da;font-weight:bold;text-decoration:underline">Github-Material</a> 以获得<span style="color:#df3827;font-weight:bold;">最新版本支持</span></span>
-    <a href="mailto:i@lim-light.com" >帮助&支持</a> &nbsp;
-    <a href="https://github.com/LiMingYuGuang/typecho-theme-material/issues" target="_blank">建议&反馈</a>
-    </p>';
 
-    echo '当前版本 ' . MATERIAL_VERSION . '<span id="update"></span><script type="text/javascript" src="https://api.lim-light.com/update/material.php?version=' . MATERIAL_VERSION . '&encode=js-html&front=，" async defer></script>';
+    $tools = new themeOptions;
     
-    $munu = '
-    <ul class="typecho-option" id="typecho-option-item-switch-0">
-    <li>
-        <label class="typecho-label" style="font-size: large">快速跳转</label>
-    </li>
-    <li>
-        <span class="multiline">
-        - <a href="#function">功能设定</a>
-    </span>
-    </li>
-    <li>
-        <span class="multiline">
-        - <a href="#style">样式设定</a>
-        </span>
-    </li>
-    </ul>
-    ';
+    echo "
+    <style>
+        body{
+            background-color:#F5F5F5;
+        }
+        @media screen and (min-device-width: 1024px) {
+            ::-webkit-scrollbar-track {
+            	background-color: rgba(255,255,255,0);
+            }
+            ::-webkit-scrollbar {
+            	width: 6px;
+            	background-color: rgba(255,255,255,0);
+            }
+            ::-webkit-scrollbar-thumb {
+                border-radius: 3px;
+            	background-color: rgba(193,193,193,1);
+            }
+        }
+        .typecho-head-nav{
+            background-color:#673AB7;
+        }
+        #typecho-nav-list .parent a:hover, #typecho-nav-list .focus .parent a, #typecho-nav-list .root:hover .parent a{
+            background: RGBA(255, 255, 255, 0);
+        }
+        #typecho-nav-list{
+            display: none;
+        }
+        .typecho-head-nav .operate a{
+            border:0;
+            color:rgba(255,255,255,.6);
+        }
+        .typecho-head-nav .operate a:hover,
+        .typecho-head-nav .operate a:focus{
+            color:rgba(255,255,255,.8);
+            background-color:#673AB7;
+            outline:none;
+        }
+        .body.container{
+            min-width: 100% !important;
+            padding:0px;
+        }
+        .row {
+            margin:0px;
+        }
+        .col-mb-12{
+            padding:0 !important;
+        }
+        .typecho-page-title{
+            height:100px;
+            padding: 10px 40px 20px 40px;
+            background-color:#673AB7;
+            color:#FFF;
+            font-size: 24px;
+        }
+        .typecho-option-tabs{
+            padding: 0;
+            margin: 0;
+            height: 60px;
+            background-color: #512DA8;
+            margin-bottom: 40px !important;
+            padding-left:25px;
+        }
+        .typecho-option-tabs li{
+            margin: 0;
+            border: none;
+            float: left;
+            position: relative;
+            display: block;
+            text-align: center;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .typecho-option-tabs a{
+            height:auto;
+            border:0;
+            color: rgba(255,255,255,.6);
+            background-color:rgba(255,255,255,0) !important;
+            padding: 17px 24px;
+        }
+        .typecho-option-tabs a:hover{
+            color:rgba(255,255,255,.8);
+        }
+        .message{
+            background-color:#673AB7 !important;
+            color:#fff;
+        }
+        .success{
+            background-color:#673AB7;
+            color:#fff;
+        }
+        .current{
+            background-color: #FFF;
+            height: 4px;
+            padding:0 !important;
+            bottom:0px;
+        }
+        .current a{
+            color:#FFF;
+        }
+        input[type=text],
+        textarea{
+            border: none;
+            border-bottom: 1px solid rgba(0,0,0,.60);
+            outline:none;
+            border-radius:0;
+        }
+        .typecho-option span{
+            margin-right:0;
+        }
+        .typecho-option-submit{
+            position: fixed;
+            right: 32px;
+            bottom: 32px;
+        }
+        .typecho-option-submit button{
+            float:right;
+            background: #00BCD4;
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+            color: #FFF;
+        }
+        .typecho-page-main .typecho-option textarea{
+            height:149px;
+        }
+        .typecho-option label.typecho-label{
+            font-weight: 500;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            font-size: 16px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+        }
+        #use-intro{
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+            background-color: #fff;
+            margin: 8px;
+            padding: 8px;
+            padding-left:20px;
+            margin-bottom: 40px;
+        }
+        .typecho-foot{
+            padding: 16px 40px;
+            color: rgb(158, 158, 158);
+            margin-top: 80px;
+        }
+        form, botton{
+            display: none
+        }
+    </style>
+    ";
 
-    echo "<br>" . $munu;
+    echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zdhxiong/mdui@0.3.0/dist/css/mdui.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/zdhxiong/mdui@0.3.0/dist/js/mdui.min.js"></script>';
 
+    echo "<script>mdui.JQ(function () { $('form:eq(0)').attr('action', $('form:eq(1)').attr('action')); });</script>";
+
+    echo '<form action="" method="post" enctype="application/x-www-form-urlencoded" style="display: block!important">
+    <div class="mdui-panel" mdui-panel>
+      <div class="mdui-panel-item mdui-panel-item-open">
+        <div class="mdui-panel-item-header">介绍</div>
+        <div class="mdui-panel-item-body">';
+
+    echo '<p style="font-size:14px;">
+        <span style="display: block;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-size: 16px;">感谢您使用 Material 主题</span>
+        <span style="margin-bottom:10px;display:block">请关注 <a href="https://github.com/LiMingYuGuang/typecho-theme-material" target="_blank" style="color:#3384da;font-weight:bold;text-decoration:underline">Github-Material</a> 以获得<span style="color:#df3827;font-weight:bold;">最新版本支持</span></span>
+        <a href="mailto:i@lim-light.com" >帮助&支持</a> &nbsp;
+        <a href="https://github.com/LiMingYuGuang/typecho-theme-material/issues" target="_blank">建议&反馈</a><br><br>';
+    echo '当前版本 ' . MATERIAL_VERSION . '<span id="update"></span><script type="text/javascript" src="https://api.lim-light.com/update/material.php?version=' . MATERIAL_VERSION . '&encode=js-html&front=，" async defer></script>';
+    echo '</p>';
+
+    echo '</div>
+      </div>
+      <div class="mdui-panel-item">
+        <div class="mdui-panel-item-header">功能设定</div>
+        <div class="mdui-panel-item-body">';
+    
+    $tools->checkbox("功能开关",
+    array(
+        'ShowPixiv' => '侧边栏显示 mokeyjay 的 pixiv 挂件',
+        'SmoothScroll' => '平滑滚动效果',
+        'ShowLoadingLine' => '顶部 loading 加载进度条效果',
+        'atargetblank' => '链接以新标签页形式打开',
+        'Pangu' => '引用 Pangu.js 实现中英文间自动添加空格',
+        'PanguPHP' => '引用 Pangu.PHP 后端实现中英文间自动添加空格',
+        'HighLight' => '引用 highlight.js 实现代码高亮'
+    ), "switch");
+
+    $tools->radio("文章评论",
+    array(
+        0 => "原生评论"
+    ), "commentis");
+
+    $tools->radio("搜索设置",
+    array(
+        0 => "Typecho 原生搜索",
+        1 => "本地搜索（即时搜索）"
+    ), "searchis", "需要手动创建索引页（独立页面模板->文章索引）");
+
+    $tools->input("本地搜索索引页链接", "LocalsearchURL", "仅在启用即时搜索时需要填写");
+
+    $tools->radio("功能开关",
+    array(
+        0 => '不启用 CDN',
+        1 => 'jsDelivr',
+        2 => '自定义'
+    ), "CDNType", "推荐使用 jsDelivr");
+
+    $tools->input("CDN 地址", "CDNURL", "仅在使用自定义 CDN 时需要填写<br>创建一个文件夹，把 <b>css, fonts, img, js</b> 文件夹放进去，上传到到你的 CDN 储存空间根目录下<br />
+    填入你的 CDN 地址, 如 <b>https://cdn.example.com/MaterialCDN</b> / <b>https://root.example.com</b>");
+
+    $tools->radio("界面语言设置",
+    array(
+        0 => 'English',
+        1 => '简体中文'
+    ), "langis", "默认使用简体中文");
+
+    $tools->checkbox("页脚 SNS 图标按钮显示设置",
+    array(
+        'ShowBilibili' => '哔哩哔哩 &emsp;',
+        'ShowWeibo' => '新浪微博 &emsp;',
+        'ShowZhihu' => '知乎 &emsp;<br />',            
+        'ShowTwitter' => 'Twitter &emsp;',
+        'ShowV2EX' => 'V2EX &emsp;',
+        'ShowFacebook' => 'Facebook &emsp;',
+        'ShowGooglePlus' => 'Google+ &emsp;<br />',
+        'ShowInstagram' => 'Instagram&emsp;',
+        'ShowGithub' => 'Github &emsp;',
+        'ShowTumblr' => 'Tumblr &emsp;<br />',
+        'ShowTelegram' => 'Telegram &emsp;',
+        'ShowLinkedin' => 'Linkedin &emsp;',
+    ), "footersns", "开启后, 按钮显示于博客页脚位置");
+
+    $tools->multiInput("SNS 地址",
+    array(
+        "BilibiliURL" => "哔哩哔哩 地址",
+		"WeiboURL" => "新浪微博 地址",
+		"ZhihuURL" => "知乎 地址",
+		"TwitterURL" => "Twitter 地址",
+		"V2EXURL" => "V2EX 地址",
+		"FacebookURL" => "Facebook 地址",
+		"GooglePlusURL" => "Google+ 地址",
+		"InstagramURL" => "Instagram 地址",
+		"GithubURL" => "Github 地址",
+		"TumblrURL" => "Tumblr 地址",
+		"TelegramURL" => "Telegram 地址",
+		"LinkedinURL" => "Linkedin 地址"
+    ));
+
+    $tools->radio("Roboto 字体使用来源",
+    array(
+        0 => "调用 Google fonts (使用 https://lug.ustc.edu.cn 中科大 https 镜像加速)",
+        1 => "调用 Google fonts (使用 https://fonts.cat.net 镜像加速)",
+        2 => "调用主题文件夹自带的 Roboto （或 CDN 中）",
+        3 => "使用自定义字体源 (在\"网站统计代码 + 自定义字体源\"填入)"
+    ), "RobotoSource");
+
+    $tools->textarea("网站统计代码 + 自定义字体源", "analysis", "填入如 Google Analysis 的第三方统计代码或字体源<br>Tip：位于页尾");
+
+    echo '</div></div>
+    <div class="mdui-panel-item">
+    <div class="mdui-panel-item-header">外观设置</div>
+    <div class="mdui-panel-item-body">';
+
+	$tools->input('Loading 加载进度条颜色', 'loadingcolor', '打开 "功能开关" 中的 loading 加载进度条后, 在这里设置进度条的颜色');
+
+	$tools->input('Loading 加载缓冲时间', 'loadingbuffer', 'loading 加载进度条的缓冲时间, 单位为毫秒 ms, 默认为 800ms');
+
+    $tools->radio("背景设置",
+    array(
+        0 => '纯色背景 &emsp;',
+        1 => '图片背景 &emsp;',
+        2 => '渐变背景 &emsp;'
+    ), "BGtype", "选择背景方案, 对应填写下方的 '<b>背景颜色 / 图片</b>' 或选择 '<b>渐变样式</b>'");
+
+    $tools->input("背景颜色 / 图片", "bgcolor", "背景设置如果选择纯色背景, 这里就填写颜色代码; <br />背景设置如果选择图片背景, 这里就填写图片地址;<br />
+    不填写则默认显示 #F5F5F5 或主题文件夹下的 /img/bg.jpg");
+
+    $tools->radio("渐变样式",
+    array(
+        0 => 'Aerinite',
+        1 => 'Ethereal',
+        2 => 'Patrichor',
+        3 => 'Komorebi',
+        4 => 'Crepuscular',
+        5 => 'Autumn',
+        6 => 'Shore',
+        7 => 'Horizon',
+        8 => 'Green Beach',
+        9 => 'Virgin'
+    ), "GradientType", "背景设置如果选择渐变背景, 在这里选择想要的渐变样式<br>至于这些是什么意思，你去问 viosey 啊");
+
+    $tools->radio("缩略图显示效果",
+    array(
+        0 => "显示文章内第一张图片 (若无图片则显示随机图)",
+        1 => "只显示纯色",
+        2 => "只显示随机图片"
+    ), "ThumbnailOption");
+    
+    $tools->input("缩略图为纯色时的颜色", "TitleColor", "填入颜色代码");
+
+    $tools->input("随机缩略图数量", "RandomPicAmnt", "img/random 图片的数量");
+
+    $tools->input("主题颜色", "ThemeColor");
+
+    $tools->input("超链接颜色", "alinkcolor");
+
+    $tools->input("Android Chrome 地址栏颜色", "ChromeThemeColor");
+
+    $tools->input("按钮颜色", "ButtonThemeColor");
+
+    $tools->input("卡片阴影", "CardElevation", "默认为 2");
+
+    $tools->input("评论框行数", "CommentRows", "默认为 1");
+
+    $tools->input("个人头像地址", "avatarURL", "填入头像的地址, 如不填写则使用默认头像");    
+
+    $tools->input("favicon 地址", "favicon", "填入博客 favicon 的地址, 默认则不显示");
+
+    $tools->input("侧边栏顶部图片", "sidebarheader", "填入图片地址, 如不填写则使用默认图片");
+
+    $tools->input("首页顶部左边的图片地址", "dailypic", "填入图片地址, 图片显示在首页顶部左边位置");
+
+    $tools->input("首页顶部右边 LOGO 图片地址", "logo", "填入 LOGO 地址, 图片将显示于首页右上角板块");
+
+    $tools->radio("首页顶部右边 LOGO 图片地址大小",
+    array(
+        0 => "标准",
+        1 => "更大"
+    ), "logosize");
+
+    $tools->input("首页顶部左边图片的点击跳转地址", "dailypicLink", "点击图片后, 想要跳转网页的地址");
+
+    $tools->input("首页顶部右边 LOGO 的点击跳转地址", "logoLink", "点击 LOGO 后, 想要跳转网页的地址");
+
+    $tools->input("首页顶部左边的标语", "slogan", "填入自定义文字, 显示于首页顶部左边的图片上");
+
+
+    echo '</div></div></div>
+      
+    <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-deep-purple-accent" style="display: block!important; position: fixed; right: 32px; bottom: 32px;">保存</button>
+    </form>';
+
+
+    
     $switch = new Typecho_Widget_Helper_Form_Element_Checkbox('switch',
     array(
         'ShowPixiv' => _t('侧边栏显示 mokeyjay 的 pixiv 挂件'),
