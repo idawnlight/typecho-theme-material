@@ -313,7 +313,7 @@ function themeConfig($form)
 
     $tools->input("本地搜索索引页链接", "LocalsearchURL", "仅在启用即时搜索时需要填写");
 
-    $tools->radio("功能开关",
+    $tools->radio("CDN 类型",
     array(
         0 => '不启用 CDN',
         1 => 'jsDelivr',
