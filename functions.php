@@ -38,12 +38,14 @@ function getThemeFile($uri)
 {
     $options = Helper::options();
     $themeOptions = getThemeOptions();
-    if ($themeOptions["CDNType"] == 0)
-        return $options->index . __TYPECHO_THEME_DIR__ . "/" . getTheme() . "/" . $uri;
-    elseif ($themeOptions["CDNType"] == 1)
+    if ($themeOptions["CDNType"] == 1) {
         return "https://cdn.jsdelivr.net/gh/LiMingYuGuang/typecho-theme-material@" . MATERIAL_VERSION . "/" . $uri;
-    else
+    } elseif ($themeOptions["CDNType"] == 2) {
         return $themeOptions["CDNURL"] . "/" . $uri;
+    } else {
+        $site = substr($options->siteUrl, 0, strlen($options->siteUrl) - 1);
+        return $site . __TYPECHO_THEME_DIR__ . "/" . getTheme() . "/" . $uri;
+    }
 }
 
 function thisThemeFile($uri)
