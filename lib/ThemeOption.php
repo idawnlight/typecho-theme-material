@@ -338,7 +338,7 @@ function themeConfig($form)
 
     $tools->input("首页顶部右边 LOGO 图片地址", "logo", "填入 LOGO 地址, 图片将显示于首页右上角板块");
 
-    $tools->radio("首页顶部右边 LOGO 图片地址大小",
+    $tools->radio("首页顶部右边 LOGO 图片大小",
     array(
         0 => "标准",
         1 => "更大"
