@@ -88,14 +88,10 @@ function themeInit($archive)
         $archive->content = preg_replace('#<img(.*?) src="(.*?)" (.*?)>#',
         '<img$1 data-original="$2" class="lazy" $3>', $archive->content);
     }
-    preg_match('#<li>(.*?)<p>(.*?)</p>(.*?)</li>#', $archive->content, $matches);
     $options = Helper::options();
     if ($options->version === "1.1/17.10.30") {
-        while (isset($matches[1])) {
-            $archive->content = preg_replace('#<li>(.*?)<p>(.*?)</p>(.*?)</li>#',
-        '<li>$1$2$3</li>', $archive->content);
-            preg_match('#<li>(.*?)<p>(.*?)</p>(.*?)</li>#', $archive->content, $matches);
-        }
+        $archive->content = preg_replace('#<li><p>(.*?)</p>(.*?)</li>#',
+        '<li>$1$2</li>', $archive->content);
     }
 }
 
