@@ -19,10 +19,8 @@
 
                     <!-- Articel content -->
                     <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
-                        <br>
-                        <h1>404 - Not Found</h1>
-                        <h3>The requested resource is not available</h3>
-                        <br><br>
+                        <h1 style="margin-top: 25px!important;">404 - Not Found</h1>
+                        <h3 style="padding-bottom: 20px;">The requested resource is not available</h3>
                     </div>
 
                 </div>
