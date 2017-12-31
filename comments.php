@@ -19,7 +19,7 @@
 
         <!-- Comment avatar -->
         <div id="comment__avatar">
-            <?php $comments->gravatar(52); ?>
+            <?php $comments->gravatar(52, "identicon"); ?>
         </div>
 
         <!-- Comment author -->
