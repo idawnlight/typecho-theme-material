@@ -14,6 +14,13 @@
 
         <!-- dns prefetch -->
         <meta http-equiv="x-dns-prefetch-control" content="on">
+        <?php 
+        if ($this->options->DNSPrefetch !== "") {
+            foreach (explode("\n", $this->options->DNSPrefetch) as $domain) {
+                echo '<link rel="dns-prefetch" href="' . $domain . '">' . "\n";
+            }
+        }
+        ?>
 
         <!-- Meta & Info -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />

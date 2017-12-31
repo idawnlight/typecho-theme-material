@@ -272,7 +272,9 @@ function themeConfig($form)
 
     $tools->textarea("网站统计代码 + 自定义字体源", "analysis", "填入如 Google Analysis 的第三方统计代码或字体源<br>Tip：位于页尾");
 
-    $tools->textarea("文章底部 Adsense", "adsense", "填入 Google Adsense 的广告代码");    
+    $tools->textarea("文章底部 Adsense", "adsense", "填入 Google Adsense 的广告代码");
+
+    $tools->textarea("DNS 预加载", "DNSPrefetch", "一行一个，如 <b>//dns.example.com</b>");   
 
     echo '</div></div>
     <div class="mdui-panel-item">
@@ -499,6 +501,9 @@ function themeConfig($form)
 
     $adsense = new Typecho_Widget_Helper_Form_Element_Textarea('adsense', null, null, _t('文章底部 Adsense'), _t('填入 Google Adsense 广告代码'));
     $form->addInput($adsense);
+
+    $DNSPrefetch = new Typecho_Widget_Helper_Form_Element_Textarea('DNSPrefetch', null, null, _t('DNS 预加载'), _t('一行一个，如 <b>//dns.example.com</b>'));
+    $form->addInput($DNSPrefetch);
 
     $loadingcolor = new Typecho_Widget_Helper_Form_Element_Text('loadingcolor', null, _t('#29d'), _t('<br><span style="font-size: large" id="style"><strong>样式设定</strong></span><br><br>loading 加载进度条颜色'), _t('打开 "功能开关" 中的 loading 加载进度条后, 在这里设置进度条的颜色'));
     $form->addInput($loadingcolor);
