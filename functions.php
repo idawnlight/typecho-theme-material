@@ -41,7 +41,7 @@ function getThemeFile($uri)
     $options = Helper::options();
     $themeOptions = getThemeOptions();
     if ($themeOptions["CDNType"] == 1) {
-        return "https://cdn.jsdelivr.net/gh/LiMingYuGuang/typecho-theme-material@" . MATERIAL_VERSION . "/" . $uri;
+        return "https://cdn.jsdelivr.net/gh/idawnlight/typecho-theme-material@" . MATERIAL_VERSION . "/" . $uri;
     } elseif ($themeOptions["CDNType"] == 2) {
         return $themeOptions["CDNURL"] . "/" . $uri;
     } else {
@@ -150,7 +150,7 @@ function randomThumbnail($widget)
  */
 function copyright()
 {
-    echo '<script>console.log("\n %c © Material ' . MATERIAL_VERSION . ' | https://github.com/LiMingYuGuang/typecho-theme-material %c \n","color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;","color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;")</script>';
+    echo '<script>console.log("\n %c © Material ' . MATERIAL_VERSION . ' | https://github.com/idawnlight/typecho-theme-material %c \n","color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;","color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;")</script>';
 }
 
 /**

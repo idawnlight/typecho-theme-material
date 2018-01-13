@@ -178,9 +178,9 @@ function themeConfig($form)
         margin-bottom: 10px;
         margin-top: 10px;
         font-size: 16px;">感谢您使用 Material 主题</span>
-        <span style="margin-bottom:10px;display:block">请关注 <a href="https://github.com/LiMingYuGuang/typecho-theme-material" target="_blank" style="color:#3384da;font-weight:bold;text-decoration:underline">Github-Material</a> 以获得<span style="color:#df3827;font-weight:bold;">最新版本支持</span></span>
+        <span style="margin-bottom:10px;display:block">请关注 <a href="https://github.com/idawnlight/typecho-theme-material" target="_blank" style="color:#3384da;font-weight:bold;text-decoration:underline">Github-Material</a> 以获得<span style="color:#df3827;font-weight:bold;">最新版本支持</span></span>
         <a href="mailto:i@lim-light.com" >帮助&支持</a> &nbsp;
-        <a href="https://github.com/LiMingYuGuang/typecho-theme-material/issues" target="_blank">建议&反馈</a><br><br>';
+        <a href="https://github.com/idawnlight/typecho-theme-material/issues" target="_blank">建议&反馈</a><br><br>';
     echo '当前版本 ' . MATERIAL_VERSION . '<span id="update"></span><script type="text/javascript" src="https://api.lim-light.com/update/material.php?version=' . MATERIAL_VERSION . '&encode=js-html&front=，" async defer></script>';
     echo '</p>';
 

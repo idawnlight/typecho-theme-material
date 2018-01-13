@@ -152,7 +152,7 @@
                 <div class="sidebar-divider"></div>
 
         <!-- Sidebar bottom text -->
-        <a href="https://github.com/LiMingYuGuang/typecho-theme-material" target="_blank" class="sidebar-footer-text-a">
+        <a href="https://github.com/idawnlight/typecho-theme-material" target="_blank" class="sidebar-footer-text-a">
             <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
                 <?php echo tranMsg("Theme - Material", "主题 - Material", $this->options->langis) ?>
                 <span class="sidebar-badge badge-circle">i</span>

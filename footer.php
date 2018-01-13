@@ -120,7 +120,7 @@
             <div class="mdl-mini-footer--right-section">
                 <div>
                     <div class="footer-develop-div">Powered by <a href="http://typecho.org" target="_blank" class="footer-develop-a">Typecho</a></div>
-                    <div class="footer-develop-div">Theme - <a href="https://github.com/LiMingYuGuang/typecho-theme-material" target="_blank" class="footer-develop-a">Material</a></div>                </div>
+                    <div class="footer-develop-div">Theme - <a href="https://github.com/idawnlight/typecho-theme-material" target="_blank" class="footer-develop-a">Material</a></div>                </div>
             </div>
         </footer>
     </main>
