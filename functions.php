@@ -84,7 +84,7 @@ function getThemeOptions()
 
 function themeInit($archive)
 {
-    if ($archive->is('post') || $archive->is('page')) {
+    if (($archive->is('post') || $archive->is('page')) && in_array("Lazyload", getThemeOptions()["switch"])) {
         $archive->content = preg_replace('#<img(.*?) src="(.*?)" (.*?)>#',
         '<img$1 data-original="$2" class="lazy" $3>', $archive->content);
     }

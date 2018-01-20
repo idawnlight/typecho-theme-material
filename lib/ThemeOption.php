@@ -201,7 +201,8 @@ function themeConfig($form)
         'atargetblank' => '链接以新标签页形式打开',
         'Pangu' => '引用 Pangu.js 实现中英文间自动添加空格',
         'PanguPHP' => '引用 Pangu.PHP 后端实现中英文间自动添加空格',
-        'HighLight' => '引用 highlight.js 实现代码高亮'
+        'HighLight' => '引用 highlight.js 实现代码高亮',
+        'Lazyload' => '图片延迟加载（文章内）'
     ), "switch");
 
     $tools->radio("文章评论",
@@ -373,7 +374,8 @@ function themeConfig($form)
         'atargetblank' => _t('链接以新标签页形式打开'),
         'Pangu' => _t('引用 Pangu.js 实现中英文间自动添加空格'),
         'PanguPHP' => _t('引用 Pangu.PHP 后端实现中英文间自动添加空格'),
-        'HighLight' => _t('引用 highlight.js 实现代码高亮')
+        'HighLight' => _t('引用 highlight.js 实现代码高亮'),
+        'Lazyload' => _t('图片延迟加载（文章内）')
     ),
 
     //Default choose
