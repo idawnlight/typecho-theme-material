@@ -197,7 +197,6 @@ function pangu($html_source)
  * @param string post content
  * @return string content
  * TODO: 更改实现方式
- * TODO: 平滑跳转
  */
 function toc($content)
 {
@@ -221,34 +220,40 @@ function toc($content)
             }
             if ($i > 0 && $flag == 2) {
                 $i2 = 0;
-                $toc .= "</li></ol></li>";
+                $toc .= "</ol></li>";
             }
             $flag = 1;
             $toc .= '<li class="post-toc-item post-toc-level-1">';
         }
-        if (strtolower(substr($c, 0, 4)) == '<h2>' && $i !== 0 && $flag == 1) {
+        if (strtolower(substr($c, 0, 4)) == '<h2>' && $i !== 0) {
             if ($i > 0 && $flag == 1) {
                 $toc .= '<ol class="post-toc-child">';
-                $toc .= '<li class="post-toc-item post-toc-level-2">';
             }
             $i2++;
             $flag = 2;
         }
-        $toc .= '<a class="post-toc-link" href="#' . filter_var(substr($c, 4, strlen($c) - 4 - 5), FILTER_SANITIZE_ENCODED) . '"><span class="post-toc-number">';
+        if ($flag == 2) $toc .= '<li class="post-toc-item post-toc-level-2">';
+        $toc .= '<a class="post-toc-link" href="#' . substr($c, 4, strlen($c) - 4 - 5) . '"><span class="post-toc-number">';
         if ($flag == 1) $toc .= $i;
         if ($flag == 2) $toc .= $i . "." . $i2;
         $toc .= '.</span><span class="post-toc-text">' . substr($c, 4, strlen($c) - 4 - 5) . '</span></a>';
+        if ($flag == 2) $toc .= '</li>';
 
-        $result .= strtolower(substr($c, 0, 3)) . ' id="' . filter_var(substr($c, 4, strlen($c) - 4 - 5), FILTER_SANITIZE_ENCODED) . '">' . substr($c, 4, strlen($c) - 4);
+        $result .= strtolower(substr($c, 0, 3)) . ' id="' . substr($c, 4, strlen($c) - 4 - 5) . '">' . substr($c, 4, strlen($c) - 4);
     }
 
     if ($i > 0 && $flag == 1) {
         $toc .= '</li>';
     }
     if ($i > 0 && $flag == 2) {
-        $toc .= "</li></ol></li>";
+        $toc .= "</ol></li>";
     }
     $toc .= '</ol><!--</nopangu>-->';
+
+    if ($i == 0) {
+        echo '&nbsp;此文章暂无目录';
+        return $content;
+    }
 
     echo $toc;
     return $result;
