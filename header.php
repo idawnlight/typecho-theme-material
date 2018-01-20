@@ -168,6 +168,10 @@
             text-decoration: underline;
         }
 
+        .mdl-menu__container {
+            position: fixed
+        }
+
     </style>
 
 

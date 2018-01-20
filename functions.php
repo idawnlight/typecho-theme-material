@@ -170,7 +170,8 @@ function tranMsg($eng, $chs, $l)
  * @param string html_source
  * @return string 处理完的 html_source
  */
-function pangu($html_source) {
+function pangu($html_source)
+{
     $chunks = preg_split('/(<!--<nopangu>-->.*?<!--<\/nopangu>-->|<nopangu>.*?<\/nopangu>|<pre.*?\/pre>|<textarea.*?\/textarea>|<code.*?\/code>)/msi', $html_source, -1, PREG_SPLIT_DELIM_CAPTURE);
     $result = '';
     foreach ($chunks as $c) {
@@ -188,5 +189,67 @@ function pangu($html_source) {
         }
         $result .= doPangu($c);
     }
+    return $result;
+}
+
+/**
+ * 仿 Hexo 的 TOC 实现
+ * @param string post content
+ * @return string content
+ * TODO: 更改实现方式
+ * TODO: 平滑跳转
+ */
+function toc($content)
+{
+    $chunks = preg_split('/(<h[1-2].*?\/h[1-2]>)/msi', $content, -1, PREG_SPLIT_DELIM_CAPTURE);
+
+    $toc = '<!--<nopangu>--><ol class="post-toc">';
+    $i = 0;
+    $i2 = 0;
+    $flag = 0;
+    $result = '';
+
+    foreach ($chunks as $c) {
+        if (strtolower(substr($c, 0, 2)) !== '<h') {
+            $result .= $c;
+            continue;
+        }
+        if (strtolower(substr($c, 0, 4)) == '<h1>') {
+            $i++;
+            if ($i > 0 && $flag == 1) {
+                $toc .= "</li>";
+            }
+            if ($i > 0 && $flag == 2) {
+                $i2 = 0;
+                $toc .= "</li></ol></li>";
+            }
+            $flag = 1;
+            $toc .= '<li class="post-toc-item post-toc-level-1">';
+        }
+        if (strtolower(substr($c, 0, 4)) == '<h2>' && $i !== 0 && $flag == 1) {
+            if ($i > 0 && $flag == 1) {
+                $toc .= '<ol class="post-toc-child">';
+                $toc .= '<li class="post-toc-item post-toc-level-2">';
+            }
+            $i2++;
+            $flag = 2;
+        }
+        $toc .= '<a class="post-toc-link" href="#' . filter_var(substr($c, 4, strlen($c) - 4 - 5), FILTER_SANITIZE_ENCODED) . '"><span class="post-toc-number">';
+        if ($flag == 1) $toc .= $i;
+        if ($flag == 2) $toc .= $i . "." . $i2;
+        $toc .= '.</span><span class="post-toc-text">' . substr($c, 4, strlen($c) - 4 - 5) . '</span></a>';
+
+        $result .= strtolower(substr($c, 0, 3)) . ' id="' . filter_var(substr($c, 4, strlen($c) - 4 - 5), FILTER_SANITIZE_ENCODED) . '">' . substr($c, 4, strlen($c) - 4);
+    }
+
+    if ($i > 0 && $flag == 1) {
+        $toc .= '</li>';
+    }
+    if ($i > 0 && $flag == 2) {
+        $toc .= "</li></ol></li>";
+    }
+    $toc .= '</ol><!--</nopangu>-->';
+
+    echo $toc;
     return $result;
 }

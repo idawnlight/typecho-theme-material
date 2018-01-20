@@ -8,6 +8,13 @@
         <button class="MD-burger-icon sidebar-toggle">
             <span class="MD-burger-layer"></span>
         </button>
+        <!-- Post TOC -->
+        <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">format_list_numbered</i>
+        </button>
+        <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll">
+            <?php $content = toc($this->content) ?>
+        </ul>
 
         <!-- Post module -->
         <div class="material-post_container">
@@ -21,7 +28,7 @@
                         </p>
                     </div>
 
-                <!-- Articli info -->
+                <!-- Article info -->
                 <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
                     <!-- Author avatar -->
                     <div id="author-avatar">
@@ -103,7 +110,7 @@
 
                 <!-- Articel content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
-                    <?php $this->content(); ?>
+                    <?php echo $content; ?>
                 </div>
 
                 <!-- Article comments -->
