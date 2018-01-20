@@ -162,8 +162,11 @@ function themeConfig($form)
     </style>
     ";
 
-    echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zdhxiong/mdui@0.3.0/dist/css/mdui.min.css">
-    <script src="https://cdn.jsdelivr.net/gh/zdhxiong/mdui@0.3.0/dist/js/mdui.min.js"></script>';
+    //echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zdhxiong/mdui@0.3.0/dist/css/mdui.min.css">
+    //<script src="https://cdn.jsdelivr.net/gh/zdhxiong/mdui@0.3.0/dist/js/mdui.min.js"></script>';
+
+    echo '<link href="https://cdn.bootcss.com/mdui/0.4.0/css/mdui.min.css" rel="stylesheet">' . 
+    '<script src="https://cdn.bootcss.com/mdui/0.4.0/js/mdui.min.js"></script>';
 
     echo "<script>mdui.JQ(function () { $('form:eq(0)').attr('action', $('form:eq(1)').attr('action')); });</script>";
 
@@ -219,10 +222,10 @@ function themeConfig($form)
         0 => '不启用 CDN',
         1 => 'jsDelivr',
         2 => '自定义'
-    ), "CDNType", "推荐使用 jsDelivr");
+    ), "CDNType", "");
 
     $tools->input("CDN 地址", "CDNURL", "仅在使用自定义 CDN 时需要填写<br>创建一个文件夹，把 <b>css, fonts, img, js</b> 文件夹放进去，上传到到你的 CDN 储存空间根目录下<br />
-    填入你的 CDN 地址, 如 <b>https://cdn.example.com/MaterialCDN</b> / <b>https://root.example.com</b>");
+    填入你的 CDN 地址, 如 <b>https://cdn.example.com/MaterialCDN</b> 或 <b>https://root.example.com</b>");
 
     $tools->radio("界面语言设置",
     array(
