@@ -108,7 +108,7 @@
         <!-- Other Styles -->
         <style>
         body, html {
-            font-family: <?php $this->options->CustomFonts() ?>;
+            font-family: <?php $this->options->CustomFonts(); ?>;
             overflow-x: hidden;
         }
 
@@ -166,6 +166,10 @@
         .post-toc a:hover {
             color: <?php $this->options->alinkcolor(); ?>;
             text-decoration: underline;
+        }
+
+        #scheme-Paradox #comment {
+            font-family: <?php $this->options->CustomFonts(); ?>;
         }
 
     </style>

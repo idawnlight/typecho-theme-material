@@ -358,6 +358,8 @@ function themeConfig($form)
 
     $tools->input("首页顶部左边的标语", "slogan", "填入自定义文字, 显示于首页顶部左边的图片上");
 
+    $tools->input("自定义字体", "CustomFonts", "主题的 font-family，通常不建议修改");
+
 
     echo '</div></div></div>
       
