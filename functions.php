@@ -71,11 +71,11 @@ function getTheme()
 
 function getThemeOptions()
 {
-    if (!isset($themeOptions)) {
+    static $themeOptions = "";
+    if ($themeOptions == "") {
         $db = Typecho_Db::get();
         $query = $db->select('value')->from('table.options')->where('name = ?', 'theme:' . getTheme()); 
         $result = $db->fetchAll($query);
-        static $themeOptions;
         $themeOptions = unserialize($result[0]["value"]);
         unset($db);
     }
