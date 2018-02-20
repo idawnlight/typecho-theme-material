@@ -126,6 +126,9 @@ function themeConfig($form)
 		"LinkedinURL" => "Linkedin 地址"
     ));
 
+    // Footer text
+    $tools->input("Footer 文字", "footer_text", '你可以在页面的 Footer 指定你想显示的文字，支持 HTML 标签；默认为空。 比如，备案号可以这样设定：<br><b>&#60;&#97;&#32;&#104;&#114;&#101;&#102;&#61;&#34;&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#119;&#119;&#119;&#46;&#109;&#105;&#105;&#116;&#98;&#101;&#105;&#97;&#110;&#46;&#103;&#111;&#118;&#46;&#99;&#110;&#34;&#32;&#114;&#101;&#108;&#61;&#34;&#110;&#111;&#102;&#111;&#108;&#108;&#111;&#119;&#34;&#62;&#26576;&#73;&#67;&#80;&#22791;&#120;&#120;&#120;&#120;&#120;&#120;&#120;&#120;&#21495;&#45;&#120;&#60;&#47;&#97;&#62;</b>');
+
     // Fonts source
     $tools->radio("Roboto 字体使用来源",
     array(
@@ -253,7 +256,7 @@ function themeConfig($form)
     </div> 
     <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-deep-purple-accent" style="display: block!important; position: fixed; right: 32px; bottom: 32px;">保存</button>
     </form>';
-    
+
 
     /**
      * Typecho Form
@@ -325,6 +328,9 @@ function themeConfig($form)
         '1', _t('界面语言设置'), _t("默认使用简体中文")
     );
     $form->addInput($langis);
+
+    $footer_text = new Typecho_Widget_Helper_Form_Element_Text('footer_text', null, null, _t("Footer 文字"), _t('你可以在页面的 Footer 指定你想显示的文字，支持 HTML 标签；默认为空。 比如，备案号可以这样设定：<br><b><a href="http://www.miitbeian.gov.cn" rel="nofollow">某ICP备xxxxxxxx号-x</a></b>'));
+    $form->addInput($footer_text);
 
     $footersns = new Typecho_Widget_Helper_Form_Element_Checkbox('footersns',
         array(
