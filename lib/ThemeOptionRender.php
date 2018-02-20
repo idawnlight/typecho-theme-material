@@ -3,7 +3,7 @@
 /**
  * Typecho MDUI 主题设置
  * @author 黎明余光 <i@emiria.moe>
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 class themeOptions {
@@ -64,7 +64,7 @@ class themeOptions {
             echo '<ul style="list-style: none!important">';
             echo '<div class="mdui-textfield">
             <label class="mdui-textfield-label">' . $name .'</label>
-            <input class="mdui-textfield-input" type="text" name="' . $type . '" value="' . $userOption . '"/>
+            <input class="mdui-textfield-input" type="text" name="' . $type . '" value="' . htmlspecialchars($userOption) . '"/>
           </div>';
         echo ($extra !== "") ? "<br>" . $extra : "";
         echo '</ul></div></div></div>';
@@ -81,7 +81,7 @@ class themeOptions {
             foreach ($types as $type => $describe) {
                 echo '<div class="mdui-textfield">
                 <label class="mdui-textfield-label">' . $describe .'</label>
-                <input class="mdui-textfield-input" type="text" name="' . $type . '" value="' . $userOptions[$type] . '"/>
+                <input class="mdui-textfield-input" type="text" name="' . $type . '" value="' . htmlspecialchars($userOptions[$type]) . '"/>
               </div>';
             }
         echo ($extra !== "") ? "<br>" . $extra : "";
