@@ -191,9 +191,9 @@ function themeConfig($form)
     // Thumbnail Option
     $tools->radio("缩略图显示效果",
     array(
-        0 => "显示文章内第一张图片 (若无图片则显示随机图)",
-        1 => "只显示纯色",
-        2 => "只显示随机图片"
+        1 => "显示文章内第一张图片 (若无图片则显示随机图)",
+        2 => "只显示纯色",
+        3 => "只显示随机图片"
     ), "ThumbnailOption");
     
     // Title color
