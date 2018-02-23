@@ -27,7 +27,7 @@ function jsLsload($name, $uri)
  * @param string name
  * @param string uri
  */
-function cssLsload($name, $uri) 
+function cssLsload($name, $uri)
 {
     $options = Helper::options();
     $md5 = md5(file_get_contents($options->themeFile(getTheme(), $uri)));
@@ -60,7 +60,7 @@ function getTheme()
 {
     if (!isset($themeIs)) {
         $db = Typecho_Db::get();
-        $query = $db->select('value')->from('table.options')->where('name = ?', 'theme'); 
+        $query = $db->select('value')->from('table.options')->where('name = ?', 'theme');
         $result = $db->fetchAll($query);
         static $themeIs;
         $themeIs = $result[0]["value"];
@@ -74,7 +74,7 @@ function getThemeOptions()
     static $themeOptions = "";
     if ($themeOptions == "") {
         $db = Typecho_Db::get();
-        $query = $db->select('value')->from('table.options')->where('name = ?', 'theme:' . getTheme()); 
+        $query = $db->select('value')->from('table.options')->where('name = ?', 'theme:' . getTheme());
         $result = $db->fetchAll($query);
         $themeOptions = unserialize($result[0]["value"]);
         unset($db);
@@ -86,12 +86,12 @@ function themeInit($archive)
 {
     if (($archive->is('post') || $archive->is('page')) && in_array("Lazyload", getThemeOptions()["switch"])) {
         $archive->content = preg_replace('#<img(.*?) src="(.*?)" (.*?)>#',
-        '<img$1 data-original="$2" class="lazy" $3>', $archive->content);
+            '<img$1 data-original="$2" class="lazy" $3>', $archive->content);
     }
     $options = Helper::options();
     if ($options->version === "1.1/17.10.30") {
         $archive->content = preg_replace('#<li><p>(.*?)</p>(.*?)</li>#',
-        '<li>$1$2</li>', $archive->content);
+            '<li>$1$2</li>', $archive->content);
     }
 }
 
@@ -110,7 +110,7 @@ function showThumbnail($widget)
     $rand = rand(1, $widget->widget('Widget_Options')->RandomPicAmnt); //Random number
 
     $random = getThemeFile('img/random/material-' . $rand . '.png');
-    
+
 
 
     // If only one random default picture, delete the following "//"
@@ -162,7 +162,7 @@ function copyright()
  */
 function tranMsg($eng, $chs, $l)
 {
-  return ($l == "0") ? $eng : $chs ;
+    return ($l == "0") ? $eng : $chs ;
 }
 
 /**
@@ -189,72 +189,5 @@ function pangu($html_source)
         }
         $result .= doPangu($c);
     }
-    return $result;
-}
-
-/**
- * 仿 Hexo 的 TOC 实现
- * @param string post content
- * @return string content
- * TODO: 更改实现方式
- */
-function toc($content)
-{
-    $chunks = preg_split('/(<h[1-2].*?\/h[1-2]>)/msi', $content, -1, PREG_SPLIT_DELIM_CAPTURE);
-
-    $toc = '<!--<nopangu>--><ol class="post-toc">';
-    $i = 0;
-    $i2 = 0;
-    $flag = 0;
-    $result = '';
-
-    foreach ($chunks as $c) {
-        if (strtolower(substr($c, 0, 2)) !== '<h') {
-            $result .= $c;
-            continue;
-        }
-        if (strtolower(substr($c, 0, 4)) == '<h1>') {
-            $i++;
-            if ($i > 0 && $flag == 1) {
-                $toc .= "</li>";
-            }
-            if ($i > 0 && $flag == 2) {
-                $i2 = 0;
-                $toc .= "</ol></li>";
-            }
-            $flag = 1;
-            $toc .= '<li class="post-toc-item post-toc-level-1">';
-        }
-        if (strtolower(substr($c, 0, 4)) == '<h2>' && $i !== 0) {
-            if ($i > 0 && $flag == 1) {
-                $toc .= '<ol class="post-toc-child">';
-            }
-            $i2++;
-            $flag = 2;
-        }
-        if ($flag == 2) $toc .= '<li class="post-toc-item post-toc-level-2">';
-        $toc .= '<a class="post-toc-link" href="#' . substr($c, 4, strlen($c) - 4 - 5) . '"><span class="post-toc-number">';
-        if ($flag == 1) $toc .= $i;
-        if ($flag == 2) $toc .= $i . "." . $i2;
-        $toc .= '.</span><span class="post-toc-text">' . substr($c, 4, strlen($c) - 4 - 5) . '</span></a>';
-        if ($flag == 2) $toc .= '</li>';
-
-        $result .= strtolower(substr($c, 0, 3)) . ' id="' . substr($c, 4, strlen($c) - 4 - 5) . '">' . substr($c, 4, strlen($c) - 4);
-    }
-
-    if ($i > 0 && $flag == 1) {
-        $toc .= '</li>';
-    }
-    if ($i > 0 && $flag == 2) {
-        $toc .= "</ol></li>";
-    }
-    $toc .= '</ol><!--</nopangu>-->';
-
-    if ($i == 0) {
-        echo '&nbsp;此文章暂无目录';
-        return $content;
-    }
-
-    echo $toc;
     return $result;
 }

@@ -25,7 +25,7 @@
 
                 </div>
 
-        </div>
+            </div>
 
     </main>
     <div class="mdl-layout__obfuscator"></div>
@@ -41,28 +41,28 @@
 <script src="<?php thisThemeFile('js/js.min.js'); ?>"></script>
 
 <?php if (!empty($this->options->switch) && in_array('ShowLoadingLine', $this->options->switch)): ?>
-<script src="<?php thisThemeFile('js/nprogress.js'); ?>"></script>
+    <script src="<?php thisThemeFile('js/nprogress.js'); ?>"></script>
 
-<script type="text/javascript">
-    NProgress.configure({
-        showSpinner: true
-    });
-    NProgress.start();
-    $('#nprogress .bar').css({
-        'background': '<?php $this->options->loadingcolor(); ?>'
-    });
-    $('#nprogress .peg').css({
-        'box-shadow': '0 0 10px <?php $this->options->loadingcolor(); ?>, 0 0 15px <?php $this->options->loadingcolor(); ?>'
-    });
-    $('#nprogress .spinner-icon').css({
-        'border-top-color': '<?php $this->options->loadingcolor(); ?>',
-        'border-left-color': '<?php $this->options->loadingcolor(); ?>'
-    });
-    setTimeout(function() {
-        NProgress.done();
-        $('.fade').removeClass('out');
-    }, <?php $this->options->loadingbuffer(); ?>);
-</script>
+    <script type="text/javascript">
+        NProgress.configure({
+            showSpinner: true
+        });
+        NProgress.start();
+        $('#nprogress .bar').css({
+            'background': '<?php $this->options->loadingcolor(); ?>'
+        });
+        $('#nprogress .peg').css({
+            'box-shadow': '0 0 10px <?php $this->options->loadingcolor(); ?>, 0 0 15px <?php $this->options->loadingcolor(); ?>'
+        });
+        $('#nprogress .spinner-icon').css({
+            'border-top-color': '<?php $this->options->loadingcolor(); ?>',
+            'border-left-color': '<?php $this->options->loadingcolor(); ?>'
+        });
+        setTimeout(function() {
+            NProgress.done();
+            $('.fade').removeClass('out');
+        }, <?php $this->options->loadingbuffer(); ?>);
+    </script>
 <?php endif; ?>
 
 
