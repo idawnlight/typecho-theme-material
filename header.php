@@ -17,7 +17,7 @@
     <?php
     if ($this->options->DNSPrefetch !== "") {
         foreach (explode("\n", $this->options->DNSPrefetch) as $domain) {
-            echo '<link rel="dns-prefetch" href="' . $domain . '">' . "\n";
+            echo '<link rel="dns-prefetch" href="' . trim($domain) . '">' . "\n";
         }
     }
     ?>
