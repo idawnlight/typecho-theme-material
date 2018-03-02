@@ -411,6 +411,9 @@ function themeConfig($form)
     $adsense = new Typecho_Widget_Helper_Form_Element_Textarea('adsense', null, null, _t('文章底部 Adsense'), _t('填入 Google Adsense 广告代码'));
     $form->addInput($adsense);
 
+    $DNSPrefetch = new Typecho_Widget_Helper_Form_Element_Textarea('DNSPrefetch', null, null, _t('DNS 预加载'), _t('一行一个'));
+    $form->addInput($DNSPrefetch);
+
     $post_license = new Typecho_Widget_Helper_Form_Element_Textarea('post_license', null, null, _t('文章版权'), _t('你可以在每篇文章的结尾添加你的版权说明，支持 HTML 标签。License 以粗体显示，默认为空。 比如，你可这样设定 CC License。<br><b>&#84;&#104;&#105;&#115;&#32;&#98;&#108;&#111;&#103;&#32;&#105;&#115;&#32;&#117;&#110;&#100;&#101;&#114;&#32;&#97;&#32;&#60;&#97;&#32;&#104;&#114;&#101;&#102;&#61;&#34;&#47;&#99;&#114;&#101;&#97;&#116;&#105;&#118;&#101;&#99;&#111;&#109;&#109;&#111;&#110;&#115;&#46;&#104;&#116;&#109;&#108;&#34;&#32;&#116;&#97;&#114;&#103;&#101;&#116;&#61;&#34;&#95;&#98;&#108;&#97;&#110;&#107;&#34;&#62;&#67;&#67;&#32;&#66;&#89;&#45;&#78;&#67;&#45;&#83;&#65;&#32;&#51;&#46;&#48;&#32;&#85;&#110;&#112;&#111;&#114;&#116;&#101;&#100;&#32;&#76;&#105;&#99;&#101;&#110;&#115;&#101;&#60;&#47;&#97;&#62;</b>'));
     $form->addInput($post_license);
 
