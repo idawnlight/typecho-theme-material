@@ -29,11 +29,7 @@ $this->need('header.php');?>
                 <?php if (!empty($this->options->dailypic)): ?>
                 <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(<?php $this->options->dailypic() ?>)">
                     <?php else: ?>
-                <?php if (!empty($this->options->CDNURL)): ?>
-                    <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(<?php $this->options->CDNURL() ?>/MaterialCDN/img/daily_pic.png)">
-                        <?php else: ?>
-                        <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(<?php $this->options->themeUrl('img/daily_pic.png') ?>)">
-                            <?php endif; ?>
+                        <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(<?php thisThemeFile("img/daily_pic.png") ?>)">
                             <?php endif; ?>
                             <p class="index-top-block-slogan"><a href="<?php $this->options->dailypicLink() ?>"><?php $this->options->slogan() ?></a></p>
                         </div>
