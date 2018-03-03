@@ -103,7 +103,13 @@
 
                     <!-- Articel content -->
                     <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
-                        <?php $this->content(); ?>
+                    <?php     
+                        if (!empty($this->options->switch) && in_array('PanguPHP', $this->options->switch)) {
+                            print pangu($this->content);
+                        } else {
+                            $this->content(); 
+                        }
+                    ?>
                     </div>
 
                     <!-- Article comments -->

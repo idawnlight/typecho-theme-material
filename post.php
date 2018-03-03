@@ -103,7 +103,13 @@
 
                     <!-- Articel content -->
                     <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
-                        <?php $this->content(); ?>
+                        <?php     
+                        if (!empty($this->options->switch) && in_array('PanguPHP', $this->options->switch)) {
+                            print pangu($this->content);
+                        } else {
+                            $this->content(); 
+                        }
+                        ?>
                         <?php if (!empty($this->options->post_license)): ?>
                             <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
                                 <p>
