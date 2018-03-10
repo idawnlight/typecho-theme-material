@@ -58,15 +58,14 @@ function thisThemeFile($uri)
 
 function getTheme()
 {
-    if (!isset($themeIs)) {
+    static $themeName = NULL;
+    if ($themeName === NULL) {
         $db = Typecho_Db::get();
         $query = $db->select('value')->from('table.options')->where('name = ?', 'theme');
         $result = $db->fetchAll($query);
-        static $themeIs;
-        $themeIs = $result[0]["value"];
-        unset($db); unset($result);
+        $themeName = $result[0]["value"];
     }
-    return $themeIs;
+    return $themeName;
 }
 
 function getThemeOptions()
