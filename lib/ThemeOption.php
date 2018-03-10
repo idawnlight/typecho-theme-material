@@ -5,8 +5,6 @@
 function themeFields($layout) {
     $picUrl = new Typecho_Widget_Helper_Form_Element_Text('picUrl', NULL, NULL, _t('图片地址'), _t('在这里填入一个图片 URL 地址, 作为文章的头图'));
     $layout->addItem($picUrl);
-
-    Helper::options()->commentsAntiSpam = false; 
 }
 function themeConfig($form)
 {

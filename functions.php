@@ -92,6 +92,7 @@ function themeInit($archive)
         $archive->content = preg_replace('#<li><p>(.*?)</p>(.*?)</li>#',
             '<li>$1$2</li>', $archive->content);
     }
+    $options->commentsAntiSpam = false;
 }
 
 /**
