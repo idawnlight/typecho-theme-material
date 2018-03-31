@@ -2,9 +2,9 @@
 /**
  * 这是 <a href="https://viosey.com/" target="_blank">Viosey</a> 基于 Google Material Design 开发的 Typecho 主题，目前 Typecho 版由 <a href="https://blog.lim-light.com/" target="_blank">黎明余光</a> 维护
  *
- * @package Theme.Material
+ * @package Material
  * @author 黎明余光
- * @version 3.2.0
+ * @version 3.2.1
  * @link https://blog.lim-light.com
  */
 
