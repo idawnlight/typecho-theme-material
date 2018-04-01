@@ -3112,7 +3112,7 @@ input.mdl-button[type="submit"] {
   font-size: 16px;
   font-weight: 400;
   min-height: 200px;
-  overflow: hidden;
+  overflow: visible;
   width: 330px;
   z-index: 1;
   position: relative;
@@ -3190,7 +3190,7 @@ input.mdl-button[type="submit"] {
   color: rgba(0, 0, 0, .54);
   font-size: 13px;
   line-height: 18px;
-  overflow: hidden;
+  overflow: visible;
   padding: 16px;
   width: 90%
 }
