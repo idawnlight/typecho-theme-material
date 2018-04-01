@@ -355,7 +355,16 @@
                 opacity: 0;
             }
         </style>
-    <?php endif; ?>
+    <?php 
+		endif;
+		if (!empty($this->options->SearchColor)):
+	?>
+		<style>
+			.search-input {
+				color:<?php echo $this->options->SearchColor; ?>;
+			}
+		</style>
+	<?php endif; ?>
 
 </head>
 
