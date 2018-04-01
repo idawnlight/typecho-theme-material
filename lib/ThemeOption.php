@@ -69,7 +69,7 @@ function themeConfig($form)
 
     // Local Search XML
     $tools->input("本地搜索索引页链接", "LocalsearchURL", "仅在启用即时搜索时需要填写");
-
+	
     // CDN
     $tools->radio("CDN 类型",
     array(
@@ -158,7 +158,10 @@ function themeConfig($form)
 
     // Loading buffer
 	$tools->input('Loading 加载缓冲时间', 'loadingbuffer', 'loading 加载进度条的缓冲时间, 单位为毫秒 ms, 默认为 800ms');
-
+	
+	// Search Color
+	$tools->input("搜索文字颜色", "SearchColor", "填入颜色代码");
+	
     // Background type
     $tools->radio("背景设置",
     array(
@@ -423,7 +426,10 @@ function themeConfig($form)
 
     $loadingbuffer = new Typecho_Widget_Helper_Form_Element_Text('loadingbuffer', null, _t('800'), _t('loading 加载缓冲时间'), _t('loading 加载进度条的缓冲时间, 单位为毫秒 ms, 默认为 800ms'));
     $form->addInput($loadingbuffer);
-
+	
+	$SearchColor = new Typecho_Widget_Helper_Form_Element_Text('SearchColor', null, null, _t('搜索文字颜色'), _t('填入颜色代码'));
+    $form->addInput($SearchColor);
+	
     $BGtype = new Typecho_Widget_Helper_Form_Element_Radio('BGtype',
         array(
             '0' => _t('纯色背景 &emsp;'),
