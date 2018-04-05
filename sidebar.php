@@ -48,26 +48,26 @@
                             <li>
                                 <a href="<?php $this->options->adminUrl(); ?>" tabindex="-1">
                                     <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">account_circle</i>
-                                    <?php echo tranMsg("Profile", "用户概要", $this->options->langis) ?>
+                                    用户概要
                                 </a>
                             </li>
                             <li>
                                 <a href="<?php $this->options->adminUrl('options-theme.php'); ?>" tabindex="-1">
                                     <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">settings</i>
-                                    <?php echo tranMsg("Settings", "设置外观", $this->options->langis) ?>
+                                    设置外观
                                 </a>
                             </li>
                             <li>
                                 <a href="<?php $this->options->logoutUrl(); ?>" class="md-menu-list-a" tabindex="-1">
                                     <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">exit_to_app</i>
-                                    <?php echo tranMsg("Exit", "退出登录", $this->options->langis) ?>
+                                    退出登录
                                 </a>
                             </li>
                         <?php else: ?>
                             <li>
                                 <a href="<?php $this->options->loginUrl(); ?>" class="md-menu-list-a" tabindex="-1">
                                     <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">fingerprint</i>
-                                    <?php echo tranMsg("Login", "用户登录", $this->options->langis) ?>
+                                    Login
                                 </a>
                             </li>
                         <?php endif; ?>
@@ -78,7 +78,7 @@
                 <li id="sidebar-first-li">
                     <a href="<?php $this->options->siteUrl(); ?>" target="_self">
                         <i class="material-icons sidebar-material-icons">home</i>
-                        <?php echo tranMsg("Homepage", "主页", $this->options->langis) ?>
+                        <?php lang("sidebar.homepage") ?>
                     </a>
                 </li>
 
@@ -86,7 +86,7 @@
                 <li class="dropdown">
                     <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
                         <i class="material-icons sidebar-material-icons">inbox</i>
-                        <?php echo tranMsg("Archives", "归档", $this->options->langis) ?>
+                        <?php lang("sidebar.archive") ?>
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
@@ -106,7 +106,7 @@
                 <li class="dropdown">
                     <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
                         <i class="material-icons sidebar-material-icons">apps</i>
-                        <?php echo tranMsg("Categories", "分类", $this->options->langis) ?>
+                        <?php lang("title.category") ?>
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu" for="show-category-button">
@@ -142,7 +142,7 @@
                 <!-- Article Numebr  -->
                 <li>
                     <a href="#">
-                        <?php echo tranMsg("Article Number", "文章总数", $this->options->langis) ?>
+                        <?php lang("sidebar.article_num") ?>
                         <span class="sidebar-badge"><?php echo $stat->publishedPostsNum;?></span>
                     </a>
                 </li>
@@ -154,7 +154,7 @@
             <!-- Sidebar bottom text -->
             <a href="https://github.com/idawnlight/typecho-theme-material" target="_blank" class="sidebar-footer-text-a">
                 <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-                    <?php echo tranMsg("Theme - Material", "主题 - Material", $this->options->langis) ?>
+                    <?php lang("misc.theme") ?>- Material
                     <span class="sidebar-badge badge-circle">i</span>
                 </div>
             </a>

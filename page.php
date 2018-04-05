@@ -75,27 +75,27 @@
                             <?php endif;?>
                             <a class="md-menu-list-a" href="https://www.facebook.com/sharer/sharer.php?u=<?php $this->permalink(); ?>">
                                 <li class="mdl-menu__item">
-                                    <?php echo tranMsg("Share to Facebook", "分享到 Facebook", $this->options->langis) ?>
+                                <?php lang("share.toFacebook") ?>
                                 </li>
                             </a>
                             <a class="md-menu-list-a" href="https://telegram.me/share/url?url=<?php $this->permalink() ?>&text=<?php $this->title(); ?>" >
                                 <li class="mdl-menu__item">
-                                    <?php echo tranMsg("Share to Telegram", "分享到 Telegram", $this->options->langis) ?>
+                                <?php lang("share.toTelegram") ?>
                                 </li>
                             </a>
                             <a class="md-menu-list-a" href="https://twitter.com/intent/tweet?text=<?php $this->title() ?>&url=<?php $this->permalink() ?>&via=<?php $this->user->screenName(); ?>">
                                 <li class="mdl-menu__item">
-                                    <?php echo tranMsg("Share to Twitter", "分享到 Twitter", $this->options->langis) ?>
+                                <?php lang("share.toTwitter") ?>
                                 </li>
                             </a>
                             <a class="md-menu-list-a" href="https://plus.google.com/share?url=<?php $this->permalink(); ?>" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
                                 <li class="mdl-menu__item">
-                                    <?php echo tranMsg("Share to Google+", "分享到 Google+", $this->options->langis) ?>
+                                <?php lang("share.toGplus") ?>
                                 </li>
                             </a>
                             <a class="md-menu-list-a" href="http://service.weibo.com/share/share.php?appkey=&title=<?php $this->title(); ?>&url=<?php $this->permalink(); ?>&pic=&searchPic=false&style=simple ">
                                 <li class="mdl-menu__item">
-                                    <?php echo tranMsg("Share to Weibo", "分享到 新浪微博", $this->options->langis) ?>
+                                <?php lang("share.toWeibo") ?>
                                 </li>
                             </a>
                         </ul>

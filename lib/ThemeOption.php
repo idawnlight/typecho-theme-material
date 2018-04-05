@@ -45,8 +45,18 @@ function themeConfig($form) {
                 $Render->input("CDNURL", "CDN 地址", "仅在使用自定义 CDN 时需要填写<br>创建一个文件夹，把 <b>css, fonts, img, js</b> 文件夹放进去，上传到到你的 CDN 储存空间根目录下<br />
                 填入你的 CDN 地址, 如 <b>https://cdn.example.com/MaterialCDN</b> 或 <b>https://root.example.com</b>")
             ).
-            $Render->panel("item", "界面语言设置", NULL,
-                $Render->radio("langis", "界面语言设置", NULL, [0 => 'English', 1 => '简体中文'], 1)
+            $Render->panel("item", "语言", NULL, 
+                 $Render->radio("language", "语言", NULL, 
+                 ["ar" => "العَرَبِيَّة", 
+                 "de" => "Deutsch", 
+                 "en" => "English", 
+                 "es" => "Español", 
+                 "fr" => "Français", 
+                 "ja" => "日本語", 
+                 "ms" => "Malay", 
+                 "pt-BR" => "Portuguese (Brazil)", 
+                 "zh-CN" => "简体中文", 
+                 "zh-TW" => "繁體中文"], "zh-CN")
             ).
             $Render->panel("item", "页脚 SNS", NULL,
             $Render->panel("item", "页脚 SNS 图标按钮显示设置", NULL,

@@ -124,33 +124,33 @@ $this->need('header.php');?>
 
                                 <a href="<?php $this->options->feedUrl(); ?>" class="index_share-link">
                                     <li class="mdl-menu__item mdl-js-ripple-effect">
-                                        <?php echo tranMsg("Article RSS", "文章 RSS", $this->options->langis) ?>
+                                    <?php lang("share.article_rss") ?>
                                     </li>
                                 </a>
                                 <!-- Share Menu -->
                                 <a class="index_share-link" href="https://www.facebook.com/sharer/sharer.php?u=<?php $this->options->siteUrl(); ?>">
                                     <li class="mdl-menu__item">
-                                        <?php echo tranMsg("Share to Facebook", "分享到 Facebook", $this->options->langis) ?>
+                                    <?php lang("share.toFacebook") ?>
                                     </li>
                                 </a>
                                 <a class="index_share-link" href="https://telegram.me/share/url?url=<?php $this->options->siteUrl(); ?>&text=<?php $this->options->title(); ?>" >
                                     <li class="mdl-menu__item">
-                                        <?php echo tranMsg("Share to Telegram", "分享到 Telegram", $this->options->langis) ?>
+                                    <?php lang("share.toTelegram") ?>
                                     </li>
                                 </a>
                                 <a class="index_share-link" href="https://twitter.com/intent/tweet?text=<?php $this->options->title(); ?>&url=<?php $this->options->siteUrl(); ?>&via=<?php $this->author->screenName(); ?>">
                                     <li class="mdl-menu__item">
-                                        <?php echo tranMsg("Share to Twitter", "分享到 Twitter", $this->options->langis) ?>
+                                    <?php lang("share.toTwitter") ?>
                                     </li>
                                 </a>
                                 <a class="index_share-link" href="https://plus.google.com/share?url=<?php $this->options->siteUrl(); ?>" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
                                     <li class="mdl-menu__item">
-                                        <?php echo tranMsg("Share to Google+", "分享到 Google+", $this->options->langis) ?>
+                                    <?php lang("share.toGplus") ?>
                                     </li>
                                 </a>
                                 <a class="index_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=<?php $this->options->title(); ?>&url=<?php $this->options->siteUrl(); ?>&pic=&searchPic=false&style=simple ">
                                     <li class="mdl-menu__item">
-                                        <?php echo tranMsg("Share to 新浪微博", "分享到 新浪微博", $this->options->langis) ?>
+                                    <?php lang("share.toWeibo") ?>
                                     </li>
                                 </a>
                             </ul>
@@ -187,7 +187,7 @@ $this->need('header.php');?>
                                 <?php $this->excerpt(80, '...'); ?> &nbsp;&nbsp;&nbsp;
                                 <span>
                                 <a href="<?php $this->permalink(); ?>" target="_self">
-                                    <?php echo tranMsg("Continue Reading", "继续阅读", $this->options->langis) ?>
+                                <?php lang("post.continue") ?>
                                 </a>
                             </span>
                             </div>

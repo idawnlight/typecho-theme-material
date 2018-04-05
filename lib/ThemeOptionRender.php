@@ -3,7 +3,7 @@
  * Typecho MDUI 主题设置
  * 
  * @author 黎明余光 <i@emiria.moe>
- * @version 2.0.0 (180310)
+ * @version 2.1.0 (180405)
  */
 
 class Render {

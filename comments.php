@@ -109,7 +109,11 @@
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input type="text" name="author" class="mdl-textfield__input login-input-info" value="<?php $this->remember('author'); ?>" />
                                 <label for="author" class="mdl-textfield__label">
-                                    <?php echo tranMsg("Name*", "昵称*", $this->options->langis) ?>
+                                    <?php if (getThemeOptions("language") === "zh-CN"): ?>
+                                    昵称*
+                                    <?php else: ?>
+                                    Name*
+                                    <?php endif; ?>
                                 </label>
                             </div>
                         </div>
@@ -119,7 +123,11 @@
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input type="email" name="mail" class="mdl-textfield__input login-input-info" value="<?php $this->remember('mail'); ?>" />
                                 <label for="mail" class="mdl-textfield__label">
-                                    <?php echo tranMsg("Email*", "邮箱*", $this->options->langis) ?>
+                                    <?php if (getThemeOptions("language") === "zh-CN"): ?>
+                                    邮箱*
+                                    <?php else: ?>
+                                    Email*
+                                    <?php endif; ?>
                                 </label>
                             </div>
                         </div>
@@ -130,7 +138,11 @@
                                 <input type="url" name="url" id="visitor-url" class="mdl-textfield__input login-input-info" value="<?php $this->remember('url'); ?>" />
                                 <!--  placeholder="http://"-->
                                 <label for="url" class="mdl-textfield__label">
-                                    <?php echo tranMsg("Website", "网站", $this->options->langis) ?>
+                                    <?php if (getThemeOptions("language") === "zh-CN"): ?>
+                                    网站*
+                                    <?php else: ?>
+                                    Website*
+                                    <?php endif; ?>
                                 </label>
                             </div>
                         </div>
@@ -140,7 +152,11 @@
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="comment-input-div">
                         <textarea name="text" rows="<?php $this->options->CommentRows() ?>" id="comment" class="mdl-textfield__input"></textarea>
                         <label for="comment" class="mdl-textfield__label">
-                            <?php echo tranMsg("Join the discussion", "加入讨论吧...", $this->options->langis) ?>
+                            <?php if (getThemeOptions("language") === "zh-CN"): ?>
+                            加入讨论吧...
+                            <?php else: ?>
+                            Join the discussion
+                            <?php endif; ?>
                         </label>
                     </div>
 
@@ -154,12 +170,22 @@
             </div>
 
             <?php $comments->listComments(); ?>
+            <?php if (getThemeOptions("language") === "zh-CN"): ?>
             <?php $comments->pageNav('&laquo; 前一页', '后一页 &raquo;'); ?>
+            <?php else: ?>
+            <?php $comments->pageNav('&laquo; Previous', 'Next &raquo;'); ?>
+            <?php endif; ?>
 
         <?php else: ?>
 
             <div class="comments__closed">
-                <span id="commentCount"><?php echo tranMsg("Comment has been closed", "评论已关闭", $this->options->langis) ?></span>
+                <span id="commentCount">
+                    <?php if (getThemeOptions("language") === "zh-CN"): ?>
+                    评论已关闭
+                    <?php else: ?>
+                    Comment has been closed
+                    <?php endif; ?>
+                </span>
             </div>
 
         <?php endif; ?>

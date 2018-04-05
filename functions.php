@@ -181,6 +181,30 @@ function tranMsg($eng, $chs, $l)
 }
 
 /**
+ * i18n support
+ * @param string expression
+ * @return string translation
+ */
+function lang($expression, $display = true)
+{
+    static $lang = NULL;
+    $language = (getThemeOptions("lannguage") !== NULL) ? getThemeOptions("lannguage") : "zh-CN";
+    if ($lang === NULL) $lang = Spyc::YAMLLoad(Helper::options()->themeFile(getTheme(), "languages/".$language.".yml"));
+    $now = $lang;
+    foreach (explode(".", $expression) as $exp) {
+        if (isset($now[$exp])) {
+            if (!is_array($now[$exp])) {
+                if ($display) echo $now[$exp];
+                return $now[$exp];
+            }
+            $now = $now[$exp];
+        } else {
+            return false;
+        }
+    }
+}
+
+/**
  * Pangu.PHP
  * @param string html_source
  * @return string 处理完的 html_source
