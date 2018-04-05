@@ -126,8 +126,6 @@ function showThumbnail($widget)
 
     $random = getThemeFile('img/random/material-' . $rand . '.png');
 
-
-
     // If only one random default picture, delete the following "//"
     //$random = $widget->widget('Widget_Options')->themeUrl . '/img/random.jpg';
 
@@ -188,7 +186,7 @@ function tranMsg($eng, $chs, $l)
 function lang($expression, $display = true)
 {
     static $lang = NULL;
-    $language = (getThemeOptions("lannguage") !== NULL) ? getThemeOptions("lannguage") : "zh-CN";
+    $language = (getThemeOptions("language") !== NULL) ? getThemeOptions("language") : "zh-CN";
     if ($lang === NULL) $lang = Spyc::YAMLLoad(Helper::options()->themeFile(getTheme(), "languages/".$language.".yml"));
     $now = $lang;
     foreach (explode(".", $expression) as $exp) {
