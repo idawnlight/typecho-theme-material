@@ -52,7 +52,7 @@
                 <a class="md-menu-list-a" target="view_window" href="<?php $comments->permalink(); ?>">
                     <li class="mdl-menu__item">在新标签页中打开</li>
                 </a>
-                <a class="md-menu-list-a" href="https://twitter.com/intent/tweet?text=<?php $comments->content(); ?>+from&url=<?php $comments->permalink(); ?>">
+                <a class="md-menu-list-a" href="https://twitter.com/intent/tweet?text=<?php echo htmlspecialchars($comments->content); ?>+from&url=<?php $comments->permalink(); ?>">
                     <li class="mdl-menu__item">分享到 Twitter</li>
                 </a>
                 <a class="md-menu-list-a" href="https://plus.google.com/share?url=<?php $comments->permalink(); ?>" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
