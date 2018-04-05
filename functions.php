@@ -4,6 +4,7 @@ define("MATERIAL_VERSION", "3.2.1");
 
 require_once("lib/UACheck.php");
 require_once("lib/pangu.php");
+require_once("lib/Spyc.php");
 require_once("lib/ThemeOptionRender.php");
 require_once("lib/ThemeOption.php");
 
@@ -24,9 +25,10 @@ if (isset($_GET["mod"])) {
 function jsLsload($name, $uri)
 {
     $options = Helper::options();
-    $md5 = md5(file_get_contents($options->themeFile(getTheme(), $uri)));
-    $base64 = base64_encode($md5);
-    echo '<script>lsloader.load("' . $name . '","' . getThemeFile($uri) . '?' . $base64 . '", true)</script>';
+    $identifier = $name . $uri . filemtime($options->themeFile(getTheme(), $uri)) . MATERIAL_VERSION;
+    //$md5 = md5(file_get_contents($options->themeFile(getTheme(), $uri)));
+    $hash = md5($identifier);
+    echo '<script>lsloader.load("' . $name . '","' . getThemeFile($uri) . '?' . $hash . '", true)</script>';
 }
 
 /**
@@ -37,10 +39,11 @@ function jsLsload($name, $uri)
 function cssLsload($name, $uri)
 {
     $options = Helper::options();
-    $md5 = md5(file_get_contents($options->themeFile(getTheme(), $uri)));
-    $base64 = base64_encode($md5);
+    $identifier = $name . $uri . filemtime($options->themeFile(getTheme(), $uri)) . MATERIAL_VERSION;
+    //$md5 = md5(file_get_contents($options->themeFile(getTheme(), $uri)));
+    $hash = md5($identifier);
     echo '<style id="' . $name . '"></style>';
-    echo '<script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("' . $name . '","' . getThemeFile($uri) . '?' . $base64 . '",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>';
+    echo '<script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("' . $name . '","' . getThemeFile($uri) . '?' . $hash . '",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>';
 }
 
 function getThemeFile($uri, $print = false)
