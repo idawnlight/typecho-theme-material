@@ -104,13 +104,13 @@ function themeConfig($form) {
                 , 3)
             ).
             $Render->panel("item", "网站统计代码", NULL,
-                $Render->input("analysis", "网站统计代码", "填入如 Google Analysis 的第三方统计代码", NULL)
+                $Render->textarea("analysis", "网站统计代码", "填入如 Google Analysis 的第三方统计代码", NULL)
             ).
             $Render->panel("item", "文章底部 Adsense", NULL,
-                $Render->input("adsense", "文章底部 Adsense", "填入 Google Adsense 的广告代码", NULL)
+                $Render->textarea("adsense", "文章底部 Adsense", "填入 Google Adsense 的广告代码", NULL)
             ).
             $Render->panel("item", "DNS 预加载", NULL,
-                $Render->input("DNSPrefetch", "DNS 预加载", "一行一个，如 <b>//dns.example.com</b>", NULL)
+                $Render->textarea("DNSPrefetch", "DNS 预加载", "一行一个，如 <b>//dns.example.com</b>", NULL)
             )
         ).
         $Render->panel("item", "外观设置", NULL,
