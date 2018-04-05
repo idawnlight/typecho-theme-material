@@ -9,6 +9,13 @@ require_once("lib/ThemeOption.php");
 
 error_reporting(0);
 
+if (isset($_GET["mod"])) {
+    if ($_GET["mod"] === "search-xml") {
+        $this->need("page-search.php");
+        exit;
+    }
+}
+
 /**
  * JavaScript LS 载入
  * @param string name
@@ -36,26 +43,26 @@ function cssLsload($name, $uri)
     echo '<script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("' . $name . '","' . getThemeFile($uri) . '?' . $base64 . '",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>';
 }
 
-function getThemeFile($uri)
+function getThemeFile($uri, $print = false)
 {
     $options = Helper::options();
     $themeOptions = getThemeOptions();
     if ($themeOptions["CDNType"] == 1) {
-        return "https://cdn.jsdelivr.net/gh/idawnlight/typecho-theme-material@" . MATERIAL_VERSION . "/" . $uri;
+        $url = "https://cdn.jsdelivr.net/gh/idawnlight/typecho-theme-material@" . MATERIAL_VERSION . "/" . $uri;
     } elseif ($themeOptions["CDNType"] == 2) {
-        return $themeOptions["CDNURL"] . "/" . $uri;
+        $url = $themeOptions["CDNURL"] . "/" . $uri;
     } else {
         $site = substr($options->siteUrl, 0, strlen($options->siteUrl) - 1);
-        return $site . __TYPECHO_THEME_DIR__ . "/" . getTheme() . "/" . $uri;
+        $url = $site . __TYPECHO_THEME_DIR__ . "/" . getTheme() . "/" . $uri;
     }
+    if ($print) echo $url;
+    return $url;
 }
 
-function thisThemeFile($uri)
-{
-    echo getThemeFile($uri);
-    return;
-}
-
+/**
+ * 获取当前使用的主题名称
+ * @return string theme name
+ */
 function getTheme()
 {
     static $themeName = NULL;
@@ -68,17 +75,22 @@ function getTheme()
     return $themeName;
 }
 
-function getThemeOptions()
+/**
+ * 获取当前的主题设置
+ * @param string setting name
+ * @return mixed setting value
+ */
+function getThemeOptions($setting = NULL, $print = false)
 {
-    static $themeOptions = "";
-    if ($themeOptions == "") {
+    static $themeOptions = NULL;
+    if ($themeOptions == NULL) {
         $db = Typecho_Db::get();
         $query = $db->select('value')->from('table.options')->where('name = ?', 'theme:' . getTheme());
         $result = $db->fetchAll($query);
         $themeOptions = unserialize($result[0]["value"]);
-        unset($db);
     }
-    return $themeOptions;
+    if ($print) echo (isset($themeOptions[$setting])) ? $themeOptions[$setting] : NULL;
+    return ($setting === NULL) ? $themeOptions : (isset($themeOptions[$setting])) ? $themeOptions[$setting] : NULL;
 }
 
 function themeInit($archive)

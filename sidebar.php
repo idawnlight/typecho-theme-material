@@ -9,7 +9,7 @@
         <?php if (!empty($this->options->sidebarheader)): ?>
         <div class="sidebar-header header-cover" style="background-image: url(<?php $this->options->sidebarheader() ?>);">
             <?php else: ?>
-            <div class="sidebar-header header-cover" style="background-image: url(<?php thisThemeFile('img/sidebarheader.jpg'); ?>);">
+            <div class="sidebar-header header-cover" style="background-image: url(<?php getThemeFile('img/sidebarheader.jpg', true); ?>);">
                 <?php endif; ?>
                 <!-- Top bar -->
                 <!--<div class="top-bar"></div>-->
@@ -25,7 +25,7 @@
                         <?php if (!empty($this->options->logo)): ?>
                             <img src="<?php $this->options->logo() ?>">
                         <?php else: ?>
-                            <img src="<?php thisThemeFile('img/avatar.png') ?>">
+                            <img src="<?php getThemeFile('img/avatar.png', true) ?>">
                         <?php endif; ?>
                     <?php endif; ?>
                 </div>

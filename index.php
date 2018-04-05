@@ -24,12 +24,13 @@ $this->need('header.php');?>
 
         <div class="material-index mdl-grid">
 
+            <?php if ($this->is('index') && $this->_currentPage == 1): ?>
             <!-- Daily Pic -->
             <div class="mdl-card mdl-shadow--<?php $this->options->CardElevation() ?>dp daily-pic mdl-cell mdl-cell--8-col index-top-block">
                 <?php if (!empty($this->options->dailypic)): ?>
                 <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(<?php $this->options->dailypic() ?>)">
                     <?php else: ?>
-                        <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(<?php thisThemeFile("img/daily_pic.png") ?>)">
+                        <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(<?php getThemeFile("img/daily_pic.png", true) ?>)">
                             <?php endif; ?>
                             <p class="index-top-block-slogan"><a href="<?php $this->options->dailypicLink() ?>"><?php $this->options->slogan() ?></a></p>
                         </div>
@@ -88,7 +89,7 @@ $this->need('header.php');?>
                                             <img src="<?php $this->options->logo() ?>">
                                         <?php endif; ?>
                                     <?php else: ?>
-                                        <img src="<?php thisThemeFile('img/MaterialLOGO.png') ?>">
+                                        <img src="<?php getThemeFile('img/logo.png', true) ?>">
                                     <?php endif; ?>
                                 </a>
                         </div>
@@ -155,6 +156,7 @@ $this->need('header.php');?>
                             </ul>
                         </div>
                     </div>
+                    <?php endif; ?>
 
                     <?php while ($this->next()): ?>
 

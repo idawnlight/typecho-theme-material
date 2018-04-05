@@ -37,11 +37,11 @@
 </body>
 
 <!-- Material js -->
-<script src="<?php thisThemeFile('js/jquery.min.js'); ?>"></script>
-<script src="<?php thisThemeFile('js/js.min.js'); ?>"></script>
+<script src="<?php getThemeFile('js/jquery.min.js', true); ?>"></script>
+<script src="<?php getThemeFile('js/js.min.js', true); ?>"></script>
 
 <?php if (!empty($this->options->switch) && in_array('ShowLoadingLine', $this->options->switch)): ?>
-    <script src="<?php thisThemeFile('js/nprogress.js'); ?>"></script>
+    <script src="<?php getThemeFile('js/nprogress.js', true); ?>"></script>
 
     <script type="text/javascript">
         NProgress.configure({

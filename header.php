@@ -64,11 +64,11 @@
 
     <!-- Block IE -->
     <!--[if lte IE 9]>
-    <link rel="stylesheet" href="<?php thisThemeFile("css/ie-blocker.css") ?>">
+    <link rel="stylesheet" href="<?php getThemeFile("css/ie-blocker.css", true) ?>">
     <?php if ($this->options->langis == '0'): ?>
-    <script src="<?php thisThemeFile("js/ie-blocker.en.js") ?>" img-path="../img/ie-blocker/"></script>
+    <script src="<?php getThemeFile("js/ie-blocker.en.js", true) ?>" img-path="../img/ie-blocker/"></script>
     <?php elseif ($this->options->langis == '1'): ?>
-    <script src="<?php thisThemeFile("js/ie-blocker.zhCN.js") ?>" img-path="../img/ie-blocker/"></script>
+    <script src="<?php getThemeFile("js/ie-blocker.zhCN.js", true) ?>" img-path="../img/ie-blocker/"></script>
     <?php endif; ?>
     <![endif]-->
 
@@ -91,16 +91,14 @@
     <!-- Material style -->
     <?php cssLsload("material_css", "css/material.min.css") ?>
     <?php cssLsload("style_css", "css/style.min.css") ?>
+    <?php cssLsload("material_icons", "css/material-icons.css") ?>
 
     <?php if ($this->options->RobotoSource == '0'): ?>
         <link href='https://fonts.proxy.ustclug.org/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
-        <link href="https://fonts.proxy.ustclug.org/icon?family=Material+Icons" rel="stylesheet">
     <?php elseif ($this->options->RobotoSource == '1'): ?>
-        <link href='https://fonts.cat.net/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
-        <link href="https://fonts.cat.net/icon?family=Material+Icons" rel="stylesheet">
+        <link href='https://fonts.loli.net/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
     <?php elseif ($this->options->RobotoSource == '2'): ?>
-        <?php cssLsload("material_icons", "css/material-icons.css") ?>
-    <?php elseif ($this->options->RobotoSource == '3'): ?>
+        <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
     <?php endif; ?>
 
     <!-- Config CSS -->
@@ -332,7 +330,7 @@
             <?php if (!empty($this->options->bgcolor)): ?>
                 background-image: url(<?php $this->options->bgcolor() ?>);
             <?php else: ?>
-                background-image: url(<?php thisThemeFile('img/bg.png'); ?>);
+                background-image: url(<?php getThemeFile('img/bg.png', true); ?>);
             <?php endif; ?>
             }
         </style>
@@ -356,15 +354,15 @@
             }
         </style>
     <?php 
-		endif;
-		if (!empty($this->options->SearchColor)):
-	?>
-		<style>
-			.search-input {
-				color:<?php echo $this->options->SearchColor; ?>;
-			}
-		</style>
-	<?php endif; ?>
+        endif;
+        if (!empty($this->options->SearchColor)):
+    ?>
+        <style>
+            .search-input {
+                color: <?php echo $this->options->SearchColor; ?>;
+            }
+        </style>
+    <?php endif; ?>
 
 </head>
 
