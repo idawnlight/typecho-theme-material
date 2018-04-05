@@ -1024,6 +1024,7 @@ a {
     color: #8A8A8A!important
 }
 #scheme-Paradox .comment-list {
+    margin-bottom: 0;
     padding-left: 0
 }
 #scheme-Paradox .comment__author {
