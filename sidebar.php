@@ -154,7 +154,7 @@
             <!-- Sidebar bottom text -->
             <a href="https://github.com/idawnlight/typecho-theme-material" target="_blank" class="sidebar-footer-text-a">
                 <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-                    <?php lang("misc.theme") ?>- Material
+                    <?php lang("misc.theme") ?> - Material
                     <span class="sidebar-badge badge-circle">i</span>
                 </div>
             </a>
