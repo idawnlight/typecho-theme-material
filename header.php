@@ -15,10 +15,13 @@
     <!-- dns prefetch -->
     <meta http-equiv="x-dns-prefetch-control" content="on">
     <?php
-    if ($this->options->DNSPrefetch !== "") {
+    if (getThemeOptions("DNSPrefetch") !== "") {
         foreach (explode("\n", $this->options->DNSPrefetch) as $domain) {
             echo '<link rel="dns-prefetch" href="' . trim($domain) . '">' . "\n";
         }
+    }
+    if (getThemeOptions("CDNType") == 1) {
+        echo '<link rel="dns-prefetch" href="//cdn.jsdelivr.net">';
     }
     ?>
 
