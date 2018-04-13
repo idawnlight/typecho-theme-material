@@ -49,11 +49,10 @@ function cssLsload($name, $uri)
 function getThemeFile($uri, $print = false)
 {
     $options = Helper::options();
-    $themeOptions = getThemeOptions();
-    if ($themeOptions["CDNType"] == 1) {
+    if (getThemeOptions("CDNType") == 1) {
         $url = "https://cdn.jsdelivr.net/gh/idawnlight/typecho-theme-material@" . MATERIAL_VERSION . "/" . $uri;
-    } elseif ($themeOptions["CDNType"] == 2) {
-        $url = $themeOptions["CDNURL"] . "/" . $uri;
+    } elseif (getThemeOptions("CDNType") == 2) {
+        $url = getThemeOptions("CDNURL") . "/" . $uri;
     } else {
         $site = substr($options->siteUrl, 0, strlen($options->siteUrl) - 1);
         $url = $site . __TYPECHO_THEME_DIR__ . "/" . getTheme() . "/" . $uri;
