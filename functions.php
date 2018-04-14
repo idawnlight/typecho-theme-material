@@ -85,14 +85,14 @@ function getTheme()
 function getThemeOptions($setting = NULL, $print = false)
 {
     static $themeOptions = NULL;
-    if ($themeOptions == NULL) {
+    if ($themeOptions === NULL) {
         $db = Typecho_Db::get();
         $query = $db->select('value')->from('table.options')->where('name = ?', 'theme:' . getTheme());
         $result = $db->fetchAll($query);
         $themeOptions = unserialize($result[0]["value"]);
     }
     if ($print) echo (isset($themeOptions[$setting])) ? $themeOptions[$setting] : NULL;
-    return ($setting === NULL) ? $themeOptions : (isset($themeOptions[$setting])) ? $themeOptions[$setting] : NULL;
+    return ($setting === NULL) ? $themeOptions : (isset($themeOptions[$setting]) ? $themeOptions[$setting] : NULL);
 }
 
 function themeInit($archive)
