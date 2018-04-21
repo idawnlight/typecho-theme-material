@@ -17,6 +17,11 @@ if (isset($_GET["mod"])) {
     }
 }
 
+if (isset($this)) {
+    global $t;
+    $t = $this;
+}
+
 /**
  * JavaScript LS 载入
  * @param string name
@@ -226,4 +231,21 @@ function pangu($html_source)
         $result .= doPangu($c);
     }
     return $result;
+}
+
+/**
+ * 获取描述
+ * @return bool 是否已输出
+ */
+function getDescription() {
+    global $t;
+    if ($t->is("post") || $t->is("page")) {
+        if(isset($t->fields->description) && $t->fields->description){
+            echo $widget->fields->description;
+        } else {
+            $t->excerpt(80, '...');
+        }
+        return true;
+    }
+    return false;
 }

@@ -30,9 +30,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="theme-color" content="<?php $this->options->ChromeThemeColor() ?>">
     <meta name="author" content="<?php $this->options->title() ?>">
-    <meta name="description" itemprop="description" content="<?php $this->options->description() ?>">
-    <meta name="keywords" content="<?php $this->options->keywords() ?>">
-
+    <meta name="description" itemprop="description" content="<?php (getDescription()) ? NULL : $this->options->description(); ?>">
+    <meta name="keywords" content="<?php $this->options->keywords() ?><?php ($this->is('post') && count($this->tags) > 0 && print ",") ? $this->tags(",", false, "none") : NULL; ?>">    
+    
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="<?php $this->options->favicon() ?>">
     <link rel="icon" sizes="192x192" href="<?php $this->options->favicon() ?>">
@@ -65,6 +65,10 @@
         <meta property="article:modified_time" content="<?php $this->date('Y-m-j'); ?>" />
     <?php endif; ?>
 
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
     <!-- Block IE -->
     <!--[if lte IE 9]>
     <link rel="stylesheet" href="<?php getThemeFile("css/ie-blocker.css", true) ?>">
@@ -76,11 +80,13 @@
     <![endif]-->
 
     <!-- The Twitter Card protocol -->
+    <?php if ($this->is("post") || $this->is("page")): ?>
     <meta name="twitter:title" content="<?php $this->archiveTitle(); ?>">
     <meta name="twitter:description" content="<?php $this->options->description() ?>">
     <meta name="twitter:image" content="<?php $this->options->favicon() ?>">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="<?php $this->permalink(); ?>" />
+    <?php endif; ?>
 
     <?php $this->header(); ?>
 
@@ -172,6 +178,13 @@
         #scheme-Paradox #comment {
             font-family: <?php $this->options->CustomFonts(); ?>;
         }
+
+        <?php if (getThemeOptions("SearchColor")):?>
+        .search-input {
+            color: <?php getThemeOptions("SearchColor", true); ?>;
+        }
+        <?php endif; ?>
+
 
     </style>
 
@@ -356,16 +369,17 @@
                 opacity: 0;
             }
         </style>
-    <?php 
-        endif;
-        if (!empty($this->options->SearchColor)):
-    ?>
-        <style>
-            .search-input {
-                color: <?php echo $this->options->SearchColor; ?>;
-            }
-        </style>
     <?php endif; ?>
+
+    
+    <!-- Canonical link -->
+    <?php
+    if ($this->is("post") || $this->is("page") || $this->is("index")) {
+        echo '<link rel="canonical" href="';
+        ($this->is("post") || $this->is("page")) ? $this->permalink() : (($this->is("index")) ? $this->options->siteUrl() : NULL);
+        echo '">';
+    }
+    ?>
 
 </head>
 
