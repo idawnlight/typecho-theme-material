@@ -1,6 +1,6 @@
 <?php $this->need('header.php'); ?>
 
-<div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+<div class="material-layout mdl-js-layout has-drawer is-upgraded">
 
     <main class="material-layout__content" id="main">
         <div id="top"></div>
@@ -11,7 +11,7 @@
 
                 <!-- Article title -->
                 <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
-                    <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image: url(<?php thisThemeFile('img/daily_pic.png'); ?>);">
+                    <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image: url(<?php getThemeFile('img/daily_pic.png', true); ?>);">
                         <p class="article-headline-p">
                             <?php $this->options->title(); ?>
                         </p>
