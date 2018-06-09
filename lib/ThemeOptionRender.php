@@ -42,6 +42,9 @@ class Render {
         $string = "";
         $string .= ($description !== NULL) ? $description . "<br>" : NULL;
         $userOption = getThemeOptions($name);
+        if ($userOption === NULL) {
+            $userOption = $default;
+        }
         $string .= '<ul style="list-style: none!important">';
         foreach ($options as $id => $value) {
             $check = ($id == $userOption) ? "checked" : NULL;

@@ -37,6 +37,13 @@ function themeConfig($form) {
                     $Render->input("CommentRows", "评论框行数", "默认为 1", 1)
                 )
             ).
+            $Render->panel("item", "文章二维码", NULL,
+                $Render->radio("qrcode", "文章二维码", NULL, 
+                [0 => "LWL12 ( api.lwl12.com )",
+                1 => "journey.ad ( api.imajd.cn )",
+                2 => "Google Chart ( chart.apis.google.com )",
+                3 => "不显示二维码"], 0)
+            ).
             $Render->panel("item", "搜索设置", NULL,
                 $Render->radio("searchis", "搜索设置", NULL, [0 => "Typecho 原生搜索", 1 => "本地搜索（即时搜索）"], 1)
             ).
