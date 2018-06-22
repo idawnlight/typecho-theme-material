@@ -4,9 +4,9 @@
 
     <main class="material-layout__content" id="main">
         <div id="top"></div>
-        <!-- Sidebar hamburger button -->
+        <!-- Hamburger Button -->
         <button class="MD-burger-icon sidebar-toggle">
-            <span class="MD-burger-layer"></span>
+            <span id="MD-burger-id" class="MD-burger-layer"></span>
         </button>
 
         <!-- Post module -->

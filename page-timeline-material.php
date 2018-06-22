@@ -396,9 +396,9 @@ $this->need('header.php'); ?>
         }
     }
 </style>
-<!-- Sidebar hamburger button -->
+<!-- Hamburger Button -->
 <button class="MD-burger-icon sidebar-toggle">
-    <span class="MD-burger-layer"></span>
+    <span id="MD-burger-id" class="MD-burger-layer"></span>
 </button>
 
 <section id="md-timeline" class="md-container">
