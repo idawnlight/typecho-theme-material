@@ -59,7 +59,7 @@
         <meta property="og:release_date" content="<?php $this->date('Y-m-j'); ?>" />
         <meta property="og:title" content="<?php $this->options->title(); ?>" />
         <meta property="og:image" content="<?php showThumbnail($this); ?>" />
-        <meta property="og:description" content="<?php $this->description() ?>" />
+        <meta property="og:description" content="<?php (getDescription()) ? NULL : $this->options->description(); ?>" />
         <meta property="og:author" content="<?php $this->author(); ?>" />
         <meta property="article:published_time" content="<?php $this->date('Y-m-j'); ?>" />
         <meta property="article:modified_time" content="<?php $this->date('Y-m-j'); ?>" />

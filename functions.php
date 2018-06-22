@@ -263,8 +263,8 @@ function pangu($html_source)
 function getDescription() {
     global $t;
     if ($t->is("post") || $t->is("page")) {
-        if(isset($t->fields->description) && $t->fields->description){
-            echo $widget->fields->description;
+        if ($t->fields->description != ""){
+            echo $t->fields->description;
         } else {
             $t->excerpt(80, '...');
         }
