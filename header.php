@@ -82,7 +82,7 @@
     <!-- The Twitter Card protocol -->
     <?php if ($this->is("post") || $this->is("page")): ?>
     <meta name="twitter:title" content="<?php $this->archiveTitle(); ?>">
-    <meta name="twitter:description" content="<?php $this->options->description() ?>">
+    <meta name="twitter:description" content="<?php (getDescription()) ? NULL : $this->options->description(); ?>">
     <meta name="twitter:image" content="<?php $this->options->favicon() ?>">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="<?php $this->permalink(); ?>" />
