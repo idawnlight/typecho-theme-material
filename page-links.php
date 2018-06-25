@@ -111,7 +111,7 @@ $this->need('header.php'); ?>
                 <?php Links_Plugin::output('
                 <a href="{url}" title="{title}" target="_blank">
                     <li class="md-links-item">
-                        <img src="{image}" alt="{name}" width="72px"/>
+                        <img src="{image}" alt="{name}" height="72px"/>
                         <span  class="md-links-title">{name}</span><br />
                         <span>{description}</span>
                     </li>
