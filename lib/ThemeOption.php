@@ -139,6 +139,19 @@ function themeConfig($form) {
                 ).
                 $Render->panel("item", "背景颜色 / 图片", NULL,
                     $Render->input("bgcolor", "背景颜色 / 图片", "背景设置如果选择纯色背景, 这里就填写颜色代码; <br />背景设置如果选择图片背景, 这里就填写图片地址;<br />不填写则默认显示 #F5F5F5 或主题文件夹下的 /img/bg.jpg", NULL)
+                ).
+                $Render->panel("item", "背景渐变", NULL,
+                    $Render->radio("GradientType", "背景渐变", NULL, 
+                    ['0' => _t('Aerinite'),
+                     '1' => _t('Ethereal'),
+                     '2' => _t('Patrichor'),
+                     '3' => _t('Komorebi'),
+                     '4' => _t('Crepuscular'),
+                     '5' => _t('Autumn'),
+                     '6' => _t('Shore'),
+                     '7' => _t('Horizon'),
+                     '8' => _t('Green Beach'),
+                     '9' => _t('Virgin')], 0)
                 )
             ).
             $Render->panel("item", "缩略图显示效果", NULL,
