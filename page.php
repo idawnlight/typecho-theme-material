@@ -45,14 +45,14 @@
                         </span>
                         </div>
                         <div class="section-spacer"></div>
-                        <?php if (getThemeOptions("qrcode") != 3): ?>
+                        <?php if (getThemeOptions("qrcode") != "false"): ?>
                         <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                             <i class="material-icons" role="presentation">devices other</i>
                             <span class="visuallyhidden">devices other</span>
                         </button>
                         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
                             <li class="mdl-menu__item"><?php lang("post.qrcode") ?></li>
-                            <img src="<?php getQRCode($this->permalink); ?>">
+                            <img src="<?php getQRCode($this->permalink); ?>" height="200" width="200">
                         </ul>
                         <?php endif; ?>
                         <!-- view tags -->

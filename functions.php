@@ -128,7 +128,10 @@ function getQRCode($permalink) {
             $src = "https://api.imjad.cn/qrcode/?text=$permalink&size=200&level=L";
             break;
         case 2:
-            $src = "https://chart.apis.google.com/chart?chs=200x200&cht=qr&chld=H|1&chl=$permalink";
+            $src = "https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=H|1&chl=$permalink";
+            break;
+        case 3:
+            $src = "https://www.wandoujia.com/api/qr?s=7&c=$permalink";
             break;
     }
     echo $src;
