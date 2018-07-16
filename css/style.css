@@ -279,8 +279,6 @@ a {
     border: 1px solid #ddd;
 }
 #post-content table tr {
-    /*    display: table;*/
-
     background-color: #fff;
 }
 #post-content table tr:nth-child(2n) {
@@ -365,7 +363,6 @@ a {
     margin: 13px auto 0;
     text-align: right;
 }
-#post-content code,
 #post-content tt {
     margin: 0 2px;
     padding: 0px 5px;
@@ -373,24 +370,18 @@ a {
     border-radius: 3px;
 }
 #post-content pre>code {
-    margin: 0;
-    padding: 0;
     white-space: pre;
     border: none;
-    background: transparent;
 }
 #post-content pre {
     background-color: #f7f7f7;
     font-size: 13px;
     line-height: 19px;
     overflow: auto;
-    padding: 16px;
     border-radius: 3px;
 }
 #post-content .gutter,
 #post-content .code {
-    /*  background: #f7f7f7;*/
-
     font-size: 13px;
     line-height: 19px;
     overflow: auto;
@@ -412,7 +403,10 @@ a {
     margin: 0;
     display: block;
 }
-#post-content pre code,
+#post-content pre code {
+    padding: 12px;
+    border: none;
+}
 #post-content pre tt {
     margin: 0;
     padding: 0;
