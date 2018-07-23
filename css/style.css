@@ -363,6 +363,7 @@ a {
     margin: 13px auto 0;
     text-align: right;
 }
+#post-content code:not(.hljs),
 #post-content tt {
     margin: 0 2px;
     padding: 0px 5px;
@@ -2034,7 +2035,7 @@ a {
 /*****************/
 /* Nprogress_CSS */
 /*****************/
- -#nprogress {
+ #nprogress {
     pointer-events: none
 }
 #nprogress .bar {

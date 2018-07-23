@@ -86,7 +86,7 @@ class Render {
         $string .= '<ul style="list-style: none!important">';
         foreach ($options as $option => $value) {
             $checked = "";
-            if (in_array($option, $userOptions)) $checked = "checked";
+            if ($userOptions !== null && in_array($option, $userOptions)) $checked = "checked";
             $string .= '<li><label class="mdui-checkbox"><input type="checkbox" name="' . $name . '[]" value="' . $option . '" ' . $checked . '/><i class="mdui-checkbox-icon"></i>' . $value . '</label></li>';
             $options[$id] = _t($value);
         }
