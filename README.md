@@ -46,7 +46,8 @@ Experience the Material theme in live: [typecho-theme-material Demo](https://blo
 - 在 "设置外观" 中打造一个属于你自己的博客
 - 关于文章缩略图
 	- 文章缩略图为文章内第一张图片，自定义字段 “图片地址” 优先级最高
-	- 缩略图支持 Markdown 格式, HTML 格式以及附件形式, Markdown 格式为 `![图片描述](图片链接)` 。
+	- 缩略图支持 Markdown 格式, HTML 格式以及附件形式, Markdown 格式为 `![图片描述](图片链接)[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fidawnlight%2Ftypecho-theme-material.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fidawnlight%2Ftypecho-theme-material?ref=badge_shield)
+` 。
 	- 如果想要自定义某篇文章的缩略图, 但是不想让该图片在文章中出现, 则可以使用该格式 `<img src="图片链接" width="0px" /> ` 
 - 首页文章概览默认最大输出80个字符, 可手动添加截断符 `<!--more-->` 控制输出
 - 在侧边栏中使用友情链接, 需安装此友情链接插件  [typecho-links-material](https://github.com/idawnlight/typecho-links-material)
@@ -75,3 +76,6 @@ All kinds of contributions (enhancements, new features, documentation & code imp
 Open sourced under the GPL v3.0 license.
 
 根据 GPL V3.0 许可证开源。
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fidawnlight%2Ftypecho-theme-material.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fidawnlight%2Ftypecho-theme-material?ref=badge_large)
