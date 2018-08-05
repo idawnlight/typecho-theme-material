@@ -148,8 +148,13 @@
         .sidebar-colored .sidebar-nav > .open > a,
         .sidebar-colored .sidebar-nav > .open > a:hover,
         .sidebar-colored .sidebar-nav > .open > a:focus,
-        #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+        #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a,
+        .mdl-textfield--floating-label.is-focused .mdl-textfield__label, .mdl-textfield--floating-label.is-dirty .mdl-textfield__label {
             color: <?php $this->options->ThemeColor() ?> !important;
+        }
+
+        .mdl-textfield__label:after {
+            background-color: <?php $this->options->ThemeColor() ?> !important;
         }
 
         .toTop {
