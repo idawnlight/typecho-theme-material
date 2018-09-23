@@ -23,7 +23,7 @@ if (isset($this)) {
 }
 
 /**
- * JavaScript LS 载入
+ * JavaScript 载入
  * @param string name
  * @param string uri
  */
@@ -36,7 +36,7 @@ function jsLsload($name, $uri)
 }
 
 /**
- * CSS LS 载入
+ * CSS 载入
  * @param string name
  * @param string uri
  */
@@ -47,6 +47,15 @@ function cssLsload($name, $uri)
     $hash = md5($identifier);
     echo '<style id="' . $name . '"></style>';
     echo '<script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("' . $name . '","' . getThemeFile($uri) . '?' . $hash . '",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>';
+}
+
+function getBackgroundLazyload($url)
+{
+    if (in_array("Lazyload", getThemeOptions("switch"))) {
+        echo 'data-original="' . $url . '"';
+    } else {
+        echo 'style="background-image: url(\'' . $url . '\');"';
+    }
 }
 
 function getThemeFile($uri, $print = false)
@@ -115,6 +124,7 @@ function themeInit($archive)
 /**
  * 获取二维码
  * @param string permalink
+ * @return string url
  */
 function getQRCode($permalink) {
     $qrcode = getThemeOptions("qrcode");
@@ -141,12 +151,12 @@ function getQRCode($permalink) {
 /**
  * 文章缩略图
  * @param Typecho_Widget $widget
+ * @return string image url
  */
 function showThumbnail($widget)
 {
-    if($widget->fields->picUrl){
-        echo $widget->fields->picUrl;
-        return;
+    if ($widget->fields->picUrl){
+        return $widget->fields->picUrl;
     }
 
     //If article no include picture, display random default picture
@@ -162,19 +172,20 @@ function showThumbnail($widget)
     $patternlazy = '/\<img.*?data-original\=\"(.*?)\"[^>]*>/i';
 
     if (preg_match_all($pattern, $widget->content, $thumbUrl)) {
-        echo $thumbUrl[1][0];
+        return $thumbUrl[1][0];
     } elseif (preg_match_all($patternlazy, $widget->content, $thumbUrl)) {
-        echo $thumbUrl[1][0];
+        return $thumbUrl[1][0];
     } elseif ($attach->isImage) {
-        echo $attach->url;
+        return $attach->url;
     } else {
-        echo $random;
+        return $random;
     }
 }
 
 /**
  * 随机缩略图
  * @param Typecho_Widget $widget
+ * @return string image url
  */
 function randomThumbnail($widget)
 {
@@ -183,11 +194,11 @@ function randomThumbnail($widget)
 
     $random = getThemeFile('img/random/material-' . $rand . '.png');
 
-    echo $random;
+    return $random;
 }
 
 /**
- * Console Copyrigtht
+ * Console Copyright
  */
 function copyright()
 {

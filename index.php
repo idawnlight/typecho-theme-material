@@ -187,7 +187,7 @@ $this->need('header.php'); ?>
                             <!-- Article link & title -->
                             <?php if ($this->options->ThumbnailOption == '1'): ?>
                                 <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50 lazy "
-                                     data-original="<?php showThumbnail($this); ?>">
+                                    <?php getBackgroundLazyload(showThumbnail($this)); ?>>
                                     <p class="article-headline-p"><a href="<?php $this->permalink() ?>"
                                                                      target="_self"><?php $this->title() ?></a></p>
                                 </div>
@@ -202,7 +202,7 @@ $this->need('header.php'); ?>
                                 </div>
                             <?php elseif ($this->options->ThumbnailOption == '3'): ?>
                                 <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50 lazy "
-                                     data-original="<?php randomThumbnail($this); ?>">
+                                    <?php getBackgroundLazyload(showThumbnail($this)); ?>>
                                     <p class="article-headline-p"><a href="<?php $this->permalink() ?>"
                                                                      target="_self"><?php $this->title() ?></a></p>
                                 </div>
@@ -265,7 +265,7 @@ $this->need('header.php'); ?>
 
                         <!-- Article link & title -->
                         <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50 lazy "
-                             data-original="<?php getThemeFile("img/daily_pic.png", true); ?>">
+                            <?php getBackgroundLazyload(showThumbnail($this)); ?>>
                             <p class="article-headline-p"><a href="<?php $this->options->siteUrl() ?>"
                                                              target="_self"><?php $this->options->title() ?></a></p>
                         </div>
