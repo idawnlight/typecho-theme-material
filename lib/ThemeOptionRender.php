@@ -88,7 +88,6 @@ class Render {
             $checked = "";
             if ($userOptions !== null && in_array($option, $userOptions)) $checked = "checked";
             $string .= '<li><label class="mdui-checkbox"><input type="checkbox" name="' . $name . '[]" value="' . $option . '" ' . $checked . '/><i class="mdui-checkbox-icon"></i>' . $value . '</label></li>';
-            $options[$id] = _t($value);
         }
         $string .= "</ul>";
         $$name = new Typecho_Widget_Helper_Form_Element_Checkbox($name, $options, $default, _t($display), _t($description));

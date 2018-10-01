@@ -8,7 +8,9 @@ require_once("lib/Spyc.php");
 require_once("lib/ThemeOptionRender.php");
 require_once("lib/ThemeOption.php");
 
-error_reporting(0);
+if (!defined('__TYPECHO_DEBUG__') || __TYPECHO_DEBUG__ == 0) {
+    error_reporting(0);
+}
 
 if (isset($_GET["mod"])) {
     if ($_GET["mod"] === "search-xml") {
