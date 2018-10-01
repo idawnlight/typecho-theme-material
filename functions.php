@@ -29,10 +29,14 @@ if (isset($this)) {
  */
 function jsLsload($name, $uri)
 {
-    $options = Helper::options();
-    $identifier = $name . $uri . filemtime($options->themeFile(getTheme(), $uri)) . MATERIAL_VERSION;
-    $hash = md5($identifier);
-    echo '<script>lsloader.load("' . $name . '","' . getThemeFile($uri) . '?' . $hash . '", true)</script>';
+    if (in_array("LocalStorage", getThemeOptions("switch"))) {
+        $options = Helper::options();
+        $identifier = $name . $uri . filemtime($options->themeFile(getTheme(), $uri)) . MATERIAL_VERSION;
+        $hash = md5($identifier);
+        echo '<script>lsloader.load("' . $name . '","' . getThemeFile($uri) . '?' . $hash . '", true)</script>';
+    } else {
+        echo '<script src="'.getThemeFile($uri).'"></script>';
+    }
 }
 
 /**
@@ -42,16 +46,29 @@ function jsLsload($name, $uri)
  */
 function cssLsload($name, $uri)
 {
-    $options = Helper::options();
-    $identifier = $name . $uri . filemtime($options->themeFile(getTheme(), $uri)) . MATERIAL_VERSION;
-    $hash = md5($identifier);
-    echo '<style id="' . $name . '"></style>';
-    echo '<script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("' . $name . '","' . getThemeFile($uri) . '?' . $hash . '",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>';
+    if (in_array("LocalStorage", getThemeOptions("switch"))) {
+        $options = Helper::options();
+        $identifier = $name . $uri . filemtime($options->themeFile(getTheme(), $uri)) . MATERIAL_VERSION;
+        $hash = md5($identifier);
+        echo '<style id="' . $name . '"></style>';
+        echo '<script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("' . $name . '","' . getThemeFile($uri) . '?' . $hash . '",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>';
+    } else {
+        echo '<link href="'.getThemeFile($uri).'" rel="stylesheet" type="text/css" />';
+    }
+}
+
+function getScriptType()
+{
+    if (in_array("LocalStorage", getThemeOptions("switch"))) {
+        echo 'text/ls-javascript';
+    } else {
+        echo 'text/javascript';
+    }
 }
 
 function getBackgroundLazyload($url)
 {
-    if (in_array("Lazyload", getThemeOptions("switch"))) {
+    if (in_array("LazyloadIndex", getThemeOptions("switch"))) {
         echo 'data-original="' . $url . '"';
     } else {
         echo 'style="background-image: url(\'' . $url . '\');"';

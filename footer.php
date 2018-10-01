@@ -147,7 +147,7 @@
 <?php jsLsload("js_js", "js/js.min.js") ?>
 <?php jsLsload("lazyload_js", "js/lazyload.min.js") ?>
 
-<script type="text/ls-javascript" id="lazy-load">
+<script type="<?php getScriptType() ?>" id="lazy-load">
     // Offer LazyLoad
     queue.offer(function(){
         $('.lazy').lazyload({
@@ -167,7 +167,7 @@
     <!-- Nprogress -->
     <?php jsLsload('np_js', 'js/nprogress.js'); ?>
 
-    <script type="text/ls-javascript" id="NProgress-script">
+    <script type="<?php getScriptType() ?>" id="NProgress-script">
     NProgress.configure({
         showSpinner: true
     });
@@ -213,22 +213,22 @@
 <?php if (!empty($this->options->switch) && in_array('Pangu', $this->options->switch) && !in_array('PanguPHP', $this->options->switch)): ?>
     <!-- Pangu -->
     <?php jsLsload('pangu_js', 'js/pangu.min.js'); ?>
-    <script type="text/ls-javascript" id="pangu-script"> pangu.spacingPage(); </script>
+    <script type="<?php getScriptType() ?>" id="pangu-script"> pangu.spacingPage(); </script>
 <?php endif; ?>
 
 <?php if (!empty($this->options->switch) && in_array('HighLight', $this->options->switch)): ?>
     <!-- highlight js -->
     <?php jsLsload('highlight_js', 'js/highlight.min.js'); ?>
     <?php cssLsload('highlight_css', 'css/highlight.min.css') ?>
-    <script type="text/ls-javascript" id="highlight-script"> hljs.initHighlightingOnLoad(); </script>
+    <script type="<?php getScriptType() ?>" id="highlight-script"> hljs.initHighlightingOnLoad(); </script>
 <?php endif; ?>
 
 <?php if (getThemeOptions("searchis") == 1): ?>
-    <!-- Local Search (beta) -->
-    <script type="text/ls-javascript" id="search-local-js-script">
+    <!-- Local Search -->
+    <script type="<?php getScriptType() ?>" id="search-local-js-script">
     var searchFunc=function(c,a,b){$.ajax({url:c,dataType:"xml",success:function(e){var d=$("entry",e).map(function(){return{title:$("title",this).text(),content:$("content",this).text(),url:$("url",this).text()}}).get();var g=document.getElementById(a);var f=document.getElementById(b);g.addEventListener("input",function(){var i='<ul class="search-result-list">';var h=this.value.trim().toLowerCase().split(/[\s\-]+/);f.innerHTML="";if(this.value.trim().length<=0){return}d.forEach(function(o){var n=true;var s=[];var t=o.title.trim().toLowerCase();var m=o.content.trim().replace(/<[^>]+>/g,"").toLowerCase();var j=o.url;var u=-1;var q=-1;var p=-1;if(t!==""&&m!==""){h.forEach(function(w,x){u=t.indexOf(w);q=m.indexOf(w);if(u<0&&q<0){n=false}else{if(q<0){q=0}if(x===0){p=q}}})}if(n){i+='<li><a href="'+j+'" class="search-result-title" target="_blank">'+t;var r=o.content.trim().replace(/<[^>]+>/g,"");if(p>=0){var k=p-6;var l=p+6;if(k<0){k=0}if(k===0){l=10}if(l>r.length){l=r.length}var v=r.substr(k,l);h.forEach(function(w){var x=new RegExp(w,"gi");v=v.replace(x,'<em class="search-keyword">'+w+"</em>")});i+='<p class="search-result">'+v+"...</p></a>"}}});f.innerHTML=i})}})};
-</script>
-    <script type="text/ls-javascript" id="search-input-script">
+    </script>
+    <script type="<?php getScriptType() ?>" id="search-input-script">
     var inputArea = document.querySelector('#search');
             var getSearchFile = function() {
                 var path = '<?php echo Helper::options()->index . "?mod=search-xml" ?>';
@@ -240,12 +240,12 @@
                     getSearchFile();
                 }
             }
-</script>
+    </script>
 <?php endif; ?>
 
 <script>
     (function(){
-        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]');
 
         for (var i = 0; i < scriptList.length; ++i) {
             var item = scriptList[i];

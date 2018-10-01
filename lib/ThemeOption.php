@@ -14,8 +14,8 @@ function themeConfig($form) {
     $Render->panel("main", NULL, NULL,
         $Render->panel("item", "简介", NULL, '<p style="font-size:14px;">
         <span style="display: block; margin-bottom: 10px; margin-top: 10px; font-size: 16px;">感谢您使用 Material 主题</span>
-        <span style="margin-bottom:10px;display:block">请关注 <a href="https://github.com/idawnlight/typecho-theme-material" target="_blank" style="color:#3384da;font-weight:bold;text-decoration:underline">Github-Material</a> 以获得<span style="color:#df3827;font-weight:bold;">最新版本支持</span></span>
-        <a href="mailto:i@lim-light.com" >帮助&支持</a> &nbsp;
+        <span style="margin-bottom:10px;display:block">请关注 <a href="https://github.com/idawnlight/typecho-theme-material" target="_blank" style="color:#3384da;font-weight:bold;text-decoration:underline">Github</a> 以获得<span style="color:#df3827;font-weight:bold;">最新版本支持</span></span>
+        <a href="mailto:idawn@live.com" >帮助&支持</a> &nbsp;
         <a href="https://github.com/idawnlight/typecho-theme-material/issues" target="_blank">建议&反馈</a><br><br>当前版本 ' . MATERIAL_VERSION . '<span id="update"></span><script type="text/javascript" src="https://api.lim-light.com/update/material.php?version=' . MATERIAL_VERSION . '&encode=js-html&front=，" async defer></script></p>', true, false). 
         $Render->panel("item", "功能设定", "基础的功能",
             $Render->panel("item", "功能开关", NULL, 
@@ -27,7 +27,9 @@ function themeConfig($form) {
                  'Pangu' => '引用 Pangu.js 实现中英文间自动添加空格',
                  'PanguPHP' => '引用 Pangu.PHP 后端实现中英文间自动添加空格',
                  'HighLight' => '引用 highlight.js 实现代码高亮',
-                 'Lazyload' => '图片延迟加载'], ['SmoothScroll', 'ShowLoadingLine', 'PanguPHP', 'HighLight'])
+                 'Lazyload' => '图片延迟加载（文章内）',
+                 'LazyloadIndex' => '图片延迟加载（首页）',
+                 'LocalStorage' => 'LocalStorage 强缓存策略（对于部分插件不兼容）'], ['SmoothScroll', 'ShowLoadingLine', 'PanguPHP', 'HighLight'])
             ).
             $Render->panel("item", "文章评论", NULL,
                 $Render->panel("item", "文章评论类型", NULL,
