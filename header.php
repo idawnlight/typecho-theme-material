@@ -96,11 +96,15 @@
     <!-- Import queue -->
     <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
 
-
     <!-- Material style -->
     <?php cssLsload("material_css", "css/material.min.css") ?>
     <?php cssLsload("style_css", "css/style.min.css") ?>
     <?php cssLsload("material_icons", "css/material-icons.css") ?>
+
+    <!-- Disqus JS -->
+    <?php if (getThemeOptions("commentis") == '1' && $this->is("post") || $this->is("page")): ?>
+        <?php cssLsload('disqusjs_css', 'css/disqusjs.css'); ?>
+    <?php endif; ?>
 
     <?php if ($this->options->RobotoSource == '0'): ?>
         <link href='https://fonts.proxy.ustclug.org/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>

@@ -33,10 +33,18 @@ function themeConfig($form) {
             ).
             $Render->panel("item", "文章评论", NULL,
                 $Render->panel("item", "文章评论类型", NULL,
-                    $Render->radio("commentis", "文章评论类型", NULL, [0 => "原生评论"], 0)
+                    $Render->radio("commentis", "文章评论类型", 'Disqus 评论使用 <a href="https://github.com/SukkaW/DisqusJS">SukkaW/DisqusJS</a> 实现基础模式渲染', [0 => "原生评论", 1 => 'Disqus (disqus.com)'], 0)
                 ).
                 $Render->panel("item", "评论框行数", NULL,
                     $Render->input("CommentRows", "评论框行数", "默认为 1", 1)
+                ).
+                $Render->panel("item", "Disqus 设置", NULL,
+                    $Render->input("DisqusShortname", "Shortname", "必填，你的 Disqus Forum 的 shortname，你可以在 <a href=\"https://disqus.com/admin/settings/general/\" rel=\"nofollow\">Disqus Admin - Settings - General - Shortname</a> 获取你的 shortnam", null).
+                    $Render->input("DisqusSiteName", "siteName", "非必须，你站点的名称，将会显示在「评论基础模式」的 header 中；该配置应该和 <a href=\"https://disqus.com/admin/settings/general/\" rel=\"nofollow\">Disqus Admin - Settings - General - Website Name</a> 一致", null).
+                    $Render->input("DisqusApi", "api", "必填，DisqusJS 请求的 API Endpoint，通常情况下你应该配置一个 Disqus API 的反代并填入反代的地址。你也可以直接使用 DISQUS 官方 API 的 Endpoint <code>https://disqus.com/api/</code>，或 Sukka 搭建的 Disqus API 反代 Endpoint <code>https://disqus.skk.moe/disqus/</code>", 'https://disqus.skk.moe/disqus/').
+                    $Render->input("DisqusApiKey", "apiKey", "必填，DisqusJS 向 API 发起请求时使用的 API Key，你应该在配置 Disqus Application 时获取了 API Key，参见 <a href='https://github.com/SukkaW/DisqusJS#%E9%85%8D%E7%BD%AE-disqus-application'>https://github.com/SukkaW/DisqusJS#配置-disqus-application</a>", null).
+                    $Render->input("DisqusAdmin", "admin", "非必须，你的站点的 Disqus Moderator 的用户名（也就是你的用户名）。你可以在 <a href=\"https://disqus.com/home/settings/account/\" rel=\"nofollow\">Disqus - Settings - Account - Username</a> 获取你的 Username", null).
+                    $Render->input("DisqusAdminLabel", "adminLabel", "非必须，你想显示在 Disqus Moderator Badge 中的文字。该配置应和 <a href=\"https://disqus.com/admin/settings/community/\" rel=\"nofollow\">Disqus Admin - Settings - Community - Moderator Badge Text</a> 相同", null)
                 )
             ).
             $Render->panel("item", "文章二维码", NULL,

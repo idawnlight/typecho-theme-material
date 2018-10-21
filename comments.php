@@ -80,8 +80,8 @@
     <?php
 } ?>
 
-<!-- 使用原生评论 -->
 <?php if ($this->options->commentis == '0'): ?>
+    <!-- 使用原生评论 -->
 
     <div class="mdl-color-text--primary-contrast mdl-card__supporting-text comments">
 
@@ -190,4 +190,38 @@
 
         <?php endif; ?>
     </div>
+<?php elseif ($this->options->commentis == '1'): ?>
+    <!-- 使用 Disqus 评论 -->
+    <div class="mdl-color-text--primary-contrast mdl-card__supporting-text comments">
+        <?php if ($this->allow('comment')): ?>
+
+        <div id="disqus_thread"></div>
+        <?php jsLsload('disqus_js', 'js/disqus.js'); ?>
+            <script type="<?php getScriptType() ?>" id="disqus_js">
+                var dsqjs = new DisqusJS({
+                    shortname: '<?php getThemeOptions("DisqusShortname", true) ?>',
+                    siteName: '<?php getThemeOptions("DisqusSiteName", true) ?>',
+                    identifier: '<?php $this->cid() ?>',
+                    url: '<?php $this->permalink() ?>',
+                    api: '<?php getThemeOptions("DisqusApi", true) ?>',
+                    apikey: '<?php getThemeOptions("DisqusApiKey", true) ?>',
+                    admin: '<?php getThemeOptions("DisqusAdmin", true) ?>',
+                    adminLabel: '<?php getThemeOptions("DisqusAdminLabel", true) ?>'
+                });
+            </script>
+        <?php else: ?>
+
+            <div class="comments__closed">
+                <span id="commentCount">
+                    <?php if (getThemeOptions("language") === "zh-CN"): ?>
+                        评论已关闭
+                    <?php else: ?>
+                        Comment has been closed
+                    <?php endif; ?>
+                </span>
+            </div>
+
+        <?php endif; ?>
+    </div>
+
 <?php endif; ?>
