@@ -19,7 +19,8 @@ Class Comment_Expert {
     protected $comments_blocks;
 
     public function getResult() {
-        return $this->wxr->asXML();
+        $content = $this->wxr->asXML();
+        return $content;
     }
 
     public function addBlock($post) {
@@ -27,32 +28,55 @@ Class Comment_Expert {
         $this->post_blocks[$post['cid']]->addChild('title', $post['title']);
         $widget = new arrayToClass(Typecho_Widget::widget('Widget_Abstract_Contents')->push($post));
         $this->post_blocks[$post['cid']]->addChild('link', $widget->permalink);
-        $this->post_blocks[$post['cid']]->addChild('content:encoded', $widget->content);
-        $this->post_blocks[$post['cid']]->addChild('dsq:thread_identifier', $post['cid']);
-        $this->post_blocks[$post['cid']]->addChild('wp:post_date_gmt', gmdate('Y-m-d h:i:s', $widget->created));
-        $this->post_blocks[$post['cid']]->addChild('wp:comment_status', $widget->allowComment ? 'open' : 'closed');
+        $this->post_blocks[$post['cid']]->addChildWithCDATA('encoded', $widget->text, "http://purl.org/rss/1.0/modules/content/");
+        $this->post_blocks[$post['cid']]->addChild('thread_identifier', $post['cid'], "http://www.disqus.com/");
+        $this->post_blocks[$post['cid']]->addChild('post_date_gmt', gmdate('Y-m-d h:i:s', $widget->created), "http://wordpress.org/export/1.0/");
+        $this->post_blocks[$post['cid']]->addChild('comment_status', $widget->allowComment ? 'open' : 'closed', "http://wordpress.org/export/1.0/");
     }
 
     public function addComment($comment) {
         $comment = new arrayToClass($comment);
         if (isset($this->post_blocks[$comment->cid])) {
-            $block = $this->post_blocks[$comment->cid]->addChild('comment');
-            $block->addChild('wp:comment_id', $comment->coid);
-            $block->addChild('wp:comment_author', $comment->author);
-            $block->addChild('wp:comment_author_email', $comment->mail);
-            $block->addChild('wp:comment_author_url', $comment->url);
-            $block->addChild('wp:comment_author_IP', $comment->ip);
-            $block->addChild('wp:comment_date_gmt', gmdate('Y-m-d h:i:s', $comment->created));
-            $block->addChild('wp:comment_id', $comment->coid);
-            $block->addChild('wp:comment_content', $comment->text);
-            $block->addChild('wp:comment_approved', $comment->status === 'approved' ? '1' : '0');
-            $block->addChild('wp:comment_parent', $comment->parent);
+            $block = $this->post_blocks[$comment->cid]->addChild('comment', null, "http://wordpress.org/export/1.0/");
+            $block->addChild('comment_id', $comment->coid, "http://wordpress.org/export/1.0/");
+            $block->addChild('comment_author', $comment->author, "http://wordpress.org/export/1.0/");
+            $block->addChild('comment_author_email', $comment->mail, "http://wordpress.org/export/1.0/");
+            $block->addChild('comment_author_url', $comment->url, "http://wordpress.org/export/1.0/");
+            $block->addChild('comment_author_IP', $comment->ip, "http://wordpress.org/export/1.0/");
+            $block->addChild('comment_date_gmt', gmdate('Y-m-d h:i:s', $comment->created), "http://wordpress.org/export/1.0/");
+            $block->addChild('comment_id', $comment->coid, "http://wordpress.org/export/1.0/");
+            $block->addChildWithCDATA('comment_content', $comment->text, "http://wordpress.org/export/1.0/");
+            $block->addChild('comment_approved', $comment->status === 'approved' ? '1' : '0', "http://wordpress.org/export/1.0/");
+            $block->addChild('comment_parent', $comment->parent, "http://wordpress.org/export/1.0/");
         }
     }
 
     public function __construct() {
-        $this->wxr = new SimpleXMLElement($this->struct);
+        $this->wxr = new SimpleXMLElementExtended($this->struct);
         return false;
+    }
+}
+
+Class SimpleXMLElementExtended extends SimpleXMLElement {
+
+    /**
+     * Adds a child with $value inside CDATA
+     * @param string $name
+     * @param string $value
+     * @param string $namespace
+     * @return SimpleXMLElement
+     * https://stackoverflow.com/questions/6260224/how-to-write-cdata-using-simplexmlelement
+     */
+    public function addChildWithCDATA($name, $value = NULL, $namespace = null) {
+        $new_child = $this->addChild($name, null, $namespace);
+
+        if ($new_child !== NULL) {
+            $node = dom_import_simplexml($new_child);
+            $no   = $node->ownerDocument;
+            $node->appendChild($no->createCDATASection($value));
+        }
+
+        return $new_child;
     }
 }
 
