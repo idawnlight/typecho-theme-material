@@ -1,7 +1,9 @@
 <?php
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 define("MATERIAL_VERSION", "3.3.0");
 
+require_once("lib/tools.php");
 require_once("lib/UACheck.php");
 require_once("lib/pangu.php");
 require_once("lib/Spyc.php");
@@ -12,16 +14,40 @@ if (!defined('__TYPECHO_DEBUG__') || __TYPECHO_DEBUG__ == 0) {
     error_reporting(0);
 }
 
-if (isset($_GET["mod"])) {
+if (isset($this)) {
+    global $t;
+    $t = $this;
+}
+
+if (isset($_GET["mod"]) && isset($this) && $this->is('index')) {
     if ($_GET["mod"] === "search-xml") {
         $this->need("page-search.php");
         exit;
     }
-}
-
-if (isset($this)) {
-    global $t;
-    $t = $this;
+    if ($_GET["mod"] === "expert") {
+        if ($_GET['type'] === 'comments') {
+            if (Typecho_Widget::widget('Widget_User')->pass('administrator', true)) {
+                header("Content-Type: text/xml");
+                header('Content-Disposition: attachment; filename="'.Typecho_Widget::widget('Widget_Options')->title.'-comments-wxr-'.gmdate('Y-m-d').'.xml"');
+                $tool = new Comment_Expert();
+                $db = Typecho_Db::get();
+                $query = $db->select('*')->from('table.contents')->where('type = ?', 'post')->orWhere('type = ?', 'page');
+                $result = $db->fetchAll($query);
+                foreach ($result as $item) {
+                    $tool->addBlock($item);
+                }
+                $comment_query = $db->select('*')->from('table.comments');
+                $comments = $db->fetchAll($comment_query);
+                foreach ($comments as $comment) {
+                    if ($comment['status'] !== 'spam') {
+                        $tool->addComment($comment);
+                    }
+                }
+                echo $tool->getResult();
+                exit;
+            }
+        }
+    }
 }
 
 /**
@@ -293,7 +319,7 @@ function pangu($html_source)
  */
 function getDescription() {
     global $t;
-    if ($t->is("post") || $t->is("page")) {
+    if (method_exists($t,'is') && $t->is("post") || $t->is("page")) {
         if ($t->fields->description != ""){
             echo $t->fields->description;
         } else {

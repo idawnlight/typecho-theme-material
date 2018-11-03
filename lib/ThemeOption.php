@@ -226,6 +226,11 @@ function themeConfig($form) {
             $Render->panel("item", "自定义字体", NULL,
                 $Render->input("CustomFonts", "自定义字体", "主题的 font-family，通常不建议修改", "Roboto, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif")
             )
-        )
+        ).
+        $Render->panel("item", "工具箱", '那点零零碎碎的小工具', '
+<div class="mdui-list">
+  <a href="'.Typecho_Widget::widget('Widget_Options')->siteUrl.'?mod=expert&type=comments" class="mdui-list-item mdui-ripple">导出评论（以 WXR 格式）</a>
+</div>
+        ')
     );
 }
