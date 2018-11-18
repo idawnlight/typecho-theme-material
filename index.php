@@ -196,13 +196,13 @@ $this->need('header.php'); ?>
                                      style="background-color:<?php $this->options->TitleColor() ?> !important;color:#757575 !important;">
                                     <p class="article-headline-p-nopic">
                                         <a href="<?php $this->permalink() ?>" target="_self">
-                                            "</br><?php $this->title() ?></br>"
+                                            "<br><?php $this->title() ?><br>"
                                         </a>
                                     </p>
                                 </div>
                             <?php elseif ($this->options->ThumbnailOption == '3'): ?>
                                 <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50 lazy "
-                                    <?php getBackgroundLazyload(showThumbnail($this)); ?>>
+                                    <?php getBackgroundLazyload(randomThumbnail($this)); ?>>
                                     <p class="article-headline-p"><a href="<?php $this->permalink() ?>"
                                                                      target="_self"><?php $this->title() ?></a></p>
                                 </div>
