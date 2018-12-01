@@ -45,6 +45,9 @@ function themeConfig($form) {
                     $Render->input("DisqusApiKey", "apiKey", "必填，DisqusJS 向 API 发起请求时使用的 API Key，你应该在配置 Disqus Application 时获取了 API Key，参见 <a href='https://github.com/SukkaW/DisqusJS#%E9%85%8D%E7%BD%AE-disqus-application'>https://github.com/SukkaW/DisqusJS#配置-disqus-application</a>", null).
                     $Render->input("DisqusAdmin", "admin", "非必须，你的站点的 Disqus Moderator 的用户名（也就是你的用户名）。你可以在 <a href=\"https://disqus.com/home/settings/account/\" rel=\"nofollow\">Disqus - Settings - Account - Username</a> 获取你的 Username", null).
                     $Render->input("DisqusAdminLabel", "adminLabel", "非必须，你想显示在 Disqus Moderator Badge 中的文字。该配置应和 <a href=\"https://disqus.com/admin/settings/community/\" rel=\"nofollow\">Disqus Admin - Settings - Community - Moderator Badge Text</a> 相同", null)
+                ).
+                $Render->panel("item", "拓展设置", NULL,
+                    $Render->input("SwitchToDisqusSince", "从某篇文章开始切换为 Disqus", "填写文章 cid，为 0 或留空则禁用", 0)
                 )
             ).
             $Render->panel("item", "文章二维码", NULL,
