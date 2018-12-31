@@ -47,7 +47,7 @@ function themeConfig($form) {
                     $Render->input("DisqusAdminLabel", "adminLabel", "非必须，你想显示在 Disqus Moderator Badge 中的文字。该配置应和 <a href=\"https://disqus.com/admin/settings/community/\" rel=\"nofollow\">Disqus Admin - Settings - Community - Moderator Badge Text</a> 相同", null)
                 ).
                 $Render->panel("item", "拓展设置", NULL,
-                    $Render->input("SwitchToDisqusSince", "从某篇文章开始切换为 Disqus", "填写文章 cid，为 0 或留空则禁用", 0)
+                    $Render->input("SwitchToDisqusSince", "从某篇文章开始切换为 Disqus", "填写文章 cid，为 0 或留空则仅由文章评论类型决定", 0)
                 )
             ).
             $Render->panel("item", "文章二维码", NULL,
