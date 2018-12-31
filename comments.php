@@ -80,7 +80,7 @@
     <?php
 } ?>
 
-<?php if ($this->options->commentis == '0' || (!getThemeOptions('SwitchToDisqusSince') == '' || !getThemeOptions('SwitchToDisqusSince') == null) && $this->cid > (int)getThemeOptions('SwitchToDisqusSince')): ?>
+<?php if ($this->options->commentis == '0' || (!getThemeOptions('SwitchToDisqusSince') == '' || !getThemeOptions('SwitchToDisqusSince') == null) && $this->cid < (int)getThemeOptions('SwitchToDisqusSince')): ?>
     <!-- 使用原生评论 -->
 
     <div class="mdl-color-text--primary-contrast mdl-card__supporting-text comments">
