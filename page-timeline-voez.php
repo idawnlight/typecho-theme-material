@@ -123,6 +123,10 @@ $this->need('header.php'); ?>
         bottom: auto!important;
     }
 
+    .md-timeline li {
+        list-style-type: none
+    }
+
 </style>
 
 <!-- Hamburger Button -->
