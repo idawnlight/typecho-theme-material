@@ -4,7 +4,7 @@
 
     <main class="material-layout__content" id="main">
         <div id="top"></div>
-        <!-- Hamburger Button -->
+        <!-- Hamburger button -->
         <button class="MD-burger-icon sidebar-toggle">
             <span id="MD-burger-id" class="MD-burger-layer"></span>
         </button>
@@ -21,7 +21,7 @@
                         </p>
                     </div>
 
-                    <!-- Articli info -->
+                    <!-- Article info -->
                     <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
                         <!-- Author avatar -->
                         <div id="author-avatar">
@@ -55,17 +55,21 @@
                             <img src="<?php getQRCode($this->permalink); ?>" height="200" width="200">
                         </ul>
                         <?php endif; ?>
-                        <!-- view tags -->
+                        <!-- View tags -->
                         <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                            <!-- For modern browsers. -->
+                            <!-- For modern browsers -->
                             <i class="material-icons" role="presentation">bookmarks</i>
                             <span class="visuallyhidden">tags</span>
                         </button>
                         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
-                            <li class="mdl-menu__item" >
-                                <?php $this->tags('<li class="mdl-menu__item" style="text-decoration: none;"> ', true, ''); ?></li>
+                            <li class="mdl-menu__item">
+                                标签
+                            </li>
+                            <li class="mdl-menu__item">
+                                <?php $this->tags('</li><li class="mdl-menu__item" style="text-decoration: none;">', true, ''); ?>
+                            </li>
                         </ul>
-                        <!-- share -->
+                        <!-- Share -->
                         <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                             <i class="material-icons" role="presentation">share</i>
                             <span class="visuallyhidden">share</span>
@@ -104,7 +108,7 @@
                         </ul>
                     </div>
 
-                    <!-- Articel content -->
+                    <!-- Article content -->
                     <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
                     <?php     
                         if (!empty($this->options->switch) && in_array('PanguPHP', $this->options->switch)) {
