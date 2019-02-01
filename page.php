@@ -56,6 +56,7 @@
                         </ul>
                         <?php endif; ?>
                         <!-- view tags -->
+                        <?php if (count($this->tags)): ?>
                         <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                             <!-- For modern browsers. -->
                             <i class="material-icons" role="presentation">bookmarks</i>
@@ -65,6 +66,7 @@
                             <li class="mdl-menu__item" >
                                 <?php $this->tags('<li class="mdl-menu__item" style="text-decoration: none;"> ', true, ''); ?></li>
                         </ul>
+                        <?php endif; ?>
                         <!-- share -->
                         <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                             <i class="material-icons" role="presentation">share</i>

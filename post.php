@@ -40,7 +40,7 @@
                             <?php if ($this->options->langis == '0'): ?>
                                 <?php $this->date('F j, Y'); ?>
                             <?php else: ?>
-                                <?php $this->dateWord(); ?>
+                                <?php $this->dateWord(); ?>t
                             <?php endif; ?>
                         </span>
                         </div>
@@ -56,15 +56,17 @@
                         </ul>
                         <?php endif; ?>
                         <!-- view tags -->
+                        <?php if (count($this->tags)): ?>
                         <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                             <!-- For modern browsers. -->
                             <i class="material-icons" role="presentation">bookmarks</i>
                             <span class="visuallyhidden">tags</span>
                         </button>
                         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
-                            <li class="mdl-menu__item" >
+                            <li class="mdl-menu__item">
                                 <?php $this->tags('<li class="mdl-menu__item" style="text-decoration: none;"> ', true, ''); ?></li>
                         </ul>
+                        <?php endif; ?>
                         <!-- share -->
                         <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                             <i class="material-icons" role="presentation">share</i>
@@ -106,7 +108,7 @@
 
                     <!-- Articel content -->
                     <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
-                        <?php     
+                        <?php
                         if (!empty($this->options->switch) && in_array('PanguPHP', $this->options->switch)) {
                             print pangu($this->content);
                         } else {
