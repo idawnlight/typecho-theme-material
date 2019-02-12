@@ -48,7 +48,7 @@ $this->need('header.php'); ?>
             <?php $this->widget('Widget_Metas_Tag_Cloud','sort=name&ignoreZeroCount=1&desc=0')->to($tag);$max = 0; ?>
             <?php while ($tag->next()) if ($tag->count > $max) $max = $tag->count; ?>
             <?php while ($tag->next()): ?>
-                <a href="<?php $tag->permalink(); ?>" style="font-size: <?php echo round($tag->count/$max*15+15,2); ?>px;color: #<?php $color = round(75-54*$tag->count/$max);echo $color.$color.$color; ?>"><?php $tag->name(); ?></a>
+                <a href="<?php $tag->permalink(); ?>" style="font-size: <?php echo round($tag->count/$max*15+15,2); ?>px;color: #<?php $color = base_convert(round(117-84*$tag->count/$max),10,16);echo $color.$color.$color; ?>"><?php $tag->name(); ?></a>
             <?php endwhile; ?>
             </div>
         </div>
