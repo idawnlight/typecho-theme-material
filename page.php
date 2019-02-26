@@ -21,7 +21,7 @@
                         </p>
                     </div>
 
-                    <!-- Articli info -->
+                    <!-- Article info -->
                     <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
                         <!-- Author avatar -->
                         <div id="author-avatar">
@@ -35,7 +35,7 @@
                         <div>
                             <!-- Author name -->
                             <strong><?php $this->author(); ?></strong>
-                            <!-- Articel date -->
+                            <!-- Article date -->
                             <span>
                             <?php if ($this->options->langis == '0'): ?>
                                 <?php $this->date('F j, Y'); ?>
@@ -106,7 +106,7 @@
                         </ul>
                     </div>
 
-                    <!-- Articel content -->
+                    <!-- Article content -->
                     <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
                     <?php     
                         if (!empty($this->options->switch) && in_array('PanguPHP', $this->options->switch)) {
