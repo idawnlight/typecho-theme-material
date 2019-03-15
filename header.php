@@ -383,10 +383,8 @@
     
     <!-- Canonical link -->
     <?php
-    if ($this->is("post") || $this->is("page") || $this->is("index")) {
-        echo '<link rel="canonical" href="';
-        ($this->is("post") || $this->is("page")) ? $this->permalink() : (($this->is("index")) ? $this->options->siteUrl() : NULL);
-        echo '">';
+    if ($this->is("post") || $this->is("page")) {
+        echo '<link rel="canonical" href="' . $this->permalink . '">';
     }
     ?>
 
