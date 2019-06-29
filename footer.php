@@ -283,10 +283,13 @@ $(document).ready(function(){
         $elementName="main"; //设置更新界面的元素，简单粗暴
         $Element=array();
         preg_match("/<{$elementName}.*?>.*<\/{$elementName}>/si",ob_get_contents(),$Element); //简单粗暴获取容器内容
-        preg_match("/<title.*?>.*<\/title>/i",ob_get_contents(),$Title);//简单粗暴提取title(meta貌似没有提取的必要性)
         ob_clean();
         ob_end_clean();
-        echo $Title[0]."\r\n".$Element[0];
+        echo $Element[0];
         ob_flush();
-    }
 ?>
+<title>
+    <?php $this->archiveTitle('', '', ' - '); ?>
+    <?php $this->options->title(); ?>
+</title>
+<?php } ?>
