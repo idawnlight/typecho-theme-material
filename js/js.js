@@ -19,12 +19,8 @@ $(document).ready(function() {
         if (!link) {
             return;
         }
-        var target = link.getAttribute('href');
-        if (!target) {
-            return;
-        }
         el.addEventListener('click', function() {
-            location.href = target;
+            link.click(); //传递Click事件给标题A 标签 便于pjax
         });
     });
 

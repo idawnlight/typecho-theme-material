@@ -901,3 +901,4 @@ if ($.support.pjax) {
 }
 
 })(jQuery)
+$(document).ready(function(){$(document).pjax('a', 'main',{timeout:10000})});

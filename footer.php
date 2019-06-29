@@ -144,7 +144,7 @@
 
 <!-- Material js -->
 <?php jsLsload("jq_js", "js/jquery.min.js") ?>
-<?php jsLsload("pjax_js", "js/jquery.pjax.min.js") ?>
+<?php jsLsload("pjax_js", "js/jquery.pjax.js") ?>
 <?php jsLsload("js_js", "js/js.min.js") ?>
 <?php jsLsload("lazyload_js", "js/lazyload.min.js") ?>
 
