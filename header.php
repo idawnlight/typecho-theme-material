@@ -1,3 +1,10 @@
+<?php
+    if (isset($_GET["_pjax"])) {
+        ob_flush();
+        flush();
+        ob_start(); //偷懒操作，将HTML内容储存到缓冲区 
+    }
+?>
 <!DOCTYPE HTML>
 <html style="display: none">
 <head>
