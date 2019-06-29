@@ -267,6 +267,8 @@ $(document).ready(function(){
         componentHandler.upgradeDom(); //重载Material Design Lite 组件
         pjaxReloads.Sidebar(); //重载侧边栏  
         pjaxReloads.endProgress();
+        pjaxReloads.Custom(); //重载自定义的一些事件
+        $("html").css("overflow","auto"); 
         //在此添加插件重载代码
     });
     $(document).pjax('a','#pjax-contianer',{timeout:10000});
@@ -281,9 +283,10 @@ $(document).ready(function(){
         $elementName="main"; //设置更新界面的元素，简单粗暴
         $Element=array();
         preg_match("/<{$elementName}.*?>.*<\/{$elementName}>/si",ob_get_contents(),$Element); //简单粗暴获取容器内容
+        preg_match("/<title.*?>.*<\/title>/i",ob_get_contents(),$Title);//简单粗暴提取title(meta貌似没有提取的必要性)
         ob_clean();
         ob_end_clean();
-        echo $Element[0];
+        echo $Title[0]."\r\n".$Element[0];
         ob_flush();
     }
 ?>
