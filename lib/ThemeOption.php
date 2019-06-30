@@ -20,7 +20,8 @@ function themeConfig($form) {
         $Render->panel("item", "功能设定", "基础的功能",
             $Render->panel("item", "功能开关", NULL, 
                  $Render->checkbox("switch", "功能开关", NULL, 
-                 ['ShowPixiv' => '侧边栏显示 mokeyjay 的 pixiv 挂件',
+                 ['pjaxEnable' => '启用Pjax(Beta)',
+                 'ShowPixiv' => '侧边栏显示 mokeyjay 的 pixiv 挂件',
                  'SmoothScroll' => '平滑滚动效果',
                  'ShowLoadingLine' => '顶部 loading 加载进度条效果',
                  'atargetblank' => '链接以新标签页形式打开',
@@ -29,7 +30,7 @@ function themeConfig($form) {
                  'HighLight' => '引用 highlight.js 实现代码高亮',
                  'Lazyload' => '图片延迟加载（文章内）',
                  'LazyloadIndex' => '图片延迟加载（首页）',
-                 'LocalStorage' => 'LocalStorage 强缓存策略（对于部分插件不兼容）'], ['SmoothScroll', 'ShowLoadingLine', 'PanguPHP', 'HighLight'])
+                 'LocalStorage' => 'LocalStorage 强缓存策略（对于部分插件不兼容）'], ['pjaxEnable','SmoothScroll', 'ShowLoadingLine', 'PanguPHP', 'HighLight'])
             ).
             $Render->panel("item", "文章评论", NULL,
                 $Render->panel("item", "文章评论类型", NULL,

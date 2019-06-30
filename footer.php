@@ -144,6 +144,7 @@
 
 <!-- Material js -->
 <?php jsLsload("jq_js", "js/jquery.min.js") ?>
+<?php if (!empty($this->options->switch) && in_array('pjaxEnable', $this->options->switch)) jsLsload("pjax_js", "js/jquery.pjax.min.js") ?>
 <?php jsLsload("js_js", "js/js.min.js") ?>
 <?php jsLsload("lazyload_js", "js/lazyload.min.js") ?>
 
@@ -168,24 +169,28 @@
     <?php jsLsload('np_js', 'js/nprogress.js'); ?>
 
     <script type="<?php getScriptType() ?>" id="NProgress-script">
-    NProgress.configure({
-        showSpinner: true
-    });
-    NProgress.start();
-    $('#nprogress .bar').css({
-        'background': '<?php $this->options->loadingcolor(); ?>'
-    });
-    $('#nprogress .peg').css({
-        'box-shadow': '0 0 10px <?php $this->options->loadingcolor(); ?>, 0 0 15px <?php $this->options->loadingcolor(); ?>'
-    });
-    $('#nprogress .spinner-icon').css({
-        'border-top-color': '<?php $this->options->loadingcolor(); ?>',
-        'border-left-color': '<?php $this->options->loadingcolor(); ?>'
-    });
-    setTimeout(function() {
-        NProgress.done();
-        $('.fade').removeClass('out');
-    }, <?php $this->options->loadingbuffer(); ?>);
+    (pjaxReloads.startProgress=function(){
+        NProgress.configure({
+            showSpinner: true
+        });
+        NProgress.start();
+        $('#nprogress .bar').css({
+            'background': '<?php $this->options->loadingcolor(); ?>'
+        });
+        $('#nprogress .peg').css({
+            'box-shadow': '0 0 10px <?php $this->options->loadingcolor(); ?>, 0 0 15px <?php $this->options->loadingcolor(); ?>'
+        });
+        $('#nprogress .spinner-icon').css({
+            'border-top-color': '<?php $this->options->loadingcolor(); ?>',
+            'border-left-color': '<?php $this->options->loadingcolor(); ?>'
+        });
+    })();
+    (pjaxReloads.endProgress=function(){
+        setTimeout(function() {
+            NProgress.done();
+            $('.fade').removeClass('out');
+        }, <?php $this->options->loadingbuffer(); ?>);
+    })();
 </script>
 <?php endif; ?>
 
@@ -253,8 +258,40 @@
         }
     })()
 </script>
-
+<?php if (!empty($this->options->switch) && in_array('pjaxEnable', $this->options->switch)) : ?>
+<script>
+$(document).ready(function(){
+    $('main').parent().attr("id","pjax-contianer").on("pjax:start",function(){
+        pjaxReloads.startProgress(); 
+    }).on("pjax:end",function(){
+        //pjax结束事件
+        componentHandler.upgradeDom(); //重载Material Design Lite 组件
+        pjaxReloads.Sidebar(); //重载侧边栏  
+        pjaxReloads.endProgress();
+        pjaxReloads.Custom(); //重载自定义的一些事件
+        $("html").css("overflow","auto"); 
+        //在此添加插件重载代码
+    });
+    $(document).pjax('a','#pjax-contianer',{timeout:10000});
+});
+</script>
+<?php endif; ?>
 <?php $this->footer(); ?>
 
 </body>
 </html>
+<?php
+    if (isset($_SERVER['HTTP_X_PJAX'])&&$_SERVER['HTTP_X_PJAX']=="true"&&!empty($this->options->switch) && in_array('pjaxEnable', $this->options->switch)) :
+        $elementName="main"; //设置更新界面的元素，简单粗暴
+        $Element=array();
+        preg_match("/<{$elementName}.*?>.*<\/{$elementName}>/si",ob_get_contents(),$Element); //简单粗暴获取容器内容
+        ob_clean();
+        ob_end_clean();
+        echo $Element[0];
+        ob_flush();
+?>
+<title>
+    <?php $this->archiveTitle('', '', ' - '); ?>
+    <?php $this->options->title(); ?>
+</title>
+    <?php endif; ?>
