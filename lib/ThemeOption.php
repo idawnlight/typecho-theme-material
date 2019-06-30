@@ -30,7 +30,7 @@ function themeConfig($form) {
                  'HighLight' => '引用 highlight.js 实现代码高亮',
                  'Lazyload' => '图片延迟加载（文章内）',
                  'LazyloadIndex' => '图片延迟加载（首页）',
-                 'LocalStorage' => 'LocalStorage 强缓存策略（对于部分插件不兼容）'], ['SmoothScroll', 'ShowLoadingLine', 'PanguPHP', 'HighLight','pjaxEnable'])
+                 'LocalStorage' => 'LocalStorage 强缓存策略（对于部分插件不兼容）'], ['pjaxEnable','SmoothScroll', 'ShowLoadingLine', 'PanguPHP', 'HighLight'])
             ).
             $Render->panel("item", "文章评论", NULL,
                 $Render->panel("item", "文章评论类型", NULL,

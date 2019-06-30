@@ -144,7 +144,7 @@
 
 <!-- Material js -->
 <?php jsLsload("jq_js", "js/jquery.min.js") ?>
-<?php jsLsload("pjax_js", "js/jquery.pjax.min.js") ?>
+<?php if (!empty($this->options->switch) && in_array('pjaxEnable', $this->options->switch)) jsLsload("pjax_js", "js/jquery.pjax.min.js") ?>
 <?php jsLsload("js_js", "js/js.min.js") ?>
 <?php jsLsload("lazyload_js", "js/lazyload.min.js") ?>
 
@@ -258,7 +258,7 @@
         }
     })()
 </script>
-<?php if (isset($_SERVER['HTTP_X_PJAX'])&&$_SERVER['HTTP_X_PJAX']=="true"&&!empty($this->options->switch) && in_array('pjaxEnable', $this->options->switch)) : ?>
+<?php if (!empty($this->options->switch) && in_array('pjaxEnable', $this->options->switch)) : ?>
 <script>
 $(document).ready(function(){
     $('main').parent().attr("id","pjax-contianer").on("pjax:start",function(){
