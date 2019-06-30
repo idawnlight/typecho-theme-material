@@ -258,6 +258,7 @@
         }
     })()
 </script>
+<?php if (isset($_SERVER['HTTP_X_PJAX'])&&$_SERVER['HTTP_X_PJAX']=="true"&&!empty($this->options->switch) && in_array('pjaxEnable', $this->options->switch)) : ?>
 <script>
 $(document).ready(function(){
     $('main').parent().attr("id","pjax-contianer").on("pjax:start",function(){
@@ -274,12 +275,13 @@ $(document).ready(function(){
     $(document).pjax('a','#pjax-contianer',{timeout:10000});
 });
 </script>
+<?php endif; ?>
 <?php $this->footer(); ?>
 
 </body>
 </html>
 <?php
-    if (isset($_GET["_pjax"])) {
+    if (isset($_SERVER['HTTP_X_PJAX'])&&$_SERVER['HTTP_X_PJAX']=="true"&&!empty($this->options->switch) && in_array('pjaxEnable', $this->options->switch)) :
         $elementName="main"; //设置更新界面的元素，简单粗暴
         $Element=array();
         preg_match("/<{$elementName}.*?>.*<\/{$elementName}>/si",ob_get_contents(),$Element); //简单粗暴获取容器内容
@@ -292,4 +294,4 @@ $(document).ready(function(){
     <?php $this->archiveTitle('', '', ' - '); ?>
     <?php $this->options->title(); ?>
 </title>
-<?php } ?>
+    <?php endif; ?>

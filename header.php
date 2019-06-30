@@ -1,5 +1,5 @@
 <?php
-    if (isset($_GET["_pjax"])) {
+    if (isset($_SERVER['HTTP_X_PJAX'])&&$_SERVER['HTTP_X_PJAX']=="true"&&!empty($this->options->switch) && in_array('pjaxEnable', $this->options->switch)) {
         ob_flush();
         flush();
         ob_start(); //偷懒操作，将HTML内容储存到缓冲区 
