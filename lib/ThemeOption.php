@@ -62,7 +62,7 @@ function themeConfig($form) {
                 $Render->radio("searchis", "搜索设置", NULL, [0 => "Typecho 原生搜索", 1 => "本地搜索（即时搜索）"], 1)
             ).
             $Render->panel("item", "CDN 类型", NULL,
-                $Render->radio("CDNType", "CDN 类型", NULL, [0 => '不启用 CDN', 1 => 'jsDelivr', 2 => '自定义'], 0) .
+                $Render->radio("CDNType", "CDN 类型", NULL, [0 => '不启用 CDN', 1 => 'jsDelivr (cdn.jsdelivr.net)', 3 => 'ElemeCDN (shadow.elemecdn.com)', 2 => '自定义'], 0) .
                 $Render->input("CDNURL", "CDN 地址", "仅在使用自定义 CDN 时需要填写<br>创建一个文件夹，把 <b>css, fonts, img, js</b> 文件夹放进去，上传到到你的 CDN 储存空间根目录下<br />
                 填入你的 CDN 地址, 如 <b>https://cdn.example.com/MaterialCDN</b> 或 <b>https://root.example.com</b>")
             ).

@@ -108,7 +108,9 @@ function getThemeFile($uri, $print = false)
     $options = Helper::options();
     if (getThemeOptions("CDNType") == 1) {
         $url = "https://cdn.jsdelivr.net/gh/idawnlight/typecho-theme-material@" . MATERIAL_VERSION . "/" . $uri;
-    } elseif (getThemeOptions("CDNType") == 2) {
+    } else if (getThemeOptions("CDNType") == 3) {
+        $url = "https://shadow.elemecdn.com/gh/idawnlight/typecho-theme-material@" . MATERIAL_VERSION . "/" . $uri;
+    } else if (getThemeOptions("CDNType") == 2) {
         $url = getThemeOptions("CDNURL") . "/" . $uri;
     } else {
         $site = substr($options->siteUrl, 0, strlen($options->siteUrl) - 1);
