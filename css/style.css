@@ -364,12 +364,13 @@ a {
 }
 #post-content code:not(.hljs),
 #post-content tt {
-    margin: 0 2px;
-    padding: 0px 5px;
+    margin: 0;
+    padding: 0;
     background-color: rgba(0, 0, 0, 0.04);
     border-radius: 3px;
 }
 #post-content pre>code {
+    background-color: rgba(0, 0, 0, 0) !important;
     white-space: pre;
     border: none;
 }
