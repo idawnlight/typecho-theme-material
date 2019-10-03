@@ -98,10 +98,15 @@ a {
     margin-right: 0;
     margin-left: 0;
 }
-#post-content,
-#post-content p {
+#post-content {
     font-size: 15px;
     line-height: 1.7;
+}
+#post-content p,
+#post-content blockquote,
+#post-content ul,
+#post-content ol {
+    font-size: 1em;
 }
 #post-content>*:first-child {
     margin-top: 0 !important;
@@ -176,7 +181,7 @@ a {
 #post-content h5 code,
 #post-content h6 tt,
 #post-content h6 code {
-    font-size: inherit;
+    font-size: 1em;
 }
 #post-content h1 {
     font-size: 2em;
@@ -220,7 +225,6 @@ a {
 #post-content ul,
 #post-content ol {
     padding-left: 30px;
-    font-size: 15px;
     line-height: 1.7;
     overflow: hidden;
 }
@@ -240,7 +244,7 @@ a {
     padding: 0;
 }
 #post-content dl dt {
-    font-size: 14px;
+    font-size: 0.95em;
     font-weight: bold;
     font-style: italic;
     padding: 0;
@@ -376,14 +380,14 @@ a {
 }
 #post-content pre {
     background-color: #f7f7f7;
-    font-size: 13px;
+    font-size: 0.9em;
     line-height: 19px;
     overflow: auto;
     border-radius: 3px;
 }
 #post-content .gutter,
 #post-content .code {
-    font-size: 13px;
+    font-size: 0.9em;
     line-height: 19px;
     overflow: auto;
     padding: 0;

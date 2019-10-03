@@ -141,6 +141,9 @@ function themeConfig($form) {
             $Render->panel("item", "Loading 加载缓冲时间", NULL,
                 $Render->input("loadingbuffer", "Loading 加载缓冲时间", "loading 加载进度条的缓冲时间, 单位为毫秒 ms, 默认为 800ms", 800)
             ).
+            $Render->panel("item", "文章内容字体大小", NULL,
+                $Render->input("FontSize", "文章内容字体大小", '对应 font-size，单位为 px，各元素将以此为基准计算大小，默认为 15', '15')
+            ).
             $Render->panel("item", "搜索框文字颜色", NULL,
                 $Render->input("SearchColor", "搜索框文字颜色", "填入颜色代码，用于适配浅色背景", NULL)
             ).

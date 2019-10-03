@@ -194,7 +194,11 @@
         }
         <?php endif; ?>
 
-
+        <?php if (getThemeOptions("FontSize")):?>
+        #post-content {
+            font-size: <?php getThemeOptions("FontSize", true); ?>px !important;
+        }
+        <?php endif; ?>
     </style>
 
 
