@@ -1,7 +1,7 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
-define("MATERIAL_VERSION", "3.3.2");
+define("MATERIAL_VERSION", "3.3.3");
 
 require_once("lib/tools.php");
 require_once("lib/UACheck.php");
