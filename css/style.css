@@ -369,19 +369,19 @@ a {
 #post-content code:not(.hljs),
 #post-content tt {
     padding: 0 5px;
-    margin: 0 2px;
     background-color: rgba(0, 0, 0, 0.04);
     border-radius: 3px;
 }
-#post-content pre>code {
-    padding: 0 !important;
-    margin: 0 !important;
+#post-content pre tt,
+#post-content pre code {
+    display: block;
+    padding: 12px !important;
     background-color: rgba(0, 0, 0, 0) !important;
     white-space: pre;
     border: none;
 }
 #post-content pre {
-    background-color: #f7f7f7;
+    background-color: rgba(0, 0, 0, 0.04);
     font-size: 0.9em;
     line-height: 19px;
     overflow: auto;
@@ -409,16 +409,6 @@ a {
 #post-content .code pre {
     margin: 0;
     display: block;
-}
-#post-content pre code {
-    padding: 12px;
-    border: none;
-}
-#post-content pre tt {
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-    border: none;
 }
 
 .post-toc-wrap::-webkit-scrollbar{
