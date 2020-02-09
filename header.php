@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html style="display: none">
+<html<?php if (in_array("LocalStorage", getThemeOptions("switch"))): ?> style="display: none"<?php endif ?>>
 <head>
     <meta charset="utf-8" />
     <script>
