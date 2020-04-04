@@ -200,7 +200,7 @@
             <script type="<?php getScriptType() ?>" id="disqus_js">
                 var dsqjs = new DisqusJS({
                     shortname: '<?php getThemeOptions("DisqusShortname", true) ?>',
-                    siteName: '<?php getThemeOptions("DisqusSiteName", true) ?>',
+                    siteName: <?php echo json_encode(getThemeOptions("DisqusSiteName")) ?>,
                     identifier: '<?php $this->cid() ?>',
                     url: '<?php $this->permalink() ?>',
                     api: '<?php getThemeOptions("DisqusApi", true) ?>',
