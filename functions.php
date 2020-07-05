@@ -138,10 +138,13 @@ function getTheme()
 
 /**
  * 获取当前的主题设置
- * @param string setting name
+ * @param null $setting
+ * @param bool $print
+ * @param null $default
  * @return mixed setting value
+ * @throws Typecho_Db_Exception
  */
-function getThemeOptions($setting = NULL, $print = false)
+function getThemeOptions($setting = null, $print = false, $default = null)
 {
     static $themeOptions = NULL;
     if ($themeOptions === NULL) {
@@ -150,8 +153,9 @@ function getThemeOptions($setting = NULL, $print = false)
         $result = $db->fetchAll($query);
         $themeOptions = unserialize($result[0]["value"]);
     }
-    if ($print) echo (isset($themeOptions[$setting])) ? $themeOptions[$setting] : NULL;
-    return ($setting === NULL) ? $themeOptions : (isset($themeOptions[$setting]) ? $themeOptions[$setting] : NULL);
+    $result = ($setting === NULL) ? $themeOptions : (isset($themeOptions[$setting]) ? $themeOptions[$setting] : $default);
+    if (is_string($result) && $print) echo $result;
+    return $result;
 }
 
 function themeInit($archive)
@@ -204,41 +208,38 @@ function showThumbnail($widget)
     }
 
     //If article no include picture, display random default picture
-    $rand = rand(1, $widget->widget('Widget_Options')->RandomPicAmnt); //Random number
-
-    $random = getThemeFile('img/random/material-' . $rand . '.png');
-
-    // If only one random default picture, delete the following "//"
-    //$random = $widget->widget('Widget_Options')->themeUrl . '/img/random.jpg';
+    $result = randomThumbnail();
 
     $attach = $widget->attachments(1)->attachment;
-    $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i';
-    $patternlazy = '/\<img.*?data-original\=\"(.*?)\"[^>]*>/i';
-
-    if (preg_match_all($pattern, $widget->content, $thumbUrl)) {
-        return $thumbUrl[1][0];
-    } elseif (preg_match_all($patternlazy, $widget->content, $thumbUrl)) {
-        return $thumbUrl[1][0];
-    } elseif ($attach->isImage) {
-        return $attach->url;
-    } else {
-        return $random;
+    if (isset($attach) && $attach->isImage) {
+        $result = $attach->url;
     }
+
+    if (getThemeOptions("FetchFirstImageRegex", false, 1)) {
+        if (in_array("Lazyload", getThemeOptions("switch"))) {
+            $pattern = '/\<img.*?data-original\=\"(.*?)\"[^>]*>/i';
+        } else {
+            $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i';
+        }
+
+        if (preg_match_all($pattern, $widget->content, $thumbUrl)) {
+            $result = $thumbUrl[1][0];
+        }
+    }
+
+    return $result;
 }
 
 /**
  * 随机缩略图
- * @param Typecho_Widget $widget
  * @return string image url
+ * @throws Typecho_Db_Exception
  */
-function randomThumbnail($widget)
+function randomThumbnail()
 {
-    //If article no include picture, display random default picture
-    $rand = rand(1, $widget->widget('Widget_Options')->RandomPicAmnt); //Random number
+    $rand = rand(1, getThemeOptions('RandomPicAmnt'));
 
-    $random = getThemeFile('img/random/material-' . $rand . '.png');
-
-    return $random;
+    return getThemeFile('img/random/material-' . $rand . '.png');
 }
 
 /**

@@ -40,7 +40,7 @@ class Render {
 
     public function radio($name, $display, $description, $options, $default = NULL) {
         $string = "";
-        $string .= ($description !== NULL) ? $description . "<br>" : NULL;
+        $string .= ($display !== NULL) ? $display . "<br>" : NULL;
         $userOption = getThemeOptions($name);
         if ($userOption === NULL) {
             $userOption = $default;
@@ -53,6 +53,7 @@ class Render {
             $options[$id] = _t($value);
         }
         $string .= "</ul>";
+        $string .= ($description !== NULL) ? $description . "<br>" : NULL;
         $$name = new Typecho_Widget_Helper_Form_Element_Radio($name, $options, $default, _t($display), _t($description));
         $this->form->addInput($$name);
         return $string;

@@ -172,7 +172,12 @@ function themeConfig($form) {
                     $Render->radio("ThumbnailOption", "缩略图显示效果", NULL, 
                     [1 => "显示文章内第一张图片或指定的图片 (若无图片则显示随机图)",
                     2 => "只显示纯色",
-                    3 => "只显示随机图片"], 1)
+                    3 => "只显示随机图片"], 1).
+                    $Render->radio('FetchFirstImageRegex', '通过正则匹配文章内图片（仅当选择第一项时有效）', null,
+                    [
+                        1 => '开启',
+                        0 => '关闭'
+                    ])
                 ).
                 $Render->panel("item", "缩略图为纯色时的颜色", NULL,
                     $Render->input("TitleColor", "缩略图为纯色时的颜色", "缩略图为纯色时的颜色", "#FFF")
