@@ -217,13 +217,15 @@ function showThumbnail($widget)
 
     if (getThemeOptions("FetchFirstImageRegex", false, 1)) {
         if (in_array("Lazyload", getThemeOptions("switch"))) {
-            $pattern = '/\<img.*?data-original\=\"(.*?)\"[^>]*>/i';
+            if (preg_match_all('/\<img.*?src=\"(.*?)\"[^>]*>/i', $widget->content, $thumbUrl)) {
+                $result = $thumbUrl[1][0];
+            } else if (preg_match_all('/\<img.*?data-original\=\"(.*?)\"[^>]*>/i', $widget->content, $thumbUrl)) {
+                $result = $thumbUrl[1][0];
+            }
         } else {
-            $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i';
-        }
-
-        if (preg_match_all($pattern, $widget->content, $thumbUrl)) {
-            $result = $thumbUrl[1][0];
+            if (preg_match_all('/\<img.*?src=\"(.*?)\"[^>]*>/i', $widget->content, $thumbUrl)) {
+                $result = $thumbUrl[1][0];
+            }
         }
     }
 
