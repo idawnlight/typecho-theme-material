@@ -38,7 +38,7 @@ class Render {
         }
     }
 
-    public function radio($name, $display = NULL, $description = NULL, $options, $default = NULL) {
+    public function radio($name, $display, $description, $options, $default = NULL) {
         $string = "";
         $string .= ($description !== NULL) ? $description . "<br>" : NULL;
         $userOption = getThemeOptions($name);
@@ -80,7 +80,7 @@ class Render {
         return $string;
     }
 
-    public function checkbox($name, $display = NULL, $description = NULL, $options, $default = NULL) {
+    public function checkbox($name, $display, $description, $options, $default = NULL) {
         $string = "";
         $userOptions = getThemeOptions($name);
         $string .= '<ul style="list-style: none!important">';
