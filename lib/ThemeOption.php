@@ -175,8 +175,8 @@ function themeConfig($form) {
                     3 => "只显示随机图片"], 1).
                     $Render->radio('FetchFirstImageRegex', '通过正则匹配文章内图片（仅当选择第一项时有效）', null,
                     [
-                        1 => '开启',
-                        0 => '关闭'
+                        0 => '开启',
+                        1 => '关闭'
                     ])
                 ).
                 $Render->panel("item", "缩略图为纯色时的颜色", NULL,

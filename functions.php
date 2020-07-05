@@ -215,7 +215,7 @@ function showThumbnail($widget)
         $result = $attach->url;
     }
 
-    if (getThemeOptions("FetchFirstImageRegex", false, 1)) {
+    if (getThemeOptions("FetchFirstImageRegex", false, '0') == '0') {
         if (in_array("Lazyload", getThemeOptions("switch"))) {
             if (preg_match_all('/\<img.*?src=\"(.*?)\"[^>]*>/i', $widget->content, $thumbUrl)) {
                 $result = $thumbUrl[1][0];
