@@ -52,8 +52,7 @@ function themeConfig($form) {
             ).
             $Render->panel("item", "文章二维码", NULL,
                 $Render->radio("qrcode", "文章二维码", NULL, 
-                [0 => "LWL12 ( api.lwl12.com )",
-                1 => "journey.ad ( api.imjad.cn )",
+                [1 => "journey.ad ( api.imjad.cn )",
                 2 => "Google Chart ( chart.googleapis.com )",
                 3 => "豌豆荚 ( www.wandoujia.com/api/qr )",
                 "false" => "不显示二维码"], 0)

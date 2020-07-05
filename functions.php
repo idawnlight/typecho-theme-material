@@ -175,12 +175,9 @@ function themeInit($archive)
  */
 function getQRCode($permalink) {
     $qrcode = getThemeOptions("qrcode");
-    if ($qrcode === NULL) $qrcode = 0;
+    if ($qrcode === NULL) $qrcode = 1;
     $src = "";
     switch ($qrcode) {
-        case 0:
-            $src = "https://api.lwl12.com/img/qrcode/get?ct=$permalink&w=200&h=200";
-            break;
         case 1:
             $src = "https://api.imjad.cn/qrcode/?text=$permalink&size=200&level=L";
             break;
