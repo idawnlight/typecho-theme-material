@@ -109,7 +109,64 @@
     <?php endif; ?>
 
     <?php if ($this->options->RobotoSource == '0'): ?>
-        <link href='https://fonts.proxy.ustclug.org/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+        <style>
+
+            /* roboto-300 */
+            @font-face {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 300;
+                src: url('//lib.baomitu.com/fonts/roboto/roboto-300.eot'); /* IE9 Compat Modes */
+                src: local('Roboto'), local('Roboto-Normal'),
+                url('//lib.baomitu.com/fonts/roboto/roboto-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+                url('//lib.baomitu.com/fonts/roboto/roboto-300.woff2') format('woff2'), /* Super Modern Browsers */
+                url('//lib.baomitu.com/fonts/roboto/roboto-300.woff') format('woff'), /* Modern Browsers */
+                url('//lib.baomitu.com/fonts/roboto/roboto-300.ttf') format('truetype'), /* Safari, Android, iOS */
+                url('//lib.baomitu.com/fonts/roboto/roboto-300.svg#Roboto') format('svg'); /* Legacy iOS */
+            }
+
+            /* roboto-regular */
+            @font-face {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 400;
+                src: url('//lib.baomitu.com/fonts/roboto/roboto-regular.eot'); /* IE9 Compat Modes */
+                src: local('Roboto'), local('Roboto-Normal'),
+                url('//lib.baomitu.com/fonts/roboto/roboto-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+                url('//lib.baomitu.com/fonts/roboto/roboto-regular.woff2') format('woff2'), /* Super Modern Browsers */
+                url('//lib.baomitu.com/fonts/roboto/roboto-regular.woff') format('woff'), /* Modern Browsers */
+                url('//lib.baomitu.com/fonts/roboto/roboto-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+                url('//lib.baomitu.com/fonts/roboto/roboto-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+            }
+
+            /* roboto-500 */
+            @font-face {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 500;
+                src: url('//lib.baomitu.com/fonts/roboto/roboto-500.eot'); /* IE9 Compat Modes */
+                src: local('Roboto'), local('Roboto-Normal'),
+                url('//lib.baomitu.com/fonts/roboto/roboto-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+                url('//lib.baomitu.com/fonts/roboto/roboto-500.woff2') format('woff2'), /* Super Modern Browsers */
+                url('//lib.baomitu.com/fonts/roboto/roboto-500.woff') format('woff'), /* Modern Browsers */
+                url('//lib.baomitu.com/fonts/roboto/roboto-500.ttf') format('truetype'), /* Safari, Android, iOS */
+                url('//lib.baomitu.com/fonts/roboto/roboto-500.svg#Roboto') format('svg'); /* Legacy iOS */
+            }
+
+            /* roboto-700 */
+            @font-face {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 700;
+                src: url('//lib.baomitu.com/fonts/roboto/roboto-700.eot'); /* IE9 Compat Modes */
+                src: local('Roboto'), local('Roboto-Normal'),
+                url('//lib.baomitu.com/fonts/roboto/roboto-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+                url('//lib.baomitu.com/fonts/roboto/roboto-700.woff2') format('woff2'), /* Super Modern Browsers */
+                url('//lib.baomitu.com/fonts/roboto/roboto-700.woff') format('woff'), /* Modern Browsers */
+                url('//lib.baomitu.com/fonts/roboto/roboto-700.ttf') format('truetype'), /* Safari, Android, iOS */
+                url('//lib.baomitu.com/fonts/roboto/roboto-700.svg#Roboto') format('svg'); /* Legacy iOS */
+            }
+        </style>
     <?php elseif ($this->options->RobotoSource == '1'): ?>
         <link href='https://fonts.loli.net/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
     <?php elseif ($this->options->RobotoSource == '2'): ?>
