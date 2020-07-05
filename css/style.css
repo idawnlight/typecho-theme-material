@@ -107,6 +107,7 @@ a {
 #post-content ul,
 #post-content ol {
     font-size: 1em;
+    letter-spacing: 0;
 }
 #post-content>*:first-child {
     margin-top: 0 !important;
