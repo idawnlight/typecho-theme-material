@@ -237,7 +237,7 @@ function themeConfig($form) {
         ).
         $Render->panel("item", "工具箱", '那点零零碎碎的小工具', '
 <div class="mdui-list">
-  <a href="'.Typecho_Widget::widget('Widget_Options')->siteUrl.'?mod=expert&type=comments" class="mdui-list-item mdui-ripple">导出评论（以 WXR 格式）</a>
+  <a href="'.Typecho_Widget::widget('Widget_Options')->siteUrl.'?mod=export&type=comments" class="mdui-list-item mdui-ripple">导出评论（以 WXR 格式）</a>
 </div>
         ')
     );

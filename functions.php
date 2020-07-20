@@ -24,12 +24,12 @@ if (isset($_GET["mod"]) && isset($this) && $this->is('index')) {
         $this->need("page-search.php");
         exit;
     }
-    if ($_GET["mod"] === "expert") {
+    if ($_GET["mod"] === "export") {
         if ($_GET['type'] === 'comments') {
             if (Typecho_Widget::widget('Widget_User')->pass('administrator', true)) {
                 header("Content-Type: text/xml");
                 header('Content-Disposition: attachment; filename="'.Typecho_Widget::widget('Widget_Options')->title.'-comments-wxr-'.gmdate('Y-m-d').'.xml"');
-                $tool = new Comment_Expert();
+                $tool = new Comment_Export();
                 $db = Typecho_Db::get();
                 $query = $db->select('*')->from('table.contents')->where('type = ?', 'post')->orWhere('type = ?', 'page');
                 $result = $db->fetchAll($query);

@@ -1,6 +1,6 @@
 <?php
 
-Class Comment_Expert {
+class Comment_Export {
     protected $struct = '<?xml version="1.0" encoding="UTF-8"?>
       <!-- This is a WordPress eXtended RSS file generated from Typecho by idawnlight/typecho-theme-material as an export of comments of your site. -->
 <rss version="2.0"
@@ -57,7 +57,7 @@ Class Comment_Expert {
     }
 }
 
-Class SimpleXMLElementExtended extends SimpleXMLElement {
+class SimpleXMLElementExtended extends SimpleXMLElement {
 
     /**
      * Adds a child with $value inside CDATA
@@ -80,7 +80,7 @@ Class SimpleXMLElementExtended extends SimpleXMLElement {
     }
 }
 
-Class arrayToClass {
+class arrayToClass {
     private $_data;
 
     public function __construct(array $properties = []){
