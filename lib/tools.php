@@ -16,7 +16,6 @@ class Comment_Export {
     protected $wxr;
 
     protected $post_blocks;
-    protected $comments_blocks;
 
     public function getResult() {
         $content = $this->wxr->asXML();
