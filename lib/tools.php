@@ -57,14 +57,13 @@ class Comment_Export {
 }
 
 class SimpleXMLElementExtended extends SimpleXMLElement {
-
     /**
      * Adds a child with $value inside CDATA
+     * https://stackoverflow.com/a/20511976
      * @param string $name
      * @param string $value
      * @param string $namespace
      * @return SimpleXMLElement
-     * https://stackoverflow.com/questions/6260224/how-to-write-cdata-using-simplexmlelement
      */
     public function addChildWithCDATA($name, $value = NULL, $namespace = null) {
         $new_child = $this->addChild($name, null, $namespace);

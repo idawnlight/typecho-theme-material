@@ -9,6 +9,7 @@ header("content-type: text/xml; charset=utf-8");
 
 /**
  * Adds a CDATA property to an XML document.
+ * https://stackoverflow.com/a/27306705
  *
  * @param string $name
  *   Name of property that should contain CDATA.
@@ -49,10 +50,9 @@ while ($archive->next()) {
     $tags = $entry->addChild('tags');
     if ($archive->tags) {
         foreach ($archive->tags as $tag) {
-            $categories->addChild('tag', $tag['name']);
+            $tags->addChild('tag', $tag['name']);
         }
     }
 }
 
 echo $xml->asXML();
-
