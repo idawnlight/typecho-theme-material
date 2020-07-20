@@ -52,10 +52,11 @@ function themeConfig($form) {
             ).
             $Render->panel("item", "文章二维码", NULL,
                 $Render->radio("qrcode", "文章二维码", NULL, 
-                [1 => "journey.ad ( api.imjad.cn )",
+                [0 => "LWL12 ( api.lwl12.com )",
+                1 => "journey.ad ( api.imjad.cn )",
                 2 => "Google Chart ( chart.googleapis.com )",
-                3 => "豌豆荚 ( www.wandoujia.com/api/qr )",
-                "false" => "不显示二维码"], 0)
+                3 => "豌豆荚 ( www.wandoujia.com )",
+                -1 => "不显示二维码"], 1)
             ).
             $Render->panel("item", "搜索设置", NULL,
                 $Render->radio("searchis", "搜索设置", NULL, [0 => "Typecho 原生搜索", 1 => "本地搜索（即时搜索）"], 1)
