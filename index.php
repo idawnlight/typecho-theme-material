@@ -161,13 +161,6 @@ $this->need('header.php'); ?>
                                 </li>
                             </a>
                             <a class="index_share-link"
-                               href="https://plus.google.com/share?url=<?php $this->options->siteUrl(); ?>"
-                               onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
-                                <li class="mdl-menu__item">
-                                    <?php lang("share.toGplus") ?>
-                                </li>
-                            </a>
-                            <a class="index_share-link"
                                href="http://service.weibo.com/share/share.php?appkey=&title=<?php $this->options->title(); ?>&url=<?php $this->options->siteUrl(); ?>&pic=&searchPic=false&style=simple ">
                                 <li class="mdl-menu__item">
                                     <?php lang("share.toWeibo") ?>
