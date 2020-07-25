@@ -11,12 +11,9 @@ header("content-type: text/xml; charset=utf-8");
  * Adds a CDATA property to an XML document.
  * https://stackoverflow.com/a/27306705
  *
- * @param string $name
- *   Name of property that should contain CDATA.
- * @param string $value
- *   Value that should be inserted into a CDATA child.
- * @param object $parent
- *   Element that the CDATA child should be attached too.
+ * @param string $name Name of property that should contain CDATA.
+ * @param string $value Value that should be inserted into a CDATA child.
+ * @param object $parent Element that the CDATA child should be attached too.
  */
 $add_cdata = function($name, $value, &$parent) {
     $child = $parent->addChild($name);

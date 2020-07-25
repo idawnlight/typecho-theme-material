@@ -219,10 +219,9 @@ function showThumbnail($widget)
     }
 
     if (getThemeOptions("FetchFirstImageRegex", false, '0') == '0') {
-        if (in_array("Lazyload", getThemeOptions("switch"))) {
-            if (preg_match_all('/\<img.*?src=\"(.*?)\"[^>]*>/i', $widget->content, $thumbUrl)) {
-                $result = $thumbUrl[1][0];
-            } else if (preg_match_all('/\<img.*?data-original\=\"(.*?)\"[^>]*>/i', $widget->content, $thumbUrl)) {
+        global $t;
+        if (in_array("Lazyload", getThemeOptions("switch")) && method_exists($t,'is') && !$t->is('index')) {
+            if (preg_match_all('/\<img.*?data-original\=\"(.*?)\"[^>]*>/i', $widget->content, $thumbUrl)) {
                 $result = $thumbUrl[1][0];
             }
         } else {
