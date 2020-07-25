@@ -37,6 +37,7 @@ $structure = '<?xml version="1.0" encoding="UTF-8"?><!-- This is an index of pos
 $xml = new SimpleXMLElement($structure);
 
 while ($archive->next()) {
+    if ($archive->password != null) continue;
     $entry = $xml->addChild('entry');
     $add_cdata('title', $archive->title, $entry);
     $entry->addChild('url', $archive->permalink);
