@@ -7,6 +7,21 @@
 
 
 <!--Footer-->
+<script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      extensions: ["tex2jax.js"],
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+      },
+      "HTML-CSS": { availableFonts: ["TeX"] }
+      });
+</script>
+<script type="text/javascript"
+src="https://cdn.jsdelivr.net/npm/mathjax@2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 <footer class="mdl-mini-footer" id="bottom">
     <!--mdl-mini-footer-left-section-->
     <div class="mdl-mini-footer--left-section">
