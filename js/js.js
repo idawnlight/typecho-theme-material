@@ -2178,7 +2178,7 @@ $(document).ready(function() {
             overlay.addClass('active');
             $('.MD-burger-layer').remove('MD-burger-line');
             $('.MD-burger-layer').add('MD-burger-arrow');
-      document.documentElement.style.overflow = "hidden";
+      document.documentElement.style.overflow = "auto";
         } else {
             overlay.removeClass('active');
             $('.MD-burger-layer').removeClass('MD-burger-arrow');
