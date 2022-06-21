@@ -19,7 +19,7 @@ function themeConfig($form) {
         <a href="https://github.com/idawnlight/typecho-theme-material/issues" target="_blank">建议&反馈</a><br><br>当前版本 ' . MATERIAL_VERSION . '<span id="update"></span><script type="text/javascript" src="https://api.lim-light.com/update/material.php?version=' . MATERIAL_VERSION . '&encode=js-html&front=，" async defer></script></p>', true, false). 
         $Render->panel("item", "功能设定", "基础的功能",
             $Render->panel("item", "功能开关", NULL, 
-                 $Render->checkbox("switch", "功能开关", NULL, 
+                 $Render->checkbox("switch", "功能开关", "", 
                  ['ShowPixiv' => '侧边栏显示 mokeyjay 的 pixiv 挂件',
                  'SmoothScroll' => '平滑滚动效果',
                  'ShowLoadingLine' => '顶部 loading 加载进度条效果',
@@ -51,7 +51,7 @@ function themeConfig($form) {
                 )
             ).
             $Render->panel("item", "文章二维码", NULL,
-                $Render->radio("qrcode", "文章二维码", NULL, 
+                $Render->radio("qrcode", "文章二维码", "", 
                 [0 => "LWL12 ( api.lwl12.com )",
                 1 => "journey.ad ( api.imjad.cn )",
                 2 => "Google Chart ( chart.googleapis.com )",
@@ -59,15 +59,15 @@ function themeConfig($form) {
                 -1 => "不显示二维码"], 1)
             ).
             $Render->panel("item", "搜索设置", NULL,
-                $Render->radio("searchis", "搜索设置", NULL, [0 => "Typecho 原生搜索", 1 => "本地搜索（即时搜索）"], 1)
+                $Render->radio("searchis", "搜索设置", "", [0 => "Typecho 原生搜索", 1 => "本地搜索（即时搜索）"], 1)
             ).
             $Render->panel("item", "CDN 类型", NULL,
-                $Render->radio("CDNType", "CDN 类型", NULL, [0 => '不启用 CDN', 1 => 'jsDelivr (cdn.jsdelivr.net)', 3 => 'ElemeCDN (shadow.elemecdn.com)', 2 => '自定义'], 0) .
+                $Render->radio("CDNType", "CDN 类型", "", [0 => '不启用 CDN', 1 => 'jsDelivr (cdn.jsdelivr.net)', 3 => 'ElemeCDN (shadow.elemecdn.com)', 2 => '自定义'], 0) .
                 $Render->input("CDNURL", "CDN 地址", "仅在使用自定义 CDN 时需要填写<br>创建一个文件夹，把 <b>css, fonts, img, js</b> 文件夹放进去，上传到到你的 CDN 储存空间根目录下<br />
                 填入你的 CDN 地址, 如 <b>https://cdn.example.com/MaterialCDN</b> 或 <b>https://root.example.com</b>")
             ).
             $Render->panel("item", "语言", NULL, 
-                 $Render->radio("language", "语言", NULL, 
+                 $Render->radio("language", "语言", "", 
                  ["ar" => "العَرَبِيَّة", 
                  "de" => "Deutsch", 
                  "en" => "English", 
@@ -114,10 +114,10 @@ function themeConfig($form) {
                 $Render->input("post_license", "文章版权", "你可以在每篇文章的结尾添加你的版权说明，支持 HTML 标签。License 以粗体显示，默认为空。 比如，你可这样设定 CC License。<br><b>&#84;&#104;&#105;&#115;&#32;&#98;&#108;&#111;&#103;&#32;&#105;&#115;&#32;&#117;&#110;&#100;&#101;&#114;&#32;&#97;&#32;&#60;&#97;&#32;&#104;&#114;&#101;&#102;&#61;&#34;&#47;&#99;&#114;&#101;&#97;&#116;&#105;&#118;&#101;&#99;&#111;&#109;&#109;&#111;&#110;&#115;&#46;&#104;&#116;&#109;&#108;&#34;&#32;&#116;&#97;&#114;&#103;&#101;&#116;&#61;&#34;&#95;&#98;&#108;&#97;&#110;&#107;&#34;&#62;&#67;&#67;&#32;&#66;&#89;&#45;&#78;&#67;&#45;&#83;&#65;&#32;&#51;&#46;&#48;&#32;&#85;&#110;&#112;&#111;&#114;&#116;&#101;&#100;&#32;&#76;&#105;&#99;&#101;&#110;&#115;&#101;&#60;&#47;&#97;&#62;</b>", NULL)
             ).
             $Render->panel("item", "Footer 文字", NULL,
-                $Render->input("footer_text", "Footer 文字", "你可以在页面的 Footer 指定你想显示的文字，支持 HTML 标签；默认为空。 比如，备案号可以这样设定。<br><b>&#60;&#97;&#32;&#104;&#114;&#101;&#102;&#61;&#34;&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#119;&#119;&#119;&#46;&#109;&#105;&#105;&#116;&#98;&#101;&#105;&#97;&#110;&#46;&#103;&#111;&#118;&#46;&#99;&#110;&#34;&#32;&#114;&#101;&#108;&#61;&#34;&#110;&#111;&#102;&#111;&#108;&#108;&#111;&#119;&#34;&#62;&#26576;&#73;&#67;&#80;&#22791;&#120;&#120;&#120;&#120;&#120;&#120;&#120;&#120;&#21495;&#45;&#120;&#60;&#47;&#97;&#62;</b>", NULL)
+                $Render->input("footer_text", "Footer 文字", "你可以在页面的 Footer 指定你想显示的文字，支持 HTML 标签；默认为空。 比如，备案号可以这样设定。<br><b>&lt;a href=\"https://beian.miit.gov.cn\" rel=\"nofollow\"&gt;某ICP备xxxxxxxxxx号-x&lt;/a&gt;</b>", NULL)
             ).
             $Render->panel("item", "Roboto 字体使用来源", NULL,
-                $Render->radio("RobotoSource", "Roboto 字体使用来源", NULL, 
+                $Render->radio("RobotoSource", "Roboto 字体使用来源", "", 
                 [0 => "调用 Google fonts (使用 https://lug.ustc.edu.cn 镜像)",
                 1 => "调用 Google fonts (使用 https://fonts.loli.net 镜像)",
                 2 => "调用 Google fonts",
@@ -125,10 +125,10 @@ function themeConfig($form) {
                 , 3)
             ).
             $Render->panel("item", "网站统计代码", NULL,
-                $Render->textarea("analysis", "网站统计代码", "填入如 Google Analysis 的第三方统计代码", NULL)
+                $Render->textarea("analysis", "网站统计代码", "填入如 Google Analysis 的第三方统计代码", "")
             ).
             $Render->panel("item", "DNS 预加载", NULL,
-                $Render->textarea("DNSPrefetch", "DNS 预加载", "一行一个，如 <b>//dns.example.com</b>", NULL)
+                $Render->textarea("DNSPrefetch", "DNS 预加载", "一行一个，如 <b>//dns.example.com</b>", "")
             )
         ).
         $Render->panel("item", "外观设置", NULL,
@@ -146,7 +146,7 @@ function themeConfig($form) {
             ).
             $Render->panel("item", "背景设置", NULL,
                 $Render->panel("item", "背景类型", NULL,
-                    $Render->radio("BGtype", "背景类型", NULL, 
+                    $Render->radio("BGtype", "背景类型", "", 
                     [0 => '纯色背景',
                     1 => '图片背景',
                     2 => '渐变背景'], 1)
@@ -155,7 +155,7 @@ function themeConfig($form) {
                     $Render->input("bgcolor", "背景颜色 / 图片", "背景设置如果选择纯色背景, 这里就填写颜色代码; <br />背景设置如果选择图片背景, 这里就填写图片地址;<br />不填写则默认显示 #F5F5F5 或主题文件夹下的 /img/bg.jpg", NULL)
                 ).
                 $Render->panel("item", "背景渐变", NULL,
-                    $Render->radio("GradientType", "背景渐变", NULL, 
+                    $Render->radio("GradientType", "背景渐变", "", 
                     ['0' => _t('Aerinite'),
                      '1' => _t('Ethereal'),
                      '2' => _t('Patrichor'),
@@ -170,11 +170,11 @@ function themeConfig($form) {
             ).
             $Render->panel("item", "缩略图显示效果", NULL,
                 $Render->panel("item", "缩略图显示效果", NULL,
-                    $Render->radio("ThumbnailOption", "缩略图显示效果", NULL, 
+                    $Render->radio("ThumbnailOption", "缩略图显示效果", "", 
                     [1 => "显示文章内第一张图片或指定的图片 (若无图片则显示随机图)",
                     2 => "只显示纯色",
                     3 => "只显示随机图片"], 1).
-                    $Render->radio('FetchFirstImageRegex', '通过正则匹配文章内图片（仅当选择第一项时有效）', null,
+                    $Render->radio('FetchFirstImageRegex', '通过正则匹配文章内图片（仅当选择第一项时有效）', "",
                     [
                         0 => '开启',
                         1 => '关闭'
@@ -218,7 +218,7 @@ function themeConfig($form) {
                 $Render->input("logo", "首页顶部右边 LOGO 图片地址", "填入 LOGO 地址, 图片将显示于首页右上角板块")
             ).
             $Render->panel("item", "首页顶部右边 LOGO 图片大小", NULL,
-                $Render->radio("logosize", "首页顶部右边 LOGO 图片大小", NULL, 
+                $Render->radio("logosize", "首页顶部右边 LOGO 图片大小", "", 
                 [0 => "标准",
                 1 => "更大"], 0)
             ).
