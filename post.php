@@ -121,7 +121,7 @@
                     </div>
 
                     <!-- Article comments -->
-                    <?php include('comments.php'); ?>
+                    <?php $this->need('comments.php'); ?>
 
                 </div>
 
@@ -138,5 +138,5 @@
                 </nav>
             </div>
 
-            <?php include('sidebar.php'); ?>
-            <?php include('footer.php'); ?>
+            <?php $this->need('sidebar.php'); ?>
+            <?php $this->need('footer.php'); ?>

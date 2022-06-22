@@ -149,5 +149,5 @@ $this->need('header.php'); ?>
     <?php endwhile; ?>
 </ul>
 
-<?php include('sidebar.php'); ?>
-<?php include('footer.php'); ?>
+<?php $this->need('sidebar.php'); ?>
+<?php $this->need('footer.php'); ?>
