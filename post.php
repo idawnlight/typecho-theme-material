@@ -121,7 +121,7 @@
                     </div>
 
                     <!-- Article comments -->
-                    <?php include('comments.php'); ?>
+                    <?php $this->need('comments.php'); ?>
 
                 </div>
 
@@ -137,11 +137,6 @@
                         </button>', 'tagClass' => 'prev-content')); ?>
                 </nav>
             </div>
-            <?php if(isset($this->parameter->preview) && $this->parameter->preview): ?>
-              <!-- Fix typecho preview content -->
-              <script>
-                document.getElementById("post-content").classList.remove("out");
-              </script>
-            <?php endif; ?>
-            <?php include('sidebar.php'); ?>
-            <?php include('footer.php'); ?>
+
+            <?php $this->need('sidebar.php'); ?>
+            <?php $this->need('footer.php'); ?>
