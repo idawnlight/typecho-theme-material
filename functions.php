@@ -136,6 +136,12 @@ function getTheme()
     return $themeName;
 }
 
+// https://github.com/typecho/typecho/blob/d84e261f7b9ed10c74e792edc596a18cf5a3ab47/var/Widget/Options.php#L760-L771
+function tryDeserialize(string $value) {
+    $isSerialized = strpos($value, 'a:') === 0 || $value === 'b:0;';
+    return $isSerialized ? @unserialize($value) : json_decode($value, true);
+}
+
 /**
  * 获取当前的主题设置
  * @param null $setting
@@ -151,7 +157,7 @@ function getThemeOptions($setting = null, $print = false, $default = null)
         $db = Typecho_Db::get();
         $query = $db->select('value')->from('table.options')->where('name = ?', 'theme:' . getTheme());
         $result = $db->fetchAll($query);
-        $themeOptions = unserialize($result[0]["value"]);
+        $themeOptions = tryDeserialize($result[0]["value"]);
     }
     $result = ($setting === NULL) ? $themeOptions : (isset($themeOptions[$setting]) ? $themeOptions[$setting] : $default);
     if (is_string($result) && $print) echo $result;
