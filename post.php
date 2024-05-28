@@ -3,6 +3,7 @@
 <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
 
     <main class="material-layout__content" id="main">
+      <div class="min-height-for-footer">
         <div id="top"></div>
         <!-- Hamburger Button -->
         <button class="MD-burger-icon sidebar-toggle">
@@ -136,6 +137,7 @@
                             <i class="material-icons">arrow_forward</i>
                         </button>', 'tagClass' => 'prev-content')); ?>
                 </nav>
+            </div>
             </div>
 
             <?php $this->need('sidebar.php'); ?>

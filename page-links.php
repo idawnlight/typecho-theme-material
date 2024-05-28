@@ -97,7 +97,7 @@ $this->need('header.php'); ?>
 <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
 
     <main class="material-layout__content" id="main">
-
+      <div class="min-height-for-footer">
         <!-- Top Anchor -->
         <div id="top"></div>
 
@@ -120,6 +120,6 @@ $this->need('header.php'); ?>
             <?php endif; ?>
         </div>
 
-
+        </div>
         <?php $this->need('sidebar.php'); ?>
         <?php $this->need('footer.php'); ?>
