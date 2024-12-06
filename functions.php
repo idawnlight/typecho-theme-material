@@ -226,7 +226,7 @@ function showThumbnail($widget)
 
     if (getThemeOptions("FetchFirstImageRegex", false, '0') == '0') {
         global $t;
-        if (in_array("Lazyload", getThemeOptions("switch")) && method_exists($t,'is') && !$t->is('index')) {
+        if (in_array("Lazyload", getThemeOptions("switch")) && method_exists($t,'is') && !$t->is('index') && !$t->is('search')) {
             if (preg_match_all('/\<img.*?data-original\=\"(.*?)\"[^>]*>/i', $widget->content, $thumbUrl)) {
                 $result = $thumbUrl[1][0];
             }
